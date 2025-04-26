@@ -1,0 +1,6 @@
+export enum colors {
+  WHITE_COLOR = "#FFFFFF",
+  TEXT_COLOR = "#262626",
+  BUTTON_COLOR = "#F6B83D",
+  BUTTON_ACTION_COLOR = "#FFF4DF",
+}
