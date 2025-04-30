@@ -7,9 +7,8 @@ import {
   AuthImageContainer,
   AuthPetImageComment,
   AuthPetNameComment,
-  Input,
 } from "../../common/styles";
-import { RegisterButton } from "./RegisterPage.styles";
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
 const RegisterPage = () => {
   return (
@@ -47,20 +46,7 @@ const RegisterPage = () => {
               Thank you for your interest in our platform.
             </p>
           </div>
-          <form className="flex flex-col gap-8">
-            <div className="flex flex-col gap-4">
-              <Input placeholder="Name" />
-
-              <Input placeholder="Email" />
-              <Input placeholder="Password" />
-              <Input placeholder="Confirm password" />
-            </div>
-            <RegisterButton className="uppercase">Registration</RegisterButton>
-            <p>
-              Already have an account?
-              <a className="text-shadow-amber-500"> Login</a>
-            </p>
-          </form>
+          <RegistrationForm />
         </AuthFormContainer>
       </div>
     </>

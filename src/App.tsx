@@ -3,7 +3,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import NotFound from "./pages/NotFound/NotFound";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { NavLink, Route, Routes } from "react-router-dom";
-import clsx from "clsx";
 
 const buildLinkClass = ({ isActive }) => {
   return isActive
