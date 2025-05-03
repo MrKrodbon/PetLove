@@ -1,6 +1,39 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors/colors";
 
+export const MainHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 0;
+
+  @media (min-width: 769px) {
+    padding: 27px 0;
+  }
+  @media (min-width: 1280px) {
+    padding: 44px 0;
+  }
+`;
+
+export const HeaderNavigation = styled.nav`
+  display: none;
+  @media (min-width: 1280px) {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+`;
+
+export const AuthNavigation = styled.nav`
+  display: none;
+  @media (min-width: 769px) {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+`;
+
 export const LoginButton = styled.button`
   display: flex;
   flex-direction: row;
@@ -12,7 +45,7 @@ export const LoginButton = styled.button`
 
   height: 50px;
 
-  background: ${colors.BUTTON_COLOR};
+  background: ${colors.MAIN_COLOR};
   border-radius: 30px;
   flex: none;
   order: 0;
@@ -26,7 +59,7 @@ export const RegisterButton = styled.button`
   align-items: center;
   padding: 15px 20px;
   gap: 10px;
-  color: ${colors.BUTTON_COLOR};
+  color: ${colors.MAIN_COLOR};
 
   width: 149px;
   height: 50px;
@@ -36,4 +69,17 @@ export const RegisterButton = styled.button`
   flex: none;
   order: 1;
   flex-grow: 0;
+`;
+
+export const BurgerMenu = styled.div`
+  display: none;
+  background-color: transaprent;
+  cursor: pointer;
+  border: none;
+  width: 32px;
+  height: 32px;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;

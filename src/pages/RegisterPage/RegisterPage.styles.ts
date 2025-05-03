@@ -11,7 +11,7 @@ export const RegisterButton = styled.button`
 
   height: 50px;
 
-  background: ${colors.BUTTON_COLOR};
+  background: ${colors.MAIN_COLOR};
   border-radius: 30px;
   flex: none;
   order: 0;

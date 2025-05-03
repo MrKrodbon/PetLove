@@ -7,17 +7,17 @@ import {
   AuthImageContainer,
   AuthPetImageComment,
   AuthPetNameComment,
+  Container,
 } from "../../common/styles";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
+import { AuthContainer } from "../LoginPage/LoginPage.styles";
 
 const RegisterPage = () => {
   return (
-    <>
+    <Container>
       <Header />
-      <div className="flex flex-row gap-8">
-        <AuthImageContainer>
-          <img src="/public/images/RegisterImage.jpg" alt="registerMainImage" />
-
+      <AuthContainer>
+        <AuthImageContainer type="register">
           <AuthImageComment>
             <AuthPetImageComment>
               <img src="/public/icons/catEmoji.png" />
@@ -40,7 +40,7 @@ const RegisterPage = () => {
           </AuthImageComment>
         </AuthImageContainer>
         <AuthFormContainer>
-          <div className="flex flex-col gap-4 mb-8">
+          <div className="flex flex-col gap-4 mb-8 w-fit">
             <p className="text-5xl text-left">Register</p>
             <p className="text-left">
               Thank you for your interest in our platform.
@@ -48,8 +48,8 @@ const RegisterPage = () => {
           </div>
           <RegistrationForm />
         </AuthFormContainer>
-      </div>
-    </>
+      </AuthContainer>
+    </Container>
   );
 };
 

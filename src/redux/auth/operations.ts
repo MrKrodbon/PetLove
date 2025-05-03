@@ -6,7 +6,7 @@ axios.defaults.baseURL = "https://petlove.b.goit.study/api";
 const axiosHeaders = axios.defaults.headers.common;
 
 interface FormData {
-  name: string;
+  name?: string;
   email: string;
   password: string;
 }
@@ -24,21 +24,25 @@ export const register = createAsyncThunk(
   async (formData: FormData, thunkAPI) => {
     try {
       const { data } = await axios.post("/users/signup", formData);
+      console.log("data>>", data);
+
       setToken(data.token);
+      return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
 export const login = createAsyncThunk(
   "auth/login",
-  async (formData, thunkAPI) => {
+  async (formData: FormData, thunkAPI) => {
     try {
       const { data } = await axios.post("/users/signin", formData);
       setToken(data.token);
+      return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -48,7 +52,7 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     await axios.post("users/logout");
     clearToken();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
@@ -69,7 +73,7 @@ export const refreshUser = createAsyncThunk(
       const { data } = await axios.get("users/current");
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

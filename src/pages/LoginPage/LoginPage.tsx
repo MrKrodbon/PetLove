@@ -1,24 +1,22 @@
 import React from "react";
 import Header from "../../layouts/Header/Header";
-
-import { LoginButton } from "../../layouts/Header/Header.styles";
 import {
   AuthFormContainer,
   AuthImageComment,
   AuthImageContainer,
   AuthPetImageComment,
   AuthPetNameComment,
-  Input,
+  Container,
 } from "../../common/styles";
+import LoginForm from "../../components/LoginForm/LoginForm";
+import { AuthContainer } from "./LoginPage.styles";
 
 const LoginPage = () => {
   return (
-    <>
+    <Container>
       <Header />
-      <div className="flex flex-row gap-8">
-        <AuthImageContainer>
-          <img src="/public/images/LoginImage.jpg" alt="loginMainImage" />
-
+      <AuthContainer>
+        <AuthImageContainer type={"login"}>
           <AuthImageComment>
             <AuthPetImageComment>
               <img src="/public/icons/dogEmoji.png" />
@@ -42,26 +40,16 @@ const LoginPage = () => {
           </AuthImageComment>
         </AuthImageContainer>
         <AuthFormContainer>
-          <div className="flex flex-col gap-4 mb-8">
+          <div className="flex flex-col gap-4 mb-8 w-fit">
             <p className="text-5xl text-left">Log in</p>
             <p className="text-left">
               Welcome! Please enter your credentials to login to the platform:
             </p>
           </div>
-          <form className="flex flex-col gap-16">
-            <div className="flex flex-col gap-4">
-              <Input placeholder="Email" />
-              <Input placeholder="Password" />
-            </div>
-            <LoginButton className="uppercase">Log in</LoginButton>
-            <p>
-              Don't have an account?{" "}
-              <a className="text-shadow-amber-500">Register</a>
-            </p>
-          </form>
+          <LoginForm />
         </AuthFormContainer>
-      </div>
-    </>
+      </AuthContainer>
+    </Container>
   );
 };
 

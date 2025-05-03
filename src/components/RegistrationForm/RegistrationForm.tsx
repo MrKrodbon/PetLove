@@ -1,9 +1,13 @@
-import { Field, Form, Formik } from "formik";
-import { RegisterButton } from "../../layouts/Header/Header.styles";
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
+import {
+  LoginButton,
+  RegisterButton,
+} from "../../layouts/Header/Header.styles";
 import { validationRegisterSchema } from "../../validation/validation";
 import { register } from "../../redux/auth/operations.ts";
 import { useAppDispatch } from "../../hooks/hooks.ts";
 import { Input } from "../../common/styles.ts";
+import { useState } from "react";
 
 interface authUser {
   name: string;
@@ -21,8 +25,12 @@ const initialState: authUser = {
 
 const RegistrationForm = () => {
   const dispatch = useAppDispatch();
+  const [isPasswordHidden, setIsPasswordHidden] = useState();
 
-  const onFormSubmitHandle = (values: authUser, actions) => {
+  const onFormSubmitHandle = (
+    values: authUser,
+    actions: FormikHelpers<authUser>
+  ) => {
     const trimmedValues = {
       name: values.name.trim(),
       email: values.email.trim(),
@@ -30,7 +38,6 @@ const RegistrationForm = () => {
     };
 
     dispatch(register({ ...trimmedValues }));
-    console.log(trimmedValues);
 
     actions.resetForm();
   };
@@ -42,21 +49,46 @@ const RegistrationForm = () => {
       validationSchema={validationRegisterSchema}
       className="flex flex-col gap-8"
     >
-      <Form>
+      <Form className="w-fit">
         <div className="flex flex-col gap-4">
           <Field name="name" as={Input} placeholder="Name" />
-
+          <ErrorMessage
+            name="name"
+            component="span"
+            className="text-left text-red-600"
+          />
           <Field name="email" as={Input} placeholder="Email" />
-          <Field name="password" as={Input} placeholder="Password" />
+          <ErrorMessage
+            name="email"
+            component="span"
+            className="text-left text-red-600"
+          />
+          <Field
+            name="password"
+            as={Input}
+            placeholder="Password"
+            type="password"
+          />
+          <ErrorMessage
+            name="password"
+            component="span"
+            className="text-left text-red-600"
+          />
           <Field
             name="confirmPassword"
             as={Input}
             placeholder="Confirm password"
+            type="password"
           />
+          <ErrorMessage
+            name="confirmPassword"
+            component="span"
+            className="text-left text-red-600"
+          />
+          <LoginButton className="uppercase" type="submit">
+            Registration
+          </LoginButton>
         </div>
-        <RegisterButton className="uppercase" type="submit">
-          Registration
-        </RegisterButton>
         <p>Already have an account?</p>
         <a className="text-shadow-amber-500"> Login</a>
       </Form>
