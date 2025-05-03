@@ -21,7 +21,7 @@ export const HomePageButton = styled.button`
   align-items: center;
   padding: 15px 20px;
   gap: 10px;
-  color: ${colors.BUTTON_COLOR};
+  color: ${colors.MAIN_COLOR};
 
   width: 149px;
   height: 50px;
