@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors/colors";
+import { AuthNavigationProps } from "../../types/types";
 
 export const MainHeader = styled.div`
   display: flex;
@@ -25,8 +26,9 @@ export const HeaderNavigation = styled.nav`
   }
 `;
 
-export const AuthNavigation = styled.nav`
-  display: none;
+export const AuthNavigation = styled.nav<AuthNavigationProps>`
+  display: ${({ isMobileMenu }) => (isMobileMenu ? "flex" : "none")};
+
   @media (min-width: 769px) {
     display: flex;
     flex-direction: row;
@@ -61,7 +63,6 @@ export const RegisterButton = styled.button`
   gap: 10px;
   color: ${colors.MAIN_COLOR};
 
-  width: 149px;
   height: 50px;
 
   background: ${colors.BUTTON_ACTION_COLOR};
@@ -72,14 +73,21 @@ export const RegisterButton = styled.button`
 `;
 
 export const BurgerMenu = styled.div`
-  display: none;
+  display: block;
   background-color: transaprent;
   cursor: pointer;
   border: none;
   width: 32px;
   height: 32px;
 
-  @media (max-width: 768px) {
+  @media (min-width: 1280px) {
+    display: none;
+  }
+`;
+
+export const UserName = styled.p`
+  display: none;
+  @media (min-width: 768px) {
     display: block;
   }
 `;

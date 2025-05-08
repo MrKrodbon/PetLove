@@ -9,11 +9,12 @@ export const HomePageUpperBlock = styled.div`
   background-color: ${colors.MAIN_COLOR};
 
   width: 320px;
+  letter-spacing: -0.03em;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 704px;
   }
-  @media (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     width: 1216px;
   }
 `;
@@ -26,14 +27,14 @@ export const HomePageBottomBlock = styled.div`
   background-size: contain;
   background-image: url("/images/MainImage.jpg");
 
-  @media (min-width: 798px) {
+  @media screen and (min-width: 768px) {
     background-image: url("/images/MainImageTablet.jpg");
     flex-direction: row;
     justify-content: end;
     width: 704px;
     height: 496px;
   }
-  @media (min-width: 1200px) {
+  @media screen and (min-width: 1200px) {
     background-image: url("/images/MainImageDesktop.jpg");
     width: 1216px;
     height: 384px;

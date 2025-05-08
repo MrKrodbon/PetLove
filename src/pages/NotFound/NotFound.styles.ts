@@ -7,11 +7,20 @@ export const NotFoundImageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 1216px;
-  height: 654px;
+  width: 335px;
+  height: 712px;
 
   background: #f6b83d;
   border-radius: 60px;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 878px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1216px;
+    height: 654px;
+  }
 `;
 
 export const HomePageButton = styled.button`
