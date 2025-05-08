@@ -1,13 +1,9 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
-import {
-  LoginButton,
-  RegisterButton,
-} from "../../layouts/Header/Header.styles";
+import { LoginButton } from "../../layouts/Header/Header.styles";
 import { validationRegisterSchema } from "../../validation/validation";
 import { register } from "../../redux/auth/operations.ts";
 import { useAppDispatch } from "../../hooks/hooks.ts";
 import { Input } from "../../common/styles.ts";
-import { useState } from "react";
 
 interface authUser {
   name: string;
@@ -25,7 +21,6 @@ const initialState: authUser = {
 
 const RegistrationForm = () => {
   const dispatch = useAppDispatch();
-  const [isPasswordHidden, setIsPasswordHidden] = useState();
 
   const onFormSubmitHandle = (
     values: authUser,

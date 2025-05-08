@@ -40,6 +40,8 @@ export const login = createAsyncThunk(
     try {
       const { data } = await axios.post("/users/signin", formData);
       setToken(data.token);
+      console.log("data", data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -49,8 +51,9 @@ export const login = createAsyncThunk(
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.post("users/logout");
+    await axios.post("/users/signout");
     clearToken();
+    return;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }

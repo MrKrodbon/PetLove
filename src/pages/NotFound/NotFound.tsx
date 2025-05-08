@@ -1,14 +1,14 @@
-import React from "react";
 import Header from "../../layouts/Header/Header";
 import {
   HomePageButton,
   NotFoundImageContainer,
   NotFoundText,
 } from "./NotFound.styles";
+import { Container } from "../../common/styles";
 
 const NotFound = () => {
   return (
-    <>
+    <Container>
       <Header />
       <NotFoundImageContainer>
         <div className="flex  flex-col items-center gap-10">
@@ -22,7 +22,7 @@ const NotFound = () => {
           </div>
         </div>
       </NotFoundImageContainer>
-    </>
+    </Container>
   );
 };
 

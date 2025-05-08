@@ -3,6 +3,8 @@ import { LoginButton } from "../../layouts/Header/Header.styles";
 import { login } from "../../redux/auth/operations.ts";
 import { useAppDispatch } from "../../hooks/hooks.ts";
 import { Input } from "../../common/styles.ts";
+import { useSelector } from "react-redux";
+import { StoreType } from "../../redux/store.ts";
 
 interface authUser {
   email: string;
@@ -16,6 +18,7 @@ const initialState: authUser = {
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();
+  const errorMessage = useSelector((state: StoreType) => state.auth.error);
 
   const onFormSubmitHandle = (
     values: authUser,
@@ -27,7 +30,10 @@ const LoginForm = () => {
     };
 
     dispatch(login({ ...trimmedValues }));
-
+    if (errorMessage) {
+      console.log("Incorrect login or password");
+      actions.resetForm();
+    }
     actions.resetForm();
   };
 
