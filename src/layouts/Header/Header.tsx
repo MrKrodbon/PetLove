@@ -44,7 +44,7 @@ const Header = ({ isHomePage }: HeaderProps) => {
       )}
 
       <HeaderNavigation className="flex flex-row gap-2.5">
-        <NavLink to="/login" className={buildLinkClass}>
+        <NavLink to="/news" className={buildLinkClass}>
           <Button>News</Button>
         </NavLink>
         <NavLink to="/register" className={buildLinkClass}>

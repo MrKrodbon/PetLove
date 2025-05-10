@@ -1,14 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { login, logout, refreshUser, register } from "./operations";
-
-interface AuthState {
-  name: string | null;
-  email: string | null;
-  token: string | null;
-  isLoggedIn: boolean;
-  isRefreshing: boolean;
-  error: string | null;
-}
+import { AuthState } from "../../types/types";
 
 const initialState: AuthState = {
   name: null,

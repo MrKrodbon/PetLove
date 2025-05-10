@@ -2,6 +2,7 @@ import "./App.css";
 import RestrictedRoute from "./components/RestrictedRoute";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import NewsPage from "./pages/NewsPage/NewsPage";
 import NotFound from "./pages/NotFound/NotFound";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { Route, Routes } from "react-router-dom";
@@ -17,6 +18,7 @@ function App() {
         path="/login"
         element={<RestrictedRoute component={<LoginPage />} />}
       />
+      <Route path="/news" element={<NewsPage />} />
       <Route path="/" element={<HomePage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
