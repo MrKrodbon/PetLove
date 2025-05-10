@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { StoreType } from "../store";
 
 axios.defaults.baseURL = "https://petlove.b.goit.study/api";
 
