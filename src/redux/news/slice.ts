@@ -1,30 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getNews } from "./operations";
+
 import { NewsState } from "../../types/types";
 
 const initialState: NewsState = {
-  news: [],
-  error: null,
-  loading: false,
+  page: 1,
+  totalPages: 0,
 };
 
 const newsSlice = createSlice({
   name: "news",
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(getNews.fulfilled, (state, action) => {
-        state.news = action.payload.results;
-      })
-      .addCase(getNews.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(getNews.rejected, (state, action) => {
-        state.error = action.error.message || "Error of getting news";
-      });
+  reducers: {
+    setNewPage: (state, action) => {
+      state.page = action.payload;
+    },
+    setTotalPages: (state, action) => {
+      state.totalPages = action.payload;
+    },
   },
 });
+
+export const { setNewPage, setTotalPages } = newsSlice.actions;
 
 export default newsSlice.reducer;

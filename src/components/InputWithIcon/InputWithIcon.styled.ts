@@ -33,14 +33,13 @@ export const StyledInput = styled.input<{
   padding-right: ${({ $hasIcon, $iconPosition }) =>
     $hasIcon && $iconPosition === "right" ? "48px" : "16px"};
 
-  width: 295px;
+  width: 230px;
   height: 42px;
 
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
 
   @media screen and (min-width: 768px) {
-    width: 424px;
     height: 52px;
   }
 `;

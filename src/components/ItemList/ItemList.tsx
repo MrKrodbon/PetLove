@@ -2,25 +2,29 @@ import React, { useEffect } from "react";
 
 import { ItemListProps } from "../../types/types";
 import NewsItem from "./ListItems/NewsItem";
-import { useAppDispatch } from "../../hooks/hooks";
-import { useSelector } from "react-redux";
-import { selectGetNews } from "../../redux/news/selectors";
-import { getNews } from "../../redux/news/operations";
+import { useGetNewsQuery } from "../../redux/news/operations";
 import { ItemListWrapper } from "./ItemList.styles";
+import { StoreType } from "../../redux/store";
+import { useAppSelector } from "../../hooks/hooks";
 
 const ItemList = ({ isFriendsList, isNewsList }: ItemListProps) => {
-  const dispatch = useAppDispatch();
-  const newsData = useSelector(selectGetNews);
+  const currentPage = useAppSelector((state: StoreType) => state.news.page);
+  const { data, error, isLoading } = useGetNewsQuery({
+    page: currentPage,
+    limit: 10,
+    search: "dog",
+  });
 
-  useEffect(() => {
-    dispatch(getNews());
-  }, []);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  console.log(data.results);
 
   return (
     <ItemListWrapper>
       {isNewsList &&
-        newsData.news.length > 0 &&
-        newsData.news.map((news) => {
+        data?.results.map((news) => {
           return (
             <NewsItem
               imgSrc={news.imgUrl || ""}

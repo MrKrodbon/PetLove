@@ -47,9 +47,8 @@ export interface NewsItem {
 }
 
 export interface NewsState {
-  news: NewsItem[];
-  loading: boolean;
-  error: string | null;
+  page: 1;
+  totalPages: 0;
 }
 
 export interface PagionationButtonProps {

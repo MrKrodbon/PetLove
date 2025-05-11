@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ItemListWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
   list-style: none;

@@ -16,6 +16,9 @@ export const NewsContainer = styled.div`
 
   @media screen and (min-width: 1280px) {
     width: 1153px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 `;
 

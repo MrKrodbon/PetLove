@@ -3,6 +3,7 @@ import { colors } from "../../../constants/colors/colors";
 
 export const PaginationButton = styled.button<{
   isCurrentPage?: boolean;
+  onClick?: () => void;
 }>`
   display: flex;
   justify-content: center;
