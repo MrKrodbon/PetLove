@@ -1,44 +1,91 @@
-import React, { useEffect } from "react";
-
-import { ItemListProps } from "../../types/types";
+import {
+  FriendsItemProps,
+  ItemListProps,
+  NewsItemProps,
+} from "../../types/types";
 import NewsItem from "./ListItems/NewsItem";
-import { useGetNewsQuery } from "../../redux/news/operations";
+import {
+  useGetFriendsQuery,
+  useGetNewsQuery,
+} from "../../redux/news/operations";
 import { ItemListWrapper } from "./ItemList.styles";
-import { StoreType } from "../../redux/store";
-import { useAppSelector } from "../../hooks/hooks";
+
+import { useAppDispatch } from "../../hooks/hooks";
+import { setTotalPages } from "../../redux/news/slice";
+import { useSelector } from "react-redux";
+import {
+  selectCurrentPage,
+  selectSearchValue,
+} from "../../redux/news/selectors";
+import { useEffect } from "react";
+import FriendsItem from "./ListItems/FriendsItem";
 
 const ItemList = ({ isFriendsList, isNewsList }: ItemListProps) => {
-  const currentPage = useAppSelector((state: StoreType) => state.news.page);
-  const { data, error, isLoading } = useGetNewsQuery({
-    page: currentPage,
-    limit: 10,
-    search: "dog",
-  });
+  const dispatch = useAppDispatch();
+  const page = useSelector(selectCurrentPage);
+  const searchValue = useSelector(selectSearchValue);
+
+  const {
+    data: newsList,
+    error,
+    isLoading,
+  } = useGetNewsQuery(
+    {
+      page,
+      search: searchValue,
+      limit: 10,
+    },
+    { refetchOnMountOrArgChange: true }
+  );
+
+  console.log(newsList);
+
+  const { data: friendsList } = useGetFriendsQuery({});
+  console.log(friendsList, "friends list");
+
+  useEffect(() => {
+    if (newsList) {
+      dispatch(setTotalPages(newsList.totalPages));
+    }
+  }, [newsList, dispatch]);
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  console.log(data.results);
-
   return (
     <ItemListWrapper>
       {isNewsList &&
-        data?.results.map((news) => {
+        newsList?.results.map((n: NewsItemProps) => {
           return (
             <NewsItem
-              imgSrc={news.imgUrl || ""}
-              alt={news.title || ""}
-              title={news.title || ""}
-              description={news.text || ""}
-              date={news.date || ""}
-              key={news.id || ""}
-              moreInfo={news.url || ""}
+              imgUrl={n.imgUrl || ""}
+              alt={n.title || ""}
+              title={n.title || ""}
+              description={n.description || ""}
+              date={n.date || ""}
+              key={n.id || ""}
+              moreInfo={n.moreInfo || ""}
             />
           );
         })}
-      {/* {isNewsList && <Item />}
-      {isPetList && <Item />} */}
+      {isFriendsList &&
+        friendsList?.map((f: FriendsItemProps) => {
+          return (
+            <FriendsItem
+              address={f.address || ""}
+              addressURL={f.addressURL || ""}
+              title={f.title || ""}
+              email={f.email || ""}
+              imageUrl={f.imageUrl || ""}
+              phone={f.phone || ""}
+              url={f.url || ""}
+              workDays={f.workDays || []}
+              key={f.id || ""}
+            />
+          );
+        })}
+      {/* {isPetList && <Item />}  */}
     </ItemListWrapper>
   );
 };

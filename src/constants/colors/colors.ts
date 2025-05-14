@@ -4,4 +4,5 @@ export enum colors {
   MAIN_COLOR = "#F6B83D",
   BUTTON_ACTION_COLOR = "#FFF4DF",
   GRAY_COLOR = "rgba(38, 38, 38, 0.5)",
+  BACKGROUND_COLOR = "F9F9F9",
 }

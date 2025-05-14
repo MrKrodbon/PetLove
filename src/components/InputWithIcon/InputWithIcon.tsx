@@ -6,7 +6,7 @@ type Props = {
   iconPosition?: "left" | "right";
   placeholder?: string;
   value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onInput?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const InputWithIcon: React.FC<Props> = ({

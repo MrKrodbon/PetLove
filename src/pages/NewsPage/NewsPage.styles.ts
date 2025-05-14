@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { fonts } from "../../constants/fonts/fonts";
-import { colors } from "../../constants/colors/colors";
 
 export const NewsContainer = styled.div`
   display: flex;
@@ -29,18 +27,4 @@ export const SearchFieldWrapper = styled.div`
 `;
 export const HeaderWrapper = styled.div`
   margin-bottom: 60px;
-`;
-
-export const NewsTitle = styled.p`
-  font-family: "Manrope";
-  font-size: 700;
-  font-style: normal;
-  font-size: 28px;
-  line-height: 28px;
-  letter-spacing: -0.03em;
-
-  color: ${colors.TEXT_COLOR};
-
-  text-align: left;
-  margin-bottom: 20px;
 `;

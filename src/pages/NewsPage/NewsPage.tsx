@@ -1,12 +1,7 @@
 import React from "react";
 import Header from "../../layouts/Header/Header";
-import { Container } from "../../common/styles";
-import {
-  HeaderWrapper,
-  NewsContainer,
-  NewsTitle,
-  SearchFieldWrapper,
-} from "./NewsPage.styles";
+import { Container, Title } from "../../common/styles";
+import { HeaderWrapper, NewsContainer } from "./NewsPage.styles";
 import SearchField from "../../components/SearchField/SearchField";
 import ItemList from "../../components/ItemList/ItemList";
 import Pagination from "../../components/Pagination/Pagination";
@@ -18,10 +13,10 @@ const NewsPage = () => {
         <Header />
       </HeaderWrapper>
       <NewsContainer>
-        <NewsTitle>News</NewsTitle>
-        <SearchFieldWrapper>
+        <Title>News</Title>
+        {/* <SearchFieldWrapper>
           <SearchField />
-        </SearchFieldWrapper>
+        </SearchFieldWrapper> */}
         <ItemList isNewsList />
       </NewsContainer>
       <div className="flex flex-row justify-center w-full">

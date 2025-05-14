@@ -1,10 +1,19 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { sizes } from "./sizes";
 import { colors } from "../constants/colors/colors";
 
 interface AuthImageContainerProps {
   type: "login" | "register";
 }
+
+export const baseTextStyles = css`
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+`;
 
 export const Button = styled.button`
   box-sizing: border-box;
@@ -141,4 +150,18 @@ export const Container = styled.div`
   @media screen and (min-width: 320px) {
     padding: 0 20px;
   }
+`;
+
+export const Title = styled.p`
+  font-family: "Manrope";
+  font-size: 700;
+  font-style: normal;
+  font-size: 28px;
+  line-height: 28px;
+  letter-spacing: -0.03em;
+
+  color: ${colors.TEXT_COLOR};
+
+  text-align: left;
+  margin-bottom: 20px;
 `;

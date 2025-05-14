@@ -21,7 +21,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 //   }
 // );
 
-export const newsApi = createApi({
+export const api = createApi({
   reducerPath: "newsApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://petlove.b.goit.study/api" }),
   endpoints: (build) => ({
@@ -31,7 +31,10 @@ export const newsApi = createApi({
         params: { page, search, limit },
       }),
     }),
+    getFriends: build.query({
+      query: () => "/friends",
+    }),
   }),
 });
 
-export const { useGetNewsQuery } = newsApi;
+export const { useGetNewsQuery, useGetFriendsQuery } = api;

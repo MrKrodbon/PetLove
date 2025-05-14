@@ -19,12 +19,32 @@ export interface ItemListProps {
 }
 
 export interface NewsItemProps {
-  imgSrc: string;
+  id?: string;
+  imgUrl: string;
   alt: string;
   title?: string;
   description?: string;
   date?: string;
   moreInfo?: string;
+}
+
+export interface WorkDays {
+  id?: string;
+  isOpen: boolean;
+  from?: string;
+  to?: string;
+}
+
+export interface FriendsItemProps {
+  id?: string;
+  address: string;
+  addressURL: string;
+  email: string;
+  imageUrl: string;
+  phone: string;
+  title: string;
+  url: string;
+  workDays: WorkDays[];
 }
 
 export interface AuthState {
@@ -49,6 +69,7 @@ export interface NewsItem {
 export interface NewsState {
   page: 1;
   totalPages: 0;
+  search: "";
 }
 
 export interface PagionationButtonProps {

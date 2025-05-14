@@ -11,7 +11,7 @@ import { NewsItemProps } from "../../../types/types";
 
 const NewsItem = ({
   alt,
-  imgSrc,
+  imgUrl,
   date = "",
   description,
   moreInfo,
@@ -20,9 +20,9 @@ const NewsItem = ({
   const formattedDate = new Date(date).toLocaleDateString("en-GB");
   return (
     <NewsListItem>
-      <ListItemWrapper>
+      <ListItemWrapper isNewsPage>
         <ListItemImageWrapper>
-          <img src={imgSrc} alt={alt} className="object-fit w-full h-full" />
+          <img src={imgUrl} alt={alt} className="object-fit w-full h-full" />
         </ListItemImageWrapper>
         <ListItemTextWrapper>
           <ListItemTitle>{title}</ListItemTitle>

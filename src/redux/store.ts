@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth/slice";
 import uiReducer from "./ui/slice";
-import { newsApi } from "./news/operations";
+import { api } from "./news/operations";
 import newsReducer from "./news/slice";
 
 export const store = configureStore({
@@ -9,10 +9,10 @@ export const store = configureStore({
     auth: authReducer,
     ui: uiReducer,
     news: newsReducer,
-    [newsApi.reducerPath]: newsApi.reducer,
+    [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(newsApi.middleware),
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 export type StoreType = ReturnType<typeof store.getState>;
