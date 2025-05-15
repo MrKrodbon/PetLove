@@ -8,6 +8,16 @@ export interface HeaderProps {
   isHomePage?: boolean;
 }
 
+export interface InputFieldProps {
+  placeholder?: string;
+  iconPosition?: "left" | "right";
+  iconSrc: string;
+  onInput?: () => void;
+  value?: string;
+  className?: string;
+  customWidth?: string;
+}
+
 export interface AuthNavigationProps {
   isMobileMenu?: boolean;
 }
@@ -23,7 +33,7 @@ export interface NewsItemProps {
   imgUrl: string;
   alt: string;
   title?: string;
-  description?: string;
+  text?: string;
   date?: string;
   moreInfo?: string;
 }

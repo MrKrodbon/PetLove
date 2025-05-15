@@ -52,6 +52,7 @@ const ItemList = ({ isFriendsList, isNewsList }: ItemListProps) => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
+  console.log(newsList);
 
   return (
     <ItemListWrapper>
@@ -62,7 +63,7 @@ const ItemList = ({ isFriendsList, isNewsList }: ItemListProps) => {
               imgUrl={n.imgUrl || ""}
               alt={n.title || ""}
               title={n.title || ""}
-              description={n.description || ""}
+              text={n.text || ""}
               date={n.date || ""}
               key={n.id || ""}
               moreInfo={n.moreInfo || ""}

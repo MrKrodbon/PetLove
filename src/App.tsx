@@ -1,5 +1,6 @@
 import "./App.css";
 import RestrictedRoute from "./components/RestrictedRoute";
+import FindPet from "./pages/FindPet/FindPet";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
@@ -21,6 +22,7 @@ function App() {
       />
       <Route path="/news" element={<NewsPage />} />
       <Route path="/friends" element={<OurFriends />} />
+      <Route path="/find-pet" element={<FindPet />} />
       <Route path="/" element={<HomePage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

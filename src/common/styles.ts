@@ -163,5 +163,18 @@ export const Title = styled.p`
   color: ${colors.TEXT_COLOR};
 
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 54px;
+    margin-bottom: 20px;
+  }
+`;
+
+export const BlockVectorLine = styled.div`
+  margin-top: 20px;
+  width: 100%;
+  height: 0px;
+
+  border: 1px solid rgba(38, 38, 38, 0.1);
 `;

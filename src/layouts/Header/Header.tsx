@@ -47,7 +47,7 @@ const Header = ({ isHomePage }: HeaderProps) => {
         <NavLink to="/news" className={buildLinkClass}>
           <Button>News</Button>
         </NavLink>
-        <NavLink to="/register" className={buildLinkClass}>
+        <NavLink to="/find-pet" className={buildLinkClass}>
           <Button>Find Pet</Button>
         </NavLink>
         <NavLink to="/friends" className={buildLinkClass}>

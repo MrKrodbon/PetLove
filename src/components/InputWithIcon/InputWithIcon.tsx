@@ -1,17 +1,11 @@
 import React from "react";
 import { Icon, StyledInput, Wrapper } from "./InputWithIcon.styled";
+import { InputFieldProps } from "../../types/types";
 
-type Props = {
-  iconSrc?: string;
-  iconPosition?: "left" | "right";
-  placeholder?: string;
-  value?: string;
-  onInput?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
-
-export const InputWithIcon: React.FC<Props> = ({
+export const InputWithIcon: React.FC<InputFieldProps> = ({
   iconSrc,
   iconPosition = "left",
+  customWidth,
   ...props
 }) => {
   return (
@@ -20,6 +14,7 @@ export const InputWithIcon: React.FC<Props> = ({
       <StyledInput
         $hasIcon={!!iconSrc}
         $iconPosition={iconPosition}
+        customWidth={customWidth}
         {...props}
       />
     </Wrapper>

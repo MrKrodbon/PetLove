@@ -3,6 +3,7 @@ import { colors } from "../../../constants/colors/colors";
 import { baseTextStyles } from "../../../common/styles";
 
 export const NewsListItem = styled.li`
+  display: flex;
   flex-direction: column;
   width: 335px;
   height: 359px;
@@ -21,6 +22,7 @@ export const FriendsListItem = styled.li`
 
 export const ListItemWrapper = styled.div<{ isNewsPage?: boolean }>`
   display: ${({ isNewsPage }) => (isNewsPage ? "" : "flex")};
+  align-items: center;
   width: 100%;
   height: ${({ isNewsPage }) => (isNewsPage ? "149px" : "")};
   gap: 20px;
@@ -29,7 +31,7 @@ export const ListItemWrapper = styled.div<{ isNewsPage?: boolean }>`
 export const ListItemTextWrapper = styled.div<{ isNewsPage?: boolean }>`
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: ${({ isNewsPage }) => (isNewsPage ? "center" : "end")};
   width: ${({ isNewsPage }) => (isNewsPage ? "100%" : "196px")};
   height: ${({ isNewsPage }) => (isNewsPage ? "149px" : "100%")};
   gap: 12px;

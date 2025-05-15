@@ -1,8 +1,12 @@
 import styled, { css } from "styled-components";
+import { colors } from "../../constants/colors/colors";
 
 export const Wrapper = styled.div`
   position: relative;
-  width: fit-content;
+
+  @media screen and (min-width: 768px) {
+    width: fit-content;
+  }
 `;
 
 export const Icon = styled.img<{ $position: "left" | "right" }>`
@@ -26,6 +30,7 @@ export const Icon = styled.img<{ $position: "left" | "right" }>`
 export const StyledInput = styled.input<{
   $hasIcon: boolean;
   $iconPosition: "left" | "right";
+  customWidth?: string;
 }>`
   padding: 16px;
   padding-left: ${({ $hasIcon, $iconPosition }) =>
@@ -33,8 +38,9 @@ export const StyledInput = styled.input<{
   padding-right: ${({ $hasIcon, $iconPosition }) =>
     $hasIcon && $iconPosition === "right" ? "48px" : "16px"};
 
-  width: 230px;
+  width: ${({ customWidth }) => customWidth || "100%"};
   height: 42px;
+  background-color: ${colors.WHITE_COLOR};
 
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;

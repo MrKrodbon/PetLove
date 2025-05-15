@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NewsContainer = styled.div`
+export const NewsContainer = styled.div<{ isFlexChange?: boolean }>`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -14,9 +14,9 @@ export const NewsContainer = styled.div`
 
   @media screen and (min-width: 1280px) {
     width: 1153px;
-    flex-direction: row;
+    flex-direction: ${({ isFlexChange }) => (isFlexChange ? "column" : "row")};
     justify-content: space-between;
-    align-items: center;
+    align-items: ${({ isFlexChange }) => (isFlexChange ? "start" : "end")};
   }
 `;
 

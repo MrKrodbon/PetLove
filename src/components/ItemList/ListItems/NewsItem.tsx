@@ -13,7 +13,7 @@ const NewsItem = ({
   alt,
   imgUrl,
   date = "",
-  description,
+  text,
   moreInfo,
   title,
 }: NewsItemProps) => {
@@ -24,9 +24,9 @@ const NewsItem = ({
         <ListItemImageWrapper>
           <img src={imgUrl} alt={alt} className="object-fit w-full h-full" />
         </ListItemImageWrapper>
-        <ListItemTextWrapper>
+        <ListItemTextWrapper isNewsPage>
           <ListItemTitle>{title}</ListItemTitle>
-          <ListItemDescription>{description}</ListItemDescription>
+          <ListItemDescription>{text}</ListItemDescription>
         </ListItemTextWrapper>
         <div className="flex flex-row justify-between items-center">
           <ListItemDate>{formattedDate}</ListItemDate>
