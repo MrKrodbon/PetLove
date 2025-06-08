@@ -20,24 +20,44 @@ export const FriendsListItem = styled.li`
   padding: 12px 20px 40px 20px;
 `;
 
-export const ListItemWrapper = styled.div<{ isNewsPage?: boolean }>`
+export const PetsListItem = styled.li`
+  flex-direction: column;
+  width: 335px;
+  height: 100%;
+  text-align: left;
+  border-radius: 16px;
+  background-color: ${colors.WHITE_COLOR};
+  padding: 24px;
+`;
+
+export const ListItemWrapper = styled.div<{
+  isNewsPage?: boolean;
+  isPetsPage?: boolean;
+}>`
   display: ${({ isNewsPage }) => (isNewsPage ? "" : "flex")};
-  align-items: center;
+  flex-direction: ${({ isPetsPage }) => (isPetsPage ? "column" : "")};
+  align-items: ${({ isPetsPage }) => (isPetsPage ? "" : "center")};
   width: 100%;
   height: ${({ isNewsPage }) => (isNewsPage ? "149px" : "")};
   gap: 20px;
 `;
 
-export const ListItemTextWrapper = styled.div<{ isNewsPage?: boolean }>`
+export const ListItemTextWrapper = styled.div<{
+  isNewsPage?: boolean;
+  isPetsPage?: boolean;
+}>`
   display: flex;
   flex-direction: column;
   justify-content: ${({ isNewsPage }) => (isNewsPage ? "center" : "end")};
-  width: ${({ isNewsPage }) => (isNewsPage ? "100%" : "196px")};
+  width: ${({ isNewsPage, isPetsPage }) =>
+    isNewsPage || isPetsPage ? "100%" : "196px"};
   height: ${({ isNewsPage }) => (isNewsPage ? "149px" : "100%")};
   gap: 12px;
 `;
 
-export const ListItemImageWrapper = styled.div<{ isNewsPage?: boolean }>`
+export const ListItemImageWrapper = styled.div<{
+  isNewsPage?: boolean;
+}>`
   display: flex;
   align-items: center;
   width: 100%;
@@ -57,18 +77,30 @@ export const ListItemTitle = styled.p`
   color: ${colors.TEXT_COLOR};
 `;
 
-export const ListItemParagraphSpan = styled.span`
+export const ListItemParagraphSpan = styled.span<{
+  customFontSize?: number;
+}>`
   height: 18px;
   ${baseTextStyles}
+  font-size: ${({ customFontSize }) =>
+    customFontSize ? `${customFontSize}px` : "14px"};
   color: ${colors.GRAY_COLOR};
 `;
 
-export const ListItemParagraph = styled.p`
-  height: 18px;
-  width: 196px;
-  ${baseTextStyles}
+export const ListItemParagraph = styled.p<{
+  customWidth?: string;
+  customHeight?: string;
+  customFontSize?: number;
+  customWhiteSpace?: boolean;
+}>`
+  display: flex;
+  height: ${({ customHeight }) => (customHeight ? `${customHeight}` : "18px")};
+  width: ${({ customWidth }) => (customWidth ? `${customWidth}` : "196px")};
+  ${baseTextStyles};
+  font-size: ${({ customFontSize }) =>
+    customFontSize ? `${customFontSize}px` : "14px"};
   color: ${colors.TEXT_COLOR};
-  white-space: nowrap;
+  white-space: ${({ customWhiteSpace }) => (customWhiteSpace ? "" : "nowrap")};
   overflow: hidden;
   text-overflow: ellipsis;
 `;

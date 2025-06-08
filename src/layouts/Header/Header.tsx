@@ -1,12 +1,10 @@
 import { useSelector } from "react-redux";
-import { Button } from "../../common/styles";
+import { Button, LoginButton, RegisterButton } from "../../common/styles";
 import {
   AuthNavigation,
   BurgerMenu,
   HeaderNavigation,
-  LoginButton,
   MainHeader,
-  RegisterButton,
   UserName,
 } from "./Header.styles";
 import { NavLink } from "react-router-dom";
@@ -16,7 +14,7 @@ import SideMenu from "../../components/SideMenu/SideMenu";
 import { selectIsBurgerMenuOpen } from "../../redux/ui/selectors";
 import { useAppDispatch } from "../../hooks/hooks";
 import { toggleMenu } from "../../redux/ui/slice";
-import { HeaderProps } from "../../types/types";
+import { HeaderProps, User } from "../../types/types";
 import { Overlay } from "../../components/SideMenu/SideMenu.styles";
 
 const buildLinkClass = ({ isActive }) => {
@@ -27,7 +25,7 @@ const buildLinkClass = ({ isActive }) => {
 
 const Header = ({ isHomePage }: HeaderProps) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const { name } = useSelector(selectUserData);
+  const userData = useSelector(selectUserData);
   const isBurgerMenuOpen = useSelector(selectIsBurgerMenuOpen);
   const dispatch = useAppDispatch();
 
@@ -38,9 +36,13 @@ const Header = ({ isHomePage }: HeaderProps) => {
   return (
     <MainHeader>
       {isHomePage ? (
-        <img src="icons/HomePageLogo.svg" alt="logo" />
+        <NavLink to="/">
+          <img src="icons/HomePageLogo.svg" alt="logo" />
+        </NavLink>
       ) : (
-        <img src="icons/logo.svg" alt="logo" />
+        <NavLink to="/">
+          <img src="icons/logo.svg" alt="logo" />
+        </NavLink>
       )}
 
       <HeaderNavigation className="flex flex-row gap-2.5">
@@ -58,7 +60,7 @@ const Header = ({ isHomePage }: HeaderProps) => {
         {isLoggedIn ? (
           <div className="flex items-center gap-2">
             <img src="/public/icons/user.svg" />
-            <UserName>{name}</UserName>
+            <UserName>{userData?.name}</UserName>
           </div>
         ) : (
           <AuthNavigation>

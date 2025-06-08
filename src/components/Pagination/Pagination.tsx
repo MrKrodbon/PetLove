@@ -4,18 +4,17 @@ import { PaginationButton } from "./Button/PaginationButton.styles";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { setNewPage } from "../../redux/news/slice";
 import { StoreType } from "../../redux/store";
-import { useGetNewsQuery } from "../../redux/news/operations";
+import { useGetNewsQuery, useGetPetsQuery } from "../../redux/news/operations";
 import { generatePageNumbers } from "../../utilities/generatePageNumbers";
 import { selectCurrentPage } from "../../redux/news/selectors";
+import { PaginationListProps } from "../../types/types";
 
-const Pagination = () => {
+const Pagination = ({ paginationList, currentPage }: PaginationListProps) => {
   const dispatch = useAppDispatch();
-  const currentPage = useAppSelector(selectCurrentPage);
-  const { data } = useGetNewsQuery({ page: currentPage, limit: 10 });
 
-  const totalPages = data?.totalPages || 1;
-
-  const pageNumbers = generatePageNumbers(currentPage, totalPages);
+  const totalPages = paginationList?.totalPages || 1;
+  //Треба зробити універсальним максимальну кількість сторінок
+  const pageNumbers = generatePageNumbers(currentPage || 1, totalPages);
 
   const onPageChangeHandle = (newPage: number) => {
     if (newPage <= totalPages && newPage >= 1) {

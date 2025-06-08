@@ -5,8 +5,12 @@ import { HeaderWrapper, NewsContainer } from "./NewsPage.styles";
 import SearchField from "../../components/SearchField/SearchField";
 import ItemList from "../../components/ItemList/ItemList";
 import Pagination from "../../components/Pagination/Pagination";
+import { useAppSelector } from "../../hooks/hooks";
+import { useGetNewsQuery } from "../../redux/news/operations";
 
 const NewsPage = () => {
+  const { data: newsList } = useGetNewsQuery({ page: currentPage, limit: 10 });
+
   return (
     <Container>
       <HeaderWrapper>
@@ -20,7 +24,7 @@ const NewsPage = () => {
         <ItemList isNewsList />
       </NewsContainer>
       <div className="flex flex-row justify-center w-full">
-        <Pagination />
+        <Pagination paginationList={newsList} currentPage={currentPage} />
       </div>
     </Container>
   );

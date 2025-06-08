@@ -9,6 +9,14 @@ export const FilterSearchFieldWrapper = styled.div`
   padding: 20px;
 
   border-radius: 30px;
+
+  @media screen and (min-width: 768px) {
+    height: 280px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    height: 216px;
+  }
 `;
 
 export const Button = styled.button`

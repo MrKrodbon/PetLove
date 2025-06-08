@@ -2,27 +2,26 @@ import {
   FriendsItemProps,
   ItemListProps,
   NewsItemProps,
+  PetItemProps,
 } from "../../types/types";
 import NewsItem from "./ListItems/NewsItem";
 import {
   useGetFriendsQuery,
   useGetNewsQuery,
+  useGetPetsQuery,
 } from "../../redux/news/operations";
 import { ItemListWrapper } from "./ItemList.styles";
 
 import { useAppDispatch } from "../../hooks/hooks";
 import { setTotalPages } from "../../redux/news/slice";
 import { useSelector } from "react-redux";
-import {
-  selectCurrentPage,
-  selectSearchValue,
-} from "../../redux/news/selectors";
+import { selectSearchValue } from "../../redux/news/selectors";
 import { useEffect } from "react";
 import FriendsItem from "./ListItems/FriendsItem";
+import PetItem from "./ListItems/PetItem";
 
-const ItemList = ({ isFriendsList, isNewsList }: ItemListProps) => {
+const ItemList = ({ isFriendsList, isNewsList, isPetList }: ItemListProps) => {
   const dispatch = useAppDispatch();
-  const page = useSelector(selectCurrentPage);
   const searchValue = useSelector(selectSearchValue);
 
   const {
@@ -38,10 +37,9 @@ const ItemList = ({ isFriendsList, isNewsList }: ItemListProps) => {
     { refetchOnMountOrArgChange: true }
   );
 
-  console.log(newsList);
-
   const { data: friendsList } = useGetFriendsQuery({});
-  console.log(friendsList, "friends list");
+
+  const { data: petsList } = useGetPetsQuery({});
 
   useEffect(() => {
     if (newsList) {
@@ -52,8 +50,8 @@ const ItemList = ({ isFriendsList, isNewsList }: ItemListProps) => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
-  console.log(newsList);
 
+  return <></>;
   return (
     <ItemListWrapper>
       {isNewsList &&
@@ -86,7 +84,10 @@ const ItemList = ({ isFriendsList, isNewsList }: ItemListProps) => {
             />
           );
         })}
-      {/* {isPetList && <Item />}  */}
+      {isPetList &&
+        petsList?.results.map((p: PetItemProps) => {
+          return <PetItem key={p._id} {...p} />;
+        })}
     </ItemListWrapper>
   );
 };

@@ -7,7 +7,6 @@ import { InputFieldProps } from "../../types/types";
 const SearchField = ({
   placeholder,
   iconPosition = "right",
-  customWidth,
 }: InputFieldProps) => {
   const dispatch = useAppDispatch();
   const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +19,6 @@ const SearchField = ({
       iconPosition={iconPosition}
       placeholder={placeholder}
       onInput={onChangeHandle}
-      сustomWidth={customWidth}
     />
   );
 };

@@ -1,11 +1,7 @@
 import { SideMenuLayout } from "./SideMenu.styles";
 import { NavLink } from "react-router-dom";
-import { Button } from "../../common/styles";
-import {
-  AuthNavigation,
-  LoginButton,
-  RegisterButton,
-} from "../../layouts/Header/Header.styles";
+import { Button, LoginButton, RegisterButton } from "../../common/styles";
+import { AuthNavigation } from "../../layouts/Header/Header.styles";
 import { HeaderProps } from "../../types/types";
 import { useAppDispatch } from "../../hooks/hooks";
 import { toggleMenu } from "../../redux/ui/slice";
@@ -32,13 +28,13 @@ const SideMenu = ({ isOpen, isHomePage = false }: HeaderProps) => {
         <img src="/public/icons/close.svg" />
       </div>
       <div className="flex flex-col items-center gap-2.5">
-        <NavLink to="/login">
+        <NavLink to="/news">
           <Button className="w-32">News</Button>
         </NavLink>
-        <NavLink to="/register">
+        <NavLink to="/find-pet">
           <Button className="w-32">Find Pet</Button>
         </NavLink>
-        <NavLink to="/register">
+        <NavLink to="/friends">
           <Button className="w-32"> Our friends</Button>
         </NavLink>
       </div>

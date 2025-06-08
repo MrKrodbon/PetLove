@@ -3,7 +3,7 @@ import {
   HomePageButton,
   NotFoundImageContainer,
   NotFoundText,
-} from "./NotFound.styles";
+} from "./NotFoundPage.styles";
 import { Container } from "../../common/styles";
 
 const NotFound = () => {

@@ -3,8 +3,7 @@ import { login, logout, refreshUser, register } from "./operations";
 import { AuthState } from "../../types/types";
 
 const initialState: AuthState = {
-  name: null,
-  email: null,
+  user: null,
 
   token: null,
   isLoggedIn: false,
@@ -15,16 +14,21 @@ const initialState: AuthState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    setToken: (state, action) => {
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(register.fulfilled, (state, action) => {
-        state.name = action.payload.name;
+        state.user = action.payload.name;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.name = action.payload.name;
+        state.user = action.payload.name;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
@@ -33,8 +37,7 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.name = null;
-        state.email = null;
+        state.user = null;
         state.token = null;
         state.isLoggedIn = false;
       })
@@ -45,9 +48,9 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.name = action.payload.name;
+        state.user = action.payload;
         state.isLoggedIn = true;
-        state.isRefreshing = true;
+        state.isRefreshing = false;
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
@@ -57,5 +60,7 @@ const authSlice = createSlice({
       });
   },
 });
+
+export const { setToken } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import axiosInstance from "../../api/axiosInstance";
 
 // axios.defaults.baseURL = "https://petlove.b.goit.study/api";
 
@@ -23,7 +24,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
   reducerPath: "newsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://petlove.b.goit.study/api" }),
+  baseQuery: fetchBaseQuery({ baseUrl: axiosInstance.defaults.baseURL }),
   endpoints: (build) => ({
     getNews: build.query({
       query: ({ page = 1, search = "", limit = 10 }) => ({
@@ -34,7 +35,10 @@ export const api = createApi({
     getFriends: build.query({
       query: () => "/friends",
     }),
+    getPets: build.query({
+      query: () => "/notices",
+    }),
   }),
 });
 
-export const { useGetNewsQuery, useGetFriendsQuery } = api;
+export const { useGetNewsQuery, useGetFriendsQuery, useGetPetsQuery } = api;

@@ -15,24 +15,49 @@ export const baseTextStyles = css`
   letter-spacing: -0.02em;
 `;
 
-export const Button = styled.button`
-  box-sizing: border-box;
+export const normalTextStyles = css`
+  font-family: "Manrope";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 28px;
+  line-height: 28px;
+  letter-spacing: -0.03em;
+`;
 
+export const basicButtonStyles = css`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 15px 20px;
-  gap: ${sizes.medium}px;
-
-  height: 50px;
-
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  padding: 15px 35px;
+  gap: 10px;
   border-radius: 30px;
-
   flex: none;
-  order: 0;
+  height: 50px;
   flex-grow: 0;
+`;
+
+export const Button = styled.button`
+  ${basicButtonStyles}
+  box-sizing: border-box;
+  padding: 15px 20px;
+  gap: 10px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  order: 0;
+`;
+
+export const LoginButton = styled.button`
+  ${basicButtonStyles}
+  color: ${colors.WHITE_COLOR};
+  background: ${colors.MAIN_COLOR};
+  order: 0;
+`;
+
+export const RegisterButton = styled.button`
+  ${basicButtonStyles}
+  color: ${colors.MAIN_COLOR};
+  background: ${colors.BUTTON_HOVER_COLOR};
+  order: 1;
 `;
 
 export const Input = styled.input`
@@ -141,7 +166,7 @@ export const AuthPetImageComment = styled.p`
   height: 60px;
 
   margin: ${sizes.large}px ${sizes.small}px ${sizes.xHuge}px ${sizes.large}px;
-  background: ${colors.BUTTON_ACTION_COLOR};
+  background: ${colors.BUTTON_HOVER_COLOR};
 `;
 
 export const Container = styled.div`
@@ -153,21 +178,12 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.p`
-  font-family: "Manrope";
-  font-size: 700;
-  font-style: normal;
-  font-size: 28px;
-  line-height: 28px;
-  letter-spacing: -0.03em;
-
+  ${normalTextStyles}
   color: ${colors.TEXT_COLOR};
-
   text-align: left;
-  margin-bottom: 40px;
-
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     font-size: 54px;
-    margin-bottom: 20px;
+    line-height: 54px;
   }
 `;
 
@@ -175,6 +191,5 @@ export const BlockVectorLine = styled.div`
   margin-top: 20px;
   width: 100%;
   height: 0px;
-
   border: 1px solid rgba(38, 38, 38, 0.1);
 `;

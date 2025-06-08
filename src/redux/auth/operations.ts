@@ -1,10 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { StoreType } from "../store";
-
-axios.defaults.baseURL = "https://petlove.b.goit.study/api";
-
-const axiosHeaders = axios.defaults.headers.common;
+import axiosInstance from "../../api/axiosInstance";
 
 interface FormData {
   name?: string;
@@ -12,22 +8,14 @@ interface FormData {
   password: string;
 }
 
-export const setToken = (token: string) => {
-  axiosHeaders.Authorization = `Bearer ${token}`;
-};
-
-export const clearToken = () => {
-  axiosHeaders.Authorization = "";
-};
-
 export const register = createAsyncThunk(
   "auth/register",
   async (formData: FormData, thunkAPI) => {
     try {
-      const { data } = await axios.post("/users/signup", formData);
-      console.log("data>>", data);
+      const { data } = await axiosInstance.post("/users/signup", formData);
+      const token = data.token;
 
-      setToken(data.token);
+      localStorage.setItem("token", token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -39,10 +27,9 @@ export const login = createAsyncThunk(
   "auth/login",
   async (formData: FormData, thunkAPI) => {
     try {
-      const { data } = await axios.post("/users/signin", formData);
-      setToken(data.token);
-      console.log("data", data);
-
+      const { data } = await axiosInstance.post("/users/signin", formData);
+      const token = data.token;
+      localStorage.setItem("token", token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -53,7 +40,7 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     await axios.post("/users/signout");
-    clearToken();
+    localStorage.removeItem("token");
     return;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -63,20 +50,19 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistToken = state.auth.token;
+    const token = localStorage.getItem("token");
 
-    if (!persistToken) {
+    if (!token) {
       return thunkAPI.rejectWithValue(
         "Unable to refresh user. Not valid or empty token"
       );
     }
 
     try {
-      setToken(persistToken);
-      const { data } = await axios.get("users/current");
+      const { data } = await axiosInstance.get("users/current");
       return data;
     } catch (error) {
+      localStorage.removeItem("token");
       return thunkAPI.rejectWithValue(error);
     }
   }

@@ -6,16 +6,18 @@ export const NewsContainer = styled.div<{ isFlexChange?: boolean }>`
   flex-wrap: wrap;
   width: 335px;
   min-height: 500px;
-  heigth: auto;
+  height: auto;
   overflow: hidden;
+  gap: 40px;
   @media screen and (min-width: 768px) {
     width: 704px;
+    gap: 44px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 1153px;
     flex-direction: ${({ isFlexChange }) => (isFlexChange ? "column" : "row")};
-    justify-content: space-between;
+    gap: 40px;
     align-items: ${({ isFlexChange }) => (isFlexChange ? "start" : "end")};
   }
 `;

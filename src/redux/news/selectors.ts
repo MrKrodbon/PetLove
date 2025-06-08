@@ -13,6 +13,7 @@ import { StoreType } from "../store";
 
 // export const selectNewsByCurrentPage = (state: StoreType) => state.news.news;
 
-export const selectCurrentPage = (state: StoreType) => state.news.page;
+export const selectCurrentNewsPage = (state: StoreType) => state.news.page;
+// export const selectCurrentPetsPage = (state: StoreType) => state.;
 export const selectTotalPages = (state: StoreType) => state.news.totalPages;
 export const selectSearchValue = (state: StoreType) => state.news.search;

@@ -6,6 +6,7 @@ export const selectIsRefreshing = (state: StoreType) => state.auth.isRefreshing;
 
 export const selectErrorAuth = (state: StoreType) => state.auth.error;
 
-export const selectUserData = (state: StoreType) => {
-  return { name: state.auth.name, email: state.auth.email };
-};
+export const selectUserData = (state: StoreType) => state.auth.user;
+
+export const selectIsRefreshingUser = (state: StoreType) =>
+  state.auth.isRefreshing;

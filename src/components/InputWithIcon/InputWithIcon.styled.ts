@@ -38,14 +38,9 @@ export const StyledInput = styled.input<{
   padding-right: ${({ $hasIcon, $iconPosition }) =>
     $hasIcon && $iconPosition === "right" ? "48px" : "16px"};
 
-  width: ${({ customWidth }) => customWidth || "100%"};
   height: 42px;
   background-color: ${colors.WHITE_COLOR};
 
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
-
-  @media screen and (min-width: 768px) {
-    height: 52px;
-  }
 `;

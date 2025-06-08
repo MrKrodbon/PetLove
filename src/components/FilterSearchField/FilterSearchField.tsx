@@ -7,12 +7,11 @@ import { BlockVectorLine } from "../../common/styles";
 const FilterSearchField = () => {
   return (
     <FilterSearchFieldWrapper>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-row flex-wrap gap-3">
         <SearchField
           placeholder="Search"
           iconPosition="right"
           iconSrc="/public/icons/search.svg"
-          customWidth="265px"
         />
         <div className="flex gap-2">
           <FilterField

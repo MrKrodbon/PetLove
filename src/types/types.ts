@@ -15,7 +15,6 @@ export interface InputFieldProps {
   onInput?: () => void;
   value?: string;
   className?: string;
-  customWidth?: string;
 }
 
 export interface AuthNavigationProps {
@@ -57,9 +56,31 @@ export interface FriendsItemProps {
   workDays: WorkDays[];
 }
 
-export interface AuthState {
+export interface PetItemProps {
+  _id: string;
+  species: string;
+  category: "lost" | "found" | "for-adoption";
+  title: string;
+  name: string;
+  birthday: string;
+  comment: string;
+  price: string;
+  sex: "male" | "female" | "unknown";
+  location: string;
+  imgURL: string;
+  createdAt: string;
+  updatedAt: string;
+  user: string;
+  popularity: number;
+}
+
+interface User {
   name: string | null;
   email: string | null;
+}
+
+export interface AuthState {
+  user: User | null;
   token: string | null;
   isLoggedIn: boolean;
   isRefreshing: boolean;
@@ -80,6 +101,16 @@ export interface NewsState {
   page: 1;
   totalPages: 0;
   search: "";
+}
+
+export interface PaginationListProps {
+  paginationList: {
+    page: number;
+    perPage: number;
+    results: [];
+    totalPages: number;
+  };
+  currentPage?: number;
 }
 
 export interface PagionationButtonProps {

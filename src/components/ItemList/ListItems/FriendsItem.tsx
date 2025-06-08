@@ -1,10 +1,7 @@
 import {
-  ListItemDate,
-  ListItemDescription,
   ListItemImageWrapper,
   ListItemTitle,
   ListItemTextWrapper,
-  NewsListItem,
   ListItemWrapper,
   ListItemParagraphSpan,
   ListItemParagraph,
