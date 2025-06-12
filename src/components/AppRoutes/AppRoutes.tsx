@@ -1,19 +1,15 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import RestrictedRoute from "../RestrictedRoute";
 import NewsPage from "../../pages/NewsPage/NewsPage";
 import FindPet from "../../pages/FindPetPage/FindPetPage";
-import HomePage from "../../pages/HomePage/HomePage";
+
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFound from "../../pages/NotFoundPage/NotFoundPage";
 import OurFriends from "../../pages/OurFriendsPage/OurFriendsPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
-import { useAppSelector } from "../../hooks/hooks";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import HomePage from "../../pages/HomePage/HomePage";
 
 const AppRoutes = () => {
-  const isLoggedIn = useAppSelector(selectIsLoggedIn);
-  console.log(isLoggedIn);
   return (
     <Routes>
       <Route

@@ -21,12 +21,6 @@ export interface AuthNavigationProps {
   isMobileMenu?: boolean;
 }
 
-export interface ItemListProps {
-  isNewsList?: boolean;
-  isFriendsList?: boolean;
-  isPetList?: boolean;
-}
-
 export interface NewsItemProps {
   id?: string;
   imgUrl: string;
@@ -103,14 +97,23 @@ export interface NewsState {
   search: "";
 }
 
-export interface PaginationListProps {
+export type PageType = {
+  pageType: "login" | "register";
+};
+
+export type ItemListProps = {
+  listType: "newsList" | "ourFriendsList" | "petList";
+};
+
+export type DeviceType = "mobile" | "tablet" | "desktop";
+
+export interface PaginationList {
   paginationList: {
     page: number;
     perPage: number;
     results: [];
     totalPages: number;
   };
-  currentPage?: number;
 }
 
 export interface PagionationButtonProps {

@@ -1,11 +1,8 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
-import { login } from "../../redux/auth/operations.ts";
-import { useAppDispatch } from "../../hooks/hooks.ts";
 import { Input, LoginButton } from "../../common/styles.ts";
-import { useSelector } from "react-redux";
-import { StoreType } from "../../redux/store.ts";
 import { ReactNode } from "react";
-import { formSubmit, FormValues } from "../../utilities/formSubmit.ts";
+import { FormValues } from "../../utilities/formSubmit.ts";
+import { PageType } from "../../types/types.ts";
 
 // interface InitialValues {
 //   name: string;
@@ -20,7 +17,7 @@ interface FormInputFields {
 }
 
 interface FormTemplateProps {
-  type: "login" | "register";
+  type: PageType;
   initialValues: FormValues;
   fields: FormInputFields[];
   buttonText: string;
@@ -29,7 +26,6 @@ interface FormTemplateProps {
 }
 
 const FormTemplate = ({
-  type,
   initialValues,
   fields,
   buttonText,

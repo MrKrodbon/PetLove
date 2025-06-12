@@ -3,15 +3,15 @@ import { NavLink } from "react-router-dom";
 import { Button, LoginButton, RegisterButton } from "../../common/styles";
 import { AuthNavigation } from "../../layouts/Header/Header.styles";
 import { HeaderProps } from "../../types/types";
-import { useAppDispatch } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { toggleMenu } from "../../redux/ui/slice";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { logout } from "../../redux/auth/operations";
+import useUserLoggedIn from "../../hooks/useUserLoggedIn";
+import { Navigation } from "../Navigation/Navigation";
 
 const SideMenu = ({ isOpen, isHomePage = false }: HeaderProps) => {
   const dispatch = useAppDispatch();
-  const isUserLoggedIn = useSelector(selectIsLoggedIn);
+  const isUserLoggedIn = useUserLoggedIn();
 
   const handleCloseModal = () => {
     dispatch(toggleMenu());
@@ -20,49 +20,13 @@ const SideMenu = ({ isOpen, isHomePage = false }: HeaderProps) => {
     // dispatch(toggleMenu());
     dispatch(logout());
   };
-  console.log("isUserLoggedIn", isUserLoggedIn);
 
   return (
     <SideMenuLayout isOpen={isOpen} isHomePage={isHomePage}>
       <div className="flex items-end" onClick={handleCloseModal}>
         <img src="/public/icons/close.svg" />
       </div>
-      <div className="flex flex-col items-center gap-2.5">
-        <NavLink to="/news">
-          <Button className="w-32">News</Button>
-        </NavLink>
-        <NavLink to="/find-pet">
-          <Button className="w-32">Find Pet</Button>
-        </NavLink>
-        <NavLink to="/friends">
-          <Button className="w-32"> Our friends</Button>
-        </NavLink>
-      </div>
-      <div>
-        <AuthNavigation className="flex-col gap-2.5 w-full" isMobileMenu>
-          {isUserLoggedIn ? (
-            <NavLink to="/">
-              <LoginButton className="w-full" onClick={handleLogoutUser}>
-                Log out
-              </LoginButton>
-            </NavLink>
-          ) : (
-            <>
-              {" "}
-              <NavLink to="/login">
-                <LoginButton className="w-full" onClick={handleCloseModal}>
-                  Log in
-                </LoginButton>
-              </NavLink>
-              <NavLink to="/register">
-                <RegisterButton className="w-full" onClick={handleCloseModal}>
-                  Register
-                </RegisterButton>
-              </NavLink>
-            </>
-          )}
-        </AuthNavigation>
-      </div>
+      <Navigation />
     </SideMenuLayout>
   );
 };

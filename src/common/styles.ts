@@ -113,62 +113,6 @@ export const AuthImageContainer = styled.div<AuthImageContainerProps>`
   }
 `;
 
-export const AuthFormContainer = styled.div`
-  padding: 60px 20px;
-
-  @media and screen (min-width: 768px) {
-    padding: 71px 140px;
-  }
-  @media and screen (min-width: 1280px) {
-    padding: 118px 84px;
-  }
-`;
-
-export const AuthImageComment = styled.div`
-  display: none;
-
-  @media screen and (min-width: 1280px) {
-    display: block;
-    position: absolute;
-    top: 436px;
-    left: 61px;
-
-    background-color: ${colors.WHITE_COLOR};
-
-    width: 294px;
-    height: 121px;
-
-    display: flex;
-    flex-diraction: row;
-    border-radius: ${sizes.xMedium}px;
-  }
-`;
-
-export const AuthPetNameComment = styled.p`
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: -0.03em;
-
-  color: ${colors.MAIN_COLOR};
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  padding: 19px 16px 18px 0;
-`;
-
-export const AuthPetImageComment = styled.p`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 194px;
-  height: 60px;
-
-  margin: ${sizes.large}px ${sizes.small}px ${sizes.xHuge}px ${sizes.large}px;
-  background: ${colors.BUTTON_HOVER_COLOR};
-`;
-
 export const Container = styled.div`
   padding: 0 32px;
 

@@ -1,5 +1,5 @@
 import { FormikHelpers } from "formik";
-import { useAppDispatch } from "../hooks/hooks";
+import { useAppDispatch } from "../hooks/useAppSelector";
 import { login, register } from "../redux/auth/operations";
 
 type FormType = "login" | "register";

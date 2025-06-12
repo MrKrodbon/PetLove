@@ -1,13 +1,15 @@
 import { PaginationWrapper } from "./Pagination.styles";
 import ArrowButton from "./ArrowButton/ArrowButton";
 import { PaginationButton } from "./Button/PaginationButton.styles";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { setNewPage } from "../../redux/news/slice";
-import { StoreType } from "../../redux/store";
-import { useGetNewsQuery, useGetPetsQuery } from "../../redux/news/operations";
 import { generatePageNumbers } from "../../utilities/generatePageNumbers";
-import { selectCurrentPage } from "../../redux/news/selectors";
-import { PaginationListProps } from "../../types/types";
+import { PaginationList } from "../../types/types";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+
+interface PaginationListProps {
+  paginationList: PaginationList;
+  currentPage?: number;
+}
 
 const Pagination = ({ paginationList, currentPage }: PaginationListProps) => {
   const dispatch = useAppDispatch();

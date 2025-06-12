@@ -1,10 +1,12 @@
 import LoginForm from "../../components/LoginForm/LoginForm";
 import AuthPageTemplate from "../../components/AuthPageTemplate/AuthPageTemplate";
+import useAuthDisplayBackground from "../../hooks/useAuthDisplayBackground";
 
 const LoginPage = () => {
+  const backgroundImageSrc = useAuthDisplayBackground({ pageType: "login" });
+
   return (
     <AuthPageTemplate
-      type="login"
       iconSrc="/icons/dogEmoji.png"
       petInfo={{
         petName: "Rich",
@@ -17,6 +19,7 @@ const LoginPage = () => {
       form={<LoginForm />}
       title="Log in"
       subtitle="Welcome! Please enter your credentials to login to the platform:"
+      backgroundImageSrc={backgroundImageSrc || ""}
     />
   );
 };

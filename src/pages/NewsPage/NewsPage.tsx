@@ -1,32 +1,21 @@
-import React from "react";
-import Header from "../../layouts/Header/Header";
-import { Container, Title } from "../../common/styles";
-import { HeaderWrapper, NewsContainer } from "./NewsPage.styles";
-import SearchField from "../../components/SearchField/SearchField";
-import ItemList from "../../components/ItemList/ItemList";
-import Pagination from "../../components/Pagination/Pagination";
-import { useAppSelector } from "../../hooks/hooks";
-import { useGetNewsQuery } from "../../redux/news/operations";
+import PageTemplate from "../../components/PageTemplate/PageTemplate";
+import usePageData from "../../hooks/usePageData";
 
 const NewsPage = () => {
-  const { data: newsList } = useGetNewsQuery({ page: currentPage, limit: 10 });
-
+  const {
+    title = "",
+    newsList = [],
+    currentPage = 1,
+  } = usePageData({
+    pageType: "newsList",
+  });
   return (
-    <Container>
-      <HeaderWrapper>
-        <Header />
-      </HeaderWrapper>
-      <NewsContainer>
-        <Title>News</Title>
-        {/* <SearchFieldWrapper>
-          <SearchField />
-        </SearchFieldWrapper> */}
-        <ItemList isNewsList />
-      </NewsContainer>
-      <div className="flex flex-row justify-center w-full">
-        <Pagination paginationList={newsList} currentPage={currentPage} />
-      </div>
-    </Container>
+    <PageTemplate
+      title={title}
+      itemsList={newsList}
+      currentPage={currentPage}
+      listType={"newsList"}
+    />
   );
 };
 

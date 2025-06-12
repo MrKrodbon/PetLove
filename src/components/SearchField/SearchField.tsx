@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppDispatch } from "../../hooks/hooks";
+import { useAppDispatch } from "../../hooks/useAppSelector";
 import { setNewPage, setSearchValue } from "../../redux/news/slice";
 import { InputWithIcon } from "../InputWithIcon/InputWithIcon";
 import { InputFieldProps } from "../../types/types";

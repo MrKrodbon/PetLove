@@ -1,11 +1,11 @@
-import axios from "axios";
 import "./App.css";
 import AppRoutes from "./components/AppRoutes/AppRoutes";
-import { useAppDispatch, useAppSelector } from "./hooks/hooks";
+import { useAppSelector } from "./hooks/useAppSelector";
 import { setToken } from "./redux/auth/slice";
 import { useEffect } from "react";
-import { selectIsLoggedIn, selectIsRefreshing } from "./redux/auth/selectors";
+import { selectIsRefreshing } from "./redux/auth/selectors";
 import { refreshUser } from "./redux/auth/operations";
+import { useAppDispatch } from "./hooks/useAppDispatch";
 
 function App() {
   const dispatch = useAppDispatch();

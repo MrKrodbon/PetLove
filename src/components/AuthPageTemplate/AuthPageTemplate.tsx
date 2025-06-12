@@ -1,14 +1,8 @@
 import { ReactNode } from "react";
-import {
-  Container,
-  AuthImageContainer,
-  AuthImageComment,
-  AuthPetImageComment,
-  AuthPetNameComment,
-  AuthFormContainer,
-} from "../../common/styles";
 import Header from "../../layouts/Header/Header";
-import { AuthContainer } from "../../pages/LoginPage/LoginPage.styles";
+
+import css from "./AuthPageTemplate.module.css";
+import shared from "../../styles/shared.module.css";
 
 interface PetInfo {
   petName: string;
@@ -17,56 +11,62 @@ interface PetInfo {
 }
 
 interface AuthPageTemplateProps {
-  type: "login" | "register";
   iconSrc: string;
-  petInfo: PetInfo;
+  petInfo?: PetInfo;
   title: "Log in" | "Register";
   subtitle: string;
   form: ReactNode;
+  backgroundImageSrc: string;
 }
 
 const AuthPageTemplate = ({
-  type,
   iconSrc,
   form,
   petInfo,
   title,
   subtitle,
+  backgroundImageSrc,
 }: AuthPageTemplateProps) => {
   return (
-    <Container>
+    <div className={shared.container}>
       <Header />
-      <AuthContainer>
-        <AuthImageContainer type={type}>
-          <AuthImageComment>
-            <AuthPetImageComment>
+      <div className={css.auth_container}>
+        <div
+          className="relative rounded-[60px]   bg-no-repeat
+                 w-[335px] h-[280px]
+                 md:w-[704px] md:h-[302px]
+                 xl:w-[592px] xl:h-[654px]"
+          style={{ backgroundImage: `url(${backgroundImageSrc})` }}
+        >
+          <div className={css.auth_image_comment}>
+            <div className={css.auth_image_comment_pet}>
               <img src={iconSrc} />
-            </AuthPetImageComment>
+            </div>
             <div>
-              <AuthPetNameComment>
+              <div className={css.auth_pet_name_comment}>
                 <div className="flex flex-row justify-between">
-                  <p className="text-base">{petInfo.petName}</p>
+                  <p className="text-base">{petInfo?.petName}</p>
                   <p>
-                    <span className="text-xs text-gray-400">Birthday</span> :{" "}
+                    <span className="text-xs text-gray-400">Birthday</span>
                     <span className="text-xs text-black">
-                      {petInfo.petBirthday}
+                      {petInfo?.petBirthday}
                     </span>
                   </p>
                 </div>
-                <p className="text-xs text-gray-700">{petInfo.description}</p>
-              </AuthPetNameComment>
+                <p className="text-xs text-gray-700">{petInfo?.description}</p>
+              </div>
             </div>
-          </AuthImageComment>
-        </AuthImageContainer>
-        <AuthFormContainer>
+          </div>
+        </div>
+        <div className={css.auth_form_container}>
           <div className="flex flex-col gap-4 mb-8 w-fit">
             <p className="text-5xl text-left">{title}</p>
             <p className="text-left">{subtitle}</p>
           </div>
           {form}
-        </AuthFormContainer>
-      </AuthContainer>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 

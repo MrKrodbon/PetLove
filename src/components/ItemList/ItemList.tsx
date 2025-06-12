@@ -5,22 +5,18 @@ import {
   PetItemProps,
 } from "../../types/types";
 import NewsItem from "./ListItems/NewsItem";
-import {
-  useGetFriendsQuery,
-  useGetNewsQuery,
-  useGetPetsQuery,
-} from "../../redux/news/operations";
+import { useGetNewsQuery } from "../../redux/news/operations";
 import { ItemListWrapper } from "./ItemList.styles";
 
-import { useAppDispatch } from "../../hooks/hooks";
 import { setTotalPages } from "../../redux/news/slice";
 import { useSelector } from "react-redux";
 import { selectSearchValue } from "../../redux/news/selectors";
 import { useEffect } from "react";
 import FriendsItem from "./ListItems/FriendsItem";
 import PetItem from "./ListItems/PetItem";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
-const ItemList = ({ isFriendsList, isNewsList, isPetList }: ItemListProps) => {
+const ItemList = ({ listType }: ItemListProps) => {
   const dispatch = useAppDispatch();
   const searchValue = useSelector(selectSearchValue);
 
@@ -37,10 +33,6 @@ const ItemList = ({ isFriendsList, isNewsList, isPetList }: ItemListProps) => {
     { refetchOnMountOrArgChange: true }
   );
 
-  const { data: friendsList } = useGetFriendsQuery({});
-
-  const { data: petsList } = useGetPetsQuery({});
-
   useEffect(() => {
     if (newsList) {
       dispatch(setTotalPages(newsList.totalPages));
@@ -54,7 +46,7 @@ const ItemList = ({ isFriendsList, isNewsList, isPetList }: ItemListProps) => {
   return <></>;
   return (
     <ItemListWrapper>
-      {isNewsList &&
+      {listType === "newsList" &&
         newsList?.results.map((n: NewsItemProps) => {
           return (
             <NewsItem
@@ -68,7 +60,7 @@ const ItemList = ({ isFriendsList, isNewsList, isPetList }: ItemListProps) => {
             />
           );
         })}
-      {isFriendsList &&
+      {listType === "ourFriendsList" &&
         friendsList?.map((f: FriendsItemProps) => {
           return (
             <FriendsItem
@@ -84,7 +76,7 @@ const ItemList = ({ isFriendsList, isNewsList, isPetList }: ItemListProps) => {
             />
           );
         })}
-      {isPetList &&
+      {listType === "petList" &&
         petsList?.results.map((p: PetItemProps) => {
           return <PetItem key={p._id} {...p} />;
         })}

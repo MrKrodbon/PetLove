@@ -1,9 +1,9 @@
 import { FormikHelpers } from "formik";
-import { useAppDispatch } from "../../hooks/hooks.ts";
 import FormTemplate from "../FormTemplate/FormTemplate.tsx";
 import { formSubmit, FormValues } from "../../utilities/formSubmit.ts";
 import { useSelector } from "react-redux";
 import { StoreType } from "../../redux/store.ts";
+import { useAppDispatch } from "../../hooks/useAppDispatch.ts";
 
 const initialValues = {
   name: "",
