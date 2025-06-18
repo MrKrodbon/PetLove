@@ -31,7 +31,7 @@ const LoginForm = () => {
       <FormTemplate
         fields={formFields}
         buttonText="Log in"
-        type="login"
+        type={{ pageType: "login" }}
         onSubmit={onSubmitHandle}
         initialValues={initialValues}
         footer={

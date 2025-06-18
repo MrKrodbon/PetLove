@@ -1,0 +1,55 @@
+@mixin base-button{
+    display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 35px;
+        gap: 10px;
+        border-radius: 30px;
+        flex: none;
+        height: 50px;
+        flex-grow: 0;
+        color: var(--white-color);
+}
+
+@mixin title-extra-bold {
+    font-family: "Manrope";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: -0.03em;
+}
+
+@mixin subtitle-medium {
+    font-family: "Manrope";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: -0.02em;
+}
+
+@mixin navigation-button{
+    @include base-button;
+    box-sizing: border-box;
+    background-color: transparent;
+        padding: 15px 20px;
+        gap: 10px;
+        border: 1px var(--border-opacity) solid ;
+        order:0;
+}
+
+@mixin  primary-button {
+    @include base-button;
+    color:var(--white-color);
+    background: var(--main-color);
+    order: 0;
+}
+
+@mixin secondary-button{
+    @include base-button;
+    color:  var(--main-color);
+    background:  var(--button-hover-color);
+    order: 1;
+}

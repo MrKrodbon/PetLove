@@ -4,17 +4,16 @@ import {
   NewsItemProps,
   PetItemProps,
 } from "../../types/types";
-import NewsItem from "./ListItems/NewsItem";
 import { useGetNewsQuery } from "../../redux/news/operations";
-import { ItemListWrapper } from "./ItemList.styles";
 
 import { setTotalPages } from "../../redux/news/slice";
 import { useSelector } from "react-redux";
 import { selectSearchValue } from "../../redux/news/selectors";
 import { useEffect } from "react";
-import FriendsItem from "./ListItems/FriendsItem";
-import PetItem from "./ListItems/PetItem";
+import PetItem from "./PetListItem/PetItem";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import NewsItem from "./NewsListItem/NewsItem";
+import FriendsItem from "./FriendsListItem/FriendsItem";
 
 const ItemList = ({ listType }: ItemListProps) => {
   const dispatch = useAppDispatch();
@@ -43,9 +42,8 @@ const ItemList = ({ listType }: ItemListProps) => {
     return <p>Loading...</p>;
   }
 
-  return <></>;
   return (
-    <ItemListWrapper>
+    <div className="flex justify-between flex-wrap gap-5 list-none mb-11 md:mb-[60px]">
       {listType === "newsList" &&
         newsList?.results.map((n: NewsItemProps) => {
           return (
@@ -60,8 +58,8 @@ const ItemList = ({ listType }: ItemListProps) => {
             />
           );
         })}
-      {listType === "ourFriendsList" &&
-        friendsList?.map((f: FriendsItemProps) => {
+      {/* {listType === "ourFriendsList" &&
+        friendsList.map((f: FriendsItemProps) => {
           return (
             <FriendsItem
               address={f.address || ""}
@@ -79,8 +77,8 @@ const ItemList = ({ listType }: ItemListProps) => {
       {listType === "petList" &&
         petsList?.results.map((p: PetItemProps) => {
           return <PetItem key={p._id} {...p} />;
-        })}
-    </ItemListWrapper>
+        })} */}
+    </div>
   );
 };
 

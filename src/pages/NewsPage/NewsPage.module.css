@@ -1,0 +1,26 @@
+.news_page {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 335px;
+  min-height: 500px;
+  height: auto;
+  overflow: hidden;
+  gap: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .news_page {
+    width: 704px;
+    gap: 44px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .news_page {
+    width: 1153px;
+    flex-direction: row;
+    gap: 40px;
+    align-items: end;
+  }
+}

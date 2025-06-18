@@ -8,22 +8,23 @@ import NotFound from "../../pages/NotFoundPage/NotFoundPage";
 import OurFriends from "../../pages/OurFriendsPage/OurFriendsPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import HomePage from "../../pages/HomePage/HomePage";
+import { authLinks, navLinks } from "../../constants/appLinks/appLinks";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route
-        path="/register"
+        path={authLinks.register.to}
         element={<RestrictedRoute component={<RegisterPage />} />}
       />
       <Route
-        path="/login"
+        path={authLinks.login.to}
         element={<RestrictedRoute component={<LoginPage />} />}
       />
-      <Route path="/news" element={<NewsPage />} />
-      <Route path="/friends" element={<OurFriends />} />
-      <Route path="/find-pet" element={<FindPet />} />
-      <Route path="/" element={<HomePage />} />
+      <Route path={navLinks.news.to} element={<NewsPage />} />
+      <Route path={navLinks.friends.to} element={<OurFriends />} />
+      <Route path={navLinks.findPet.to} element={<FindPet />} />
+      <Route path={navLinks.home.to} element={<HomePage />} />
       {/* <Route
         path="/profile"
         element={
@@ -32,7 +33,7 @@ const AppRoutes = () => {
             </PrivateRoute>
             }
             /> */}
-      <Route path="*" element={<NotFound />} />
+      <Route path={navLinks.restrictPath.to} element={<NotFound />} />
     </Routes>
   );
 };

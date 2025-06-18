@@ -12,7 +12,7 @@ interface PageDataProps {
 
 const usePageData = ({ pageType }: PageDataProps) => {
   const currentNewsPage = useAppSelector(selectCurrentNewsPage);
-  // const currentPage = useAppSelector(selectCurrentPage);
+  const currentPage = useAppSelector(selectCurrentPage);
   const { data: petList } = useGetPetsQuery({ page: currentPage, limit: 10 });
   //TODO: Add to get friends list and pet list
   const { data: newsList } = useGetNewsQuery({

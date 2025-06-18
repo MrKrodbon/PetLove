@@ -1,19 +1,9 @@
 import styled, { css } from "styled-components";
-import { sizes } from "./sizes";
 import { colors } from "../constants/colors/colors";
 
 interface AuthImageContainerProps {
   type: "login" | "register";
 }
-
-export const baseTextStyles = css`
-  font-family: "Manrope";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: -0.02em;
-`;
 
 export const normalTextStyles = css`
   font-family: "Manrope";
@@ -22,42 +12,6 @@ export const normalTextStyles = css`
   font-size: 28px;
   line-height: 28px;
   letter-spacing: -0.03em;
-`;
-
-export const basicButtonStyles = css`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 15px 35px;
-  gap: 10px;
-  border-radius: 30px;
-  flex: none;
-  height: 50px;
-  flex-grow: 0;
-`;
-
-export const Button = styled.button`
-  ${basicButtonStyles}
-  box-sizing: border-box;
-  padding: 15px 20px;
-  gap: 10px;
-  border: 1px solid rgba(38, 38, 38, 0.15);
-  order: 0;
-`;
-
-export const LoginButton = styled.button`
-  ${basicButtonStyles}
-  color: ${colors.WHITE_COLOR};
-  background: ${colors.MAIN_COLOR};
-  order: 0;
-`;
-
-export const RegisterButton = styled.button`
-  ${basicButtonStyles}
-  color: ${colors.MAIN_COLOR};
-  background: ${colors.BUTTON_HOVER_COLOR};
-  order: 1;
 `;
 
 export const Input = styled.input`

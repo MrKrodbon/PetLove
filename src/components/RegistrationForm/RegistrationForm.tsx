@@ -35,7 +35,7 @@ const RegistrationForm = () => {
       <FormTemplate
         fields={formFields}
         buttonText="Register"
-        type="register"
+        type={{ pageType: "register" }}
         onSubmit={onSubmitHandle}
         initialValues={initialValues}
         footer={

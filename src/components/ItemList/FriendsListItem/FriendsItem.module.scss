@@ -1,0 +1,58 @@
+@import "../../../styles/veriables.css";
+@import "../../../styles/mixins.scss";
+
+
+.friends-item {
+  flex-direction: column;
+  width: 342px;
+  height: 100%;
+  text-align: left;
+  border-radius: 16px;
+  background-color: var(--white-color);
+  padding: 12px 20px 40px 20px;
+}
+
+.friends-item_title{
+  @include title-extra-bold;
+  color:var(--text-color);
+}
+
+.friends-item_subtitle{
+  @include subtitle-medium;
+  display: flex;
+  height: "18px";
+  width: "196px";
+  color: var(--text-color);
+  white-space: "nowrap";
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.friends-item_span{
+  height: 18px;
+  @include title-extra-bold;
+  color: var(--gray-color);
+}
+
+.friends-item_time_title {
+  @include title-extra-bold;
+  color: var(--white-color);
+}
+
+.friends-item_time{
+  @include title-extra-bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 10px;
+
+  width: 110px;
+  height: 34px;
+
+  background:var(--button-hover-color);
+  border-radius: 30px;
+
+  color: var(--main-color);
+}

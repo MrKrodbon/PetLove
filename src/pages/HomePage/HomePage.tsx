@@ -1,36 +1,29 @@
-import React from "react";
-import Header from "../../layouts/Header/Header";
-import {
-  FlexSubtitle,
-  HomePageBottomBlock,
-  HomePageUpperBlock,
-  MainTitle,
-  SubTitle,
-} from "./HomePage.styles";
-import { Container } from "../../common/styles";
+import Header from "../../components/Header/Header";
+import css from "./HomePage.module.css";
+import shared from "../../styles/shared.module.css";
 
 const HomePage = () => {
   return (
     <>
-      <HomePageUpperBlock>
-        <Container>
+      <div className={css["home-hero"]}>
+        <div className={shared.container}>
           <Header isHomePage />
 
-          <FlexSubtitle>
-            <MainTitle>
+          <div className={css["home-hero_content"]}>
+            <p className={css["home-hero_title"]}>
               Take good <span className="opacity-45">care</span> of your small
               pets
-            </MainTitle>
+            </p>
             <div className="flex justify-end">
-              <SubTitle>
+              <p className={css["home-hero_subtitle"]}>
                 Choosing a pet for your home is a choice that is meant to enrich
                 your life with immeasurable joy and tenderness.
-              </SubTitle>
+              </p>
             </div>
-          </FlexSubtitle>
-        </Container>
-      </HomePageUpperBlock>
-      <HomePageBottomBlock />
+          </div>
+        </div>
+      </div>
+      <div className={css["home-hero_bottom_block"]} />
     </>
   );
 };

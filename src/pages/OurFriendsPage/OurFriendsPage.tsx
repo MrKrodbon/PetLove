@@ -9,6 +9,7 @@ const OurFriends = () => {
   } = usePageData({
     pageType: "ourFriendsList",
   });
+
   return (
     <PageTemplate
       title={title}
@@ -17,15 +18,6 @@ const OurFriends = () => {
       listType={"ourFriendsList"}
     />
   );
-  // return (
-  //   <Container>
-  //     <Header />
-  //     <NewsContainer>
-  //       <Title>Friends</Title>
-  //       <ItemList isFriendsList />
-  //     </NewsContainer>
-  //   </Container>
-  // );
 };
 
 export default OurFriends;

@@ -3,21 +3,25 @@ import { getDeviceType } from "../utilities/getDeviceType";
 import { DeviceType } from "../types/types";
 
 export const useDeviceType = (): DeviceType | "" => {
-  const [deviceType, setDeviceType] = useState<DeviceType | "">("");
-
-  const handleResize = () => {
-    const deviceType = getDeviceType();
-    setDeviceType(deviceType);
-  };
+  const [deviceType, setDeviceType] = useState<DeviceType>(() =>
+    getDeviceType()
+  );
 
   useEffect(() => {
-    handleResize();
+    const handleResize = () => {
+      const newDevice = getDeviceType();
+
+      if (newDevice !== deviceType) {
+        setDeviceType(deviceType);
+      }
+    };
+
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [deviceType]);
 
   return deviceType;
 };

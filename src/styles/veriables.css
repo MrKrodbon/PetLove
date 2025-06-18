@@ -1,8 +1,10 @@
 :root {
-  --white-color: "#FFFFFF";
-  --text-color: "#262626";
-  --main-color: "#F6B83D";
-  --button-hover-color: "#FFF4DF";
-  --gray-color: "rgba(38, 38, 38, 0.5)";
-  --background-color: "F9F9F9";
+  --white-color: #fff;
+  --text-color: #262626;
+  --main-color: #f6b83d;
+  --button-hover-color: #fff4df;
+  --gray-color: rgba(38, 38, 38, 0.5);
+  --border-opacity: rgba(255, 255, 255, 0.4);
+
+  --background-color: F9F9F9;
 }

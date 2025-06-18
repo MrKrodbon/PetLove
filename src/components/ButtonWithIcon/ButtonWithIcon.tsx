@@ -1,5 +1,4 @@
 import React from "react";
-import { Icon, StyledButton, Wrapper } from "./ButtonWithIcon.styles";
 
 type Props = {
   iconSrc?: string;
@@ -8,10 +7,19 @@ type Props = {
 
 export const ButtonWithIcon: React.FC<Props> = ({ iconSrc, onClick }) => {
   return (
-    <Wrapper>
-      <StyledButton $hasIcon={!!iconSrc} onClick={onClick}>
-        {iconSrc && <Icon src={iconSrc} alt="icon" />}
-      </StyledButton>
-    </Wrapper>
+    <div className="flex justify-center items-center">
+      <button
+        className="rounded-[50%] p-0 border-none bg-transparent"
+        onClick={onClick}
+      >
+        {iconSrc && (
+          <img
+            className="pointer-events-none object-contain"
+            src={iconSrc}
+            alt="icon"
+          />
+        )}
+      </button>
+    </div>
   );
 };

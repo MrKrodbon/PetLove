@@ -1,0 +1,59 @@
+@import "../../styles/veriables.css";
+
+.not_found_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 335px;
+  height: 712px;
+
+  background: #f6b83d;
+  border-radius: 60px;
+}
+
+.not_found_page_title {
+  width: 322px;
+  height: 28px;
+
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.03em;
+
+  color: var(--white-color);
+}
+
+@media screen and (min-width: 768px) {
+  .not_found_page {
+    width: 704px;
+    height: 878px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .not_found_page {
+    width: 1216px;
+    height: 654px;
+  }
+}
+
+.not_found_page-open-home {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  gap: 10px;
+  color: var(--main-color);
+
+  width: 149px;
+  height: 50px;
+
+  background: var(--button-hover-color);
+  border-radius: 30px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}

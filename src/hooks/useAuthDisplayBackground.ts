@@ -6,6 +6,7 @@ import { PageType } from "../types/types";
 const useAuthDisplayBackground = ({ pageType }: PageType) => {
   const [backgroundImg, setBackgroundImg] = useState("");
   const deviceType = useDeviceType();
+
   useEffect(() => {
     if (deviceType === "") return;
     const backgroundImgSrc = getAuthDisplayBackground({ pageType, deviceType });

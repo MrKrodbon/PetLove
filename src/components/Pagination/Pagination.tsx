@@ -1,10 +1,10 @@
-import { PaginationWrapper } from "./Pagination.styles";
 import ArrowButton from "./ArrowButton/ArrowButton";
-import { PaginationButton } from "./Button/PaginationButton.styles";
 import { setNewPage } from "../../redux/news/slice";
 import { generatePageNumbers } from "../../utilities/generatePageNumbers";
 import { PaginationList } from "../../types/types";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import css from "./Paginationa.module.scss";
+import { PaginationButton } from "./PaginationButton/PaginationButton";
 
 interface PaginationListProps {
   paginationList: PaginationList;
@@ -32,15 +32,15 @@ const Pagination = ({ paginationList, currentPage }: PaginationListProps) => {
   };
 
   return (
-    <PaginationWrapper>
+    <div className={css.pagination}>
       <ArrowButton
-        iconSrc="/public/icons/angle-small-left-double.svg"
+        iconSrc="icons/angle-small-left-double.svg"
         onClick={() => {
           onPageChangeHandle(currentPage - 5);
         }}
       />
       <ArrowButton
-        iconSrc="/public/icons/angle-small-left.svg"
+        iconSrc="icons/angle-small-left.svg"
         onClick={() => {
           onPageChangeHandle(currentPage - 1);
         }}
@@ -53,25 +53,24 @@ const Pagination = ({ paginationList, currentPage }: PaginationListProps) => {
               onClick={() => {
                 onPageChangeHandle(pageNumber);
               }}
-            >
-              {pageNumber}
-            </PaginationButton>
+              label={pageNumber.toString() || ""}
+            />
           );
         })}
       </ul>
       <ArrowButton
-        iconSrc="/public/icons/angle-small-right.svg"
+        iconSrc="icons/angle-small-right.svg"
         onClick={() => {
           onPageChangeHandle(currentPage + 1);
         }}
       />
       <ArrowButton
-        iconSrc="/public/icons/angle-small-right-double.svg"
+        iconSrc="icons/angle-small-right-double.svg"
         onClick={() => {
           onPageChangeHandle(currentPage + 5);
         }}
       />
-    </PaginationWrapper>
+    </div>
   );
 };
 

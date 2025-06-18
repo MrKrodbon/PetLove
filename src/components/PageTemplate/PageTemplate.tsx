@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useMemo } from "react";
 import { Title } from "../../common/styles";
-import Header from "../../layouts/Header/Header";
+import Header from "../Header/Header";
 import {
   HeaderWrapper,
   NewsContainer,
@@ -8,6 +8,7 @@ import {
 import ItemList from "../ItemList/ItemList";
 import Pagination from "../Pagination/Pagination";
 import { PaginationList } from "../../types/types";
+import SearchField from "../SearchField/SearchField";
 
 interface PageTemplateProps {
   title: string;
@@ -24,19 +25,17 @@ const PageTemplate = ({
 }: PageTemplateProps) => {
   return (
     <>
-      <HeaderWrapper>
+      <div className="mb-[60px]">
         <Header />
-      </HeaderWrapper>
-      <NewsContainer>
-        <Title>{title}</Title>
-        {/* <SearchFieldWrapper>
-          <SearchField />
-        </SearchFieldWrapper> */}
-        <ItemList listType={listType} />
-      </NewsContainer>
-      <div className="flex flex-row justify-center w-full">
-        <Pagination paginationList={itemsList} currentPage={currentPage} />
       </div>
+
+      <Title>{title}</Title>
+      <div className="flex justify-center mb-6">{/* <SearchField /> */}</div>
+      <ItemList listType={listType} />
+
+      {/* <div className="flex flex-row justify-center w-full">
+        <Pagination paginationList={itemsList} currentPage={currentPage} />
+      </div> */}
     </>
   );
 };

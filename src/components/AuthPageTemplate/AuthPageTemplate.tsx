@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Header from "../../layouts/Header/Header";
+import Header from "../Header/Header";
 
 import css from "./AuthPageTemplate.module.css";
 import shared from "../../styles/shared.module.css";
@@ -61,7 +61,7 @@ const AuthPageTemplate = ({
         <div className={css.auth_form_container}>
           <div className="flex flex-col gap-4 mb-8 w-fit">
             <p className="text-5xl text-left">{title}</p>
-            <p className="text-left">{subtitle}</p>
+            <p className="flex flex-wrap text-left xl:w-[424px]">{subtitle}</p>
           </div>
           {form}
         </div>

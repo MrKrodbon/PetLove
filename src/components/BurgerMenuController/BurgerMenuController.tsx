@@ -1,11 +1,10 @@
-import React from "react";
 import { useAppSelector } from "../../hooks/useAppSelector";
-import { BurgerMenu } from "../../layouts/Header/Header.styles";
 import { selectIsBurgerMenuOpen } from "../../redux/ui/selectors";
 import { toggleMenu } from "../../redux/ui/slice";
 import SideMenu from "../SideMenu/SideMenu";
-import { Overlay } from "../SideMenu/SideMenu.styles";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import css from "./BurgerMenuController.module.css";
+import clsx from "clsx";
 
 const BurgerMenuController = () => {
   const isBurgerMenuOpen = useAppSelector(selectIsBurgerMenuOpen);
@@ -17,19 +16,31 @@ const BurgerMenuController = () => {
   return (
     <>
       {isBurgerMenuOpen && (
-        <Overlay
-          isOpen={isBurgerMenuOpen}
+        <div
+          className={clsx(css["burger-menu_overlay"], {
+            [css["burger-menu_overlay-open"]]: isBurgerMenuOpen,
+          })}
           onClick={() => dispatch(toggleMenu())}
         />
       )}
-      <SideMenu isOpen={isBurgerMenuOpen} isHomePage />;
-      <BurgerMenu onClick={toggle}>
+      <div
+        className={clsx(css["burger-menu"], {
+          [css["burger-menu-open"]]: isBurgerMenuOpen,
+          [css["burger-menu-close"]]: !isBurgerMenuOpen,
+        })}
+      >
+        <SideMenu isOpen={isBurgerMenuOpen} isHomePage />
+      </div>
+      <div
+        onClick={toggle}
+        className="block bg-transparent cursor-pointer border-none w-8 h-8 xl:hidden"
+      >
         <img
           src="/icons/burgerMenu.svg"
           alt="burger menu"
           className="w-8 h-8"
         />
-      </BurgerMenu>
+      </div>
     </>
   );
 };

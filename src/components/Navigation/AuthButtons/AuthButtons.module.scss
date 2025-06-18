@@ -1,0 +1,19 @@
+@import "../../../styles/veriables.css";
+@import '../../../styles/mixins.scss';
+
+
+button.login,
+button.logout {
+  @include base-button;
+  color: var(--white-color);
+  border: 1px var(--border-opacity) solid;
+  background: var(--main-color);
+  order: 0;
+}
+
+button.register {
+  @include base-button;
+  color: var(--main-color);
+  background: var(--button-hover-color);
+  order: 1;
+}

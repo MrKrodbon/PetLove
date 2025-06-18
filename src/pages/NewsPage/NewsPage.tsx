@@ -1,5 +1,6 @@
 import PageTemplate from "../../components/PageTemplate/PageTemplate";
 import usePageData from "../../hooks/usePageData";
+import css from "./NewsPage.module.css";
 
 const NewsPage = () => {
   const {
@@ -9,13 +10,16 @@ const NewsPage = () => {
   } = usePageData({
     pageType: "newsList",
   });
+
   return (
-    <PageTemplate
-      title={title}
-      itemsList={newsList}
-      currentPage={currentPage}
-      listType={"newsList"}
-    />
+    <div className={css.news_page}>
+      <PageTemplate
+        title={title}
+        itemsList={newsList}
+        currentPage={currentPage}
+        listType={"newsList"}
+      />
+    </div>
   );
 };
 

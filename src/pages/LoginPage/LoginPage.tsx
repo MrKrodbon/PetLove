@@ -1,6 +1,7 @@
 import LoginForm from "../../components/LoginForm/LoginForm";
 import AuthPageTemplate from "../../components/AuthPageTemplate/AuthPageTemplate";
 import useAuthDisplayBackground from "../../hooks/useAuthDisplayBackground";
+import React from "react";
 
 const LoginPage = () => {
   const backgroundImageSrc = useAuthDisplayBackground({ pageType: "login" });
@@ -24,4 +25,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default React.memo(LoginPage);

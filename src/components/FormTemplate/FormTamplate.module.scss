@@ -1,0 +1,5 @@
+@import '../../styles/mixins.scss';
+
+.form-template--login{
+    @include primary-button;
+}

@@ -118,4 +118,6 @@ export interface PaginationList {
 
 export interface PagionationButtonProps {
   isCurrentPage?: boolean | false;
+  label?: string;
+  onClick: () => void;
 }

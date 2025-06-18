@@ -1,8 +1,9 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
-import { Input, LoginButton } from "../../common/styles.ts";
+import { Input } from "../../common/styles.ts";
 import { ReactNode } from "react";
 import { FormValues } from "../../utilities/formSubmit.ts";
 import { PageType } from "../../types/types.ts";
+import css from "./FormTamplate.module.scss";
 
 // interface InitialValues {
 //   name: string;
@@ -32,23 +33,6 @@ const FormTemplate = ({
   onSubmit,
   footer,
 }: FormTemplateProps) => {
-  // const onFormSubmitHandle = (
-  //   values: initialState,
-  //   actions: FormikHelpers<initialState>
-  // ) => {
-  //   const trimmedValues = {
-  //     email: values.email.trim(),
-  //     password: values.password,
-  //   };
-
-  //   dispatch(login({ ...trimmedValues }));
-  //   if (errorMessage) {
-  //     console.log("Incorrect login or password");
-  //     actions.resetForm();
-  //   }
-  //   actions.resetForm();
-  // };
-
   return (
     <Formik
       initialValues={initialValues}
@@ -67,9 +51,12 @@ const FormTemplate = ({
               />
             </>
           ))}
-          <LoginButton className="uppercase" type="submit">
+          <button
+            className={`${css["form-template--login"]} uppercase`}
+            type="submit"
+          >
             {buttonText}
-          </LoginButton>
+          </button>
         </div>
         {footer}
       </Form>

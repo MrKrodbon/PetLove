@@ -1,33 +1,42 @@
-import { SideMenuLayout } from "./SideMenu.styles";
-import { NavLink } from "react-router-dom";
-import { Button, LoginButton, RegisterButton } from "../../common/styles";
-import { AuthNavigation } from "../../layouts/Header/Header.styles";
 import { HeaderProps } from "../../types/types";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { toggleMenu } from "../../redux/ui/slice";
-import { logout } from "../../redux/auth/operations";
-import useUserLoggedIn from "../../hooks/useUserLoggedIn";
-import { Navigation } from "../Navigation/Navigation";
+import { navLinks } from "../../constants/appLinks/appLinks";
+import NavItem from "../Navigation/NavItem/NavItem";
+import css from "./SideMenu.module.css";
+import clsx from "clsx";
+import AuthButtons from "../Navigation/AuthButtons/AuthButtons";
 
 const SideMenu = ({ isOpen, isHomePage = false }: HeaderProps) => {
   const dispatch = useAppDispatch();
-  const isUserLoggedIn = useUserLoggedIn();
 
   const handleCloseModal = () => {
     dispatch(toggleMenu());
   };
-  const handleLogoutUser = () => {
-    // dispatch(toggleMenu());
-    dispatch(logout());
-  };
+  console.log(isOpen);
 
   return (
-    <SideMenuLayout isOpen={isOpen} isHomePage={isHomePage}>
+    <div
+      className={clsx(css["side-menu"], {
+        [css.open]: isOpen,
+        [css.close]: !isOpen,
+        [css.home]: isHomePage,
+      })}
+    >
       <div className="flex items-end" onClick={handleCloseModal}>
         <img src="/public/icons/close.svg" />
       </div>
-      <Navigation />
-    </SideMenuLayout>
+      <div className="flex flex-col gap-2.5 items-center">
+        {Object.values(navLinks).map((navItem) => {
+          return (
+            <NavItem key={navItem.to} to={navItem.to} label={navItem.label} />
+          );
+        })}
+      </div>
+      <div className="flex flex-row  items-center gap-2">
+        <AuthButtons />
+      </div>
+    </div>
   );
 };
 

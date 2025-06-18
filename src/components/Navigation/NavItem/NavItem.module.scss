@@ -1,0 +1,5 @@
+@import '../../../styles/mixins.scss';
+
+.nav-item--press{
+    @include navigation-button;
+}

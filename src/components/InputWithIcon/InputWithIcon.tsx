@@ -1,22 +1,38 @@
 import React from "react";
-import { Icon, StyledInput, Wrapper } from "./InputWithIcon.styled";
 import { InputFieldProps } from "../../types/types";
+import css from "./InputWithIcon.module.scss";
+import clsx from "clsx";
 
 export const InputWithIcon: React.FC<InputFieldProps> = ({
   iconSrc,
   iconPosition = "left",
-  customWidth,
-  ...props
 }) => {
+  const iconLeft = iconPosition === "left";
+  const iconRight = iconPosition === "right";
+
   return (
-    <Wrapper>
-      {iconSrc && <Icon $position={iconPosition} src={iconSrc} alt="icon" />}
-      <StyledInput
-        $hasIcon={!!iconSrc}
-        $iconPosition={iconPosition}
-        customWidth={customWidth}
-        {...props}
+    <div className="relative md:w-fit">
+      {iconSrc && (
+        <img
+          className={`${
+            (clsx(css["input-icon"]),
+            {
+              [css["input-icon_left"]]: iconLeft,
+              [css["input-icon_right"]]: iconRight,
+            })
+          }`}
+          src={iconSrc}
+          alt="search icon"
+        />
+      )}
+      <input
+        className={`
+            ${clsx(css["input-search"], {
+              ["pl-12"]: iconLeft && !!iconSrc,
+              ["pr-12"]: iconRight && !!iconSrc,
+            })}
+          `}
       />
-    </Wrapper>
+    </div>
   );
 };

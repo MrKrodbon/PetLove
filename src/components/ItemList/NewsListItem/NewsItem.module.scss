@@ -1,0 +1,25 @@
+@import "../../../styles/veriables.css";
+@import '../../../styles/mixins.scss';
+
+.news-item {
+  display: flex;
+  flex-direction: column;
+  width: 335px;
+  height: 359px;
+  text-align: left;
+}
+
+.news-item_title{
+  @include title-extra-bold;
+  color:var(--text-color);
+}
+
+.news-item_description{
+  @include subtitle-medium;
+    color: var(--text-color);
+}
+
+.news-item_date{
+  @include subtitle-medium;
+    color: var(--gray-color);
+}

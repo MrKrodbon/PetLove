@@ -1,12 +1,11 @@
-import React from "react";
-import { Button, FilterSearchFieldWrapper } from "./FilterSearchField.styles";
 import SearchField from "../SearchField/SearchField";
 import FilterField from "../FilterField/FilterField";
 import { BlockVectorLine } from "../../common/styles";
+import css from "./FilterSearchField.module.css";
 
 const FilterSearchField = () => {
   return (
-    <FilterSearchFieldWrapper>
+    <div className={css["filter-search"]}>
       <div className="flex flex-row flex-wrap gap-3">
         <SearchField
           placeholder="Search"
@@ -39,12 +38,13 @@ const FilterSearchField = () => {
       </div>
       <BlockVectorLine />
       <div className="flex flex-row flex-wrap my-3 gap-2.5">
-        <Button>Popular</Button>
-        <Button>Unpopular</Button>
-        <Button>Cheap</Button>
-        <Button>Expensive</Button>
+        {["Popular", "Unpopular", "Cheap", "Expensive"].map((label) => {
+          return (
+            <button className={css["filter-search--press"]}>{label}</button>
+          );
+        })}
       </div>
-    </FilterSearchFieldWrapper>
+    </div>
   );
 };
 
