@@ -36,7 +36,7 @@ const FilterSearchField = () => {
           iconSrc="/public/icons/search.svg"
         />
       </div>
-      <BlockVectorLine />
+      <div className={css["filter-search_vector "]} />
       <div className="flex flex-row flex-wrap my-3 gap-2.5">
         {["Popular", "Unpopular", "Cheap", "Expensive"].map((label) => {
           return (

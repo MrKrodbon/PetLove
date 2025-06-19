@@ -1,13 +1,10 @@
 import React from "react";
-import { useAppDispatch } from "../../hooks/useAppSelector";
-import { setNewPage, setSearchValue } from "../../redux/news/slice";
+import { setSearchValue } from "../../redux/news/slice";
 import { InputWithIcon } from "../InputWithIcon/InputWithIcon";
 import { InputFieldProps } from "../../types/types";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
-const SearchField = ({
-  placeholder,
-  iconPosition = "right",
-}: InputFieldProps) => {
+const SearchField = ({ placeholder, iconPosition }: InputFieldProps) => {
   const dispatch = useAppDispatch();
   const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchValue(e.target.value));
@@ -15,7 +12,7 @@ const SearchField = ({
 
   return (
     <InputWithIcon
-      iconSrc="/public/icons/search.svg"
+      iconSrc="/icons/search.svg"
       iconPosition={iconPosition}
       placeholder={placeholder}
       onInput={onChangeHandle}

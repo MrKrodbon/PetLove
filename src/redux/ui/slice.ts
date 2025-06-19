@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isOpen: false,
+  isHomePage: false,
 };
 
 const uiSlice = createSlice({
@@ -17,8 +18,12 @@ const uiSlice = createSlice({
     toggleMenu: (state) => {
       state.isOpen = !state.isOpen;
     },
+    setIsHomePage: (state, action) => {
+      state.isHomePage = action.payload;
+    },
   },
 });
 
-export const { openMenu, closeMenu, toggleMenu } = uiSlice.actions;
+export const { openMenu, closeMenu, toggleMenu, setIsHomePage } =
+  uiSlice.actions;
 export default uiSlice.reducer;

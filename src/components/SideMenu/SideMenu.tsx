@@ -13,7 +13,6 @@ const SideMenu = ({ isOpen, isHomePage = false }: HeaderProps) => {
   const handleCloseModal = () => {
     dispatch(toggleMenu());
   };
-  console.log(isOpen);
 
   return (
     <div
@@ -33,7 +32,7 @@ const SideMenu = ({ isOpen, isHomePage = false }: HeaderProps) => {
           );
         })}
       </div>
-      <div className="flex flex-row  items-center gap-2">
+      <div className="flex flex-col  items-center gap-2 md:flex-row md:justify-center">
         <AuthButtons />
       </div>
     </div>

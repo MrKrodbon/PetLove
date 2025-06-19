@@ -1,20 +1,14 @@
-import usePageData from "../../hooks/usePageData";
 import PageTemplate from "../../components/PageTemplate/PageTemplate";
+import useGetFriends from "../../hooks/useGetFriends";
 
 const OurFriends = () => {
-  const {
-    title = "",
-    friendsList = [],
-    currentPage = 1,
-  } = usePageData({
-    pageType: "ourFriendsList",
-  });
+  const friendsList = useGetFriends();
+  console.log(friendsList, "friends");
 
   return (
     <PageTemplate
-      title={title}
+      title={friendsList.title}
       itemsList={friendsList}
-      currentPage={currentPage}
       listType={"ourFriendsList"}
     />
   );

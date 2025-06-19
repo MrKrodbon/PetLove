@@ -1,4 +1,5 @@
 import React from "react";
+import css from "./ButtonWithIcon.module.css";
 
 type Props = {
   iconSrc?: string;
@@ -7,14 +8,11 @@ type Props = {
 
 export const ButtonWithIcon: React.FC<Props> = ({ iconSrc, onClick }) => {
   return (
-    <div className="flex justify-center items-center">
-      <button
-        className="rounded-[50%] p-0 border-none bg-transparent"
-        onClick={onClick}
-      >
+    <div className="flex justify-center items-center ">
+      <button className={css.button} onClick={onClick}>
         {iconSrc && (
           <img
-            className="pointer-events-none object-contain"
+            className="pointer-events-none object-contain "
             src={iconSrc}
             alt="icon"
           />

@@ -1,24 +1,23 @@
 import ArrowButton from "./ArrowButton/ArrowButton";
 import { setNewPage } from "../../redux/news/slice";
 import { generatePageNumbers } from "../../utilities/generatePageNumbers";
-import { PaginationList } from "../../types/types";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
-import css from "./Paginationa.module.scss";
+import css from "./Pagination.module.scss";
 import { PaginationButton } from "./PaginationButton/PaginationButton";
 
 interface PaginationListProps {
-  paginationList: PaginationList;
+  totalPages?: number;
   currentPage?: number;
 }
 
-const Pagination = ({ paginationList, currentPage }: PaginationListProps) => {
+const Pagination = ({ totalPages, currentPage }: PaginationListProps) => {
   const dispatch = useAppDispatch();
 
-  const totalPages = paginationList?.totalPages || 1;
   //Треба зробити універсальним максимальну кількість сторінок
-  const pageNumbers = generatePageNumbers(currentPage || 1, totalPages);
+  const pageNumbers = generatePageNumbers(currentPage || 1, totalPages || 1);
 
   const onPageChangeHandle = (newPage: number) => {
+    console.log("new page", newPage);
     if (newPage <= totalPages && newPage >= 1) {
       dispatch(setNewPage(newPage));
     } else if (newPage < 1) {

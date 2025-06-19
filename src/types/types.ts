@@ -21,16 +21,6 @@ export interface AuthNavigationProps {
   isMobileMenu?: boolean;
 }
 
-export interface NewsItemProps {
-  id?: string;
-  imgUrl: string;
-  alt: string;
-  title?: string;
-  text?: string;
-  date?: string;
-  moreInfo?: string;
-}
-
 export interface WorkDays {
   id?: string;
   isOpen: boolean;
@@ -82,19 +72,23 @@ export interface AuthState {
 }
 
 export interface NewsItem {
-  imgUrl: string | null;
-  title: string | null;
-  text: string | null;
   date: string | null;
-  url: string | null;
   id?: string | null;
+  imgUrl: string | null;
+  text: string | null;
+  title: string | null;
+  url: string | null;
   _id?: string | null;
 }
 
 export interface NewsState {
-  page: 1;
-  totalPages: 0;
-  search: "";
+  results: NewsItem[];
+  page: number;
+  perPage: number;
+  totalPages: number;
+  search: string;
+  isLoading: boolean;
+  error: string | null;
 }
 
 export type PageType = {
@@ -103,18 +97,19 @@ export type PageType = {
 
 export type ItemListProps = {
   listType: "newsList" | "ourFriendsList" | "petList";
+  itemsList: NewsState;
 };
 
 export type DeviceType = "mobile" | "tablet" | "desktop";
 
-export interface PaginationList {
-  paginationList: {
-    page: number;
-    perPage: number;
-    results: [];
-    totalPages: number;
-  };
-}
+// export interface PaginationList {
+//   paginationList: {
+//     page: number;
+//     perPage: number;
+//     results: [];
+//     totalPages: number;
+//   };
+// }
 
 export interface PagionationButtonProps {
   isCurrentPage?: boolean | false;

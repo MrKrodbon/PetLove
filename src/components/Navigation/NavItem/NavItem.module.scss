@@ -3,3 +3,8 @@
 .nav-item--press{
     @include navigation-button;
 }
+
+
+.nav-item_home--press{
+    @include navigation-button-home;
+}

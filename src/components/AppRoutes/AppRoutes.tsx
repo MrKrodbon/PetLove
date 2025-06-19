@@ -8,7 +8,11 @@ import NotFound from "../../pages/NotFoundPage/NotFoundPage";
 import OurFriends from "../../pages/OurFriendsPage/OurFriendsPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import HomePage from "../../pages/HomePage/HomePage";
-import { authLinks, navLinks } from "../../constants/appLinks/appLinks";
+import {
+  authLinks,
+  defaultLinks,
+  navLinks,
+} from "../../constants/appLinks/appLinks";
 
 const AppRoutes = () => {
   return (
@@ -24,7 +28,7 @@ const AppRoutes = () => {
       <Route path={navLinks.news.to} element={<NewsPage />} />
       <Route path={navLinks.friends.to} element={<OurFriends />} />
       <Route path={navLinks.findPet.to} element={<FindPet />} />
-      <Route path={navLinks.home.to} element={<HomePage />} />
+      <Route path={defaultLinks.home.to} element={<HomePage />} />
       {/* <Route
         path="/profile"
         element={
@@ -33,7 +37,7 @@ const AppRoutes = () => {
             </PrivateRoute>
             }
             /> */}
-      <Route path={navLinks.restrictPath.to} element={<NotFound />} />
+      <Route path={defaultLinks.restrictPath.to} element={<NotFound />} />
     </Routes>
   );
 };

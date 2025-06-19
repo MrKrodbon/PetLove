@@ -1,9 +1,9 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
-import { Input } from "../../common/styles.ts";
 import { ReactNode } from "react";
 import { FormValues } from "../../utilities/formSubmit.ts";
 import { PageType } from "../../types/types.ts";
 import css from "./FormTamplate.module.scss";
+import Input from "./Input/Input.tsx";
 
 // interface InitialValues {
 //   name: string;

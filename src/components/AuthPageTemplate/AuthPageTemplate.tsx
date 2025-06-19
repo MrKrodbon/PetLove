@@ -16,7 +16,6 @@ interface AuthPageTemplateProps {
   title: "Log in" | "Register";
   subtitle: string;
   form: ReactNode;
-  backgroundImageSrc: string;
 }
 
 const AuthPageTemplate = ({
@@ -25,18 +24,20 @@ const AuthPageTemplate = ({
   petInfo,
   title,
   subtitle,
-  backgroundImageSrc,
 }: AuthPageTemplateProps) => {
   return (
     <div className={shared.container}>
       <Header />
       <div className={css.auth_container}>
         <div
-          className="relative rounded-[60px]   bg-no-repeat
+          className={`${
+            title === "Log in"
+              ? css["auth_image_login"]
+              : css["auth_image_register"]
+          }  relative rounded-[60px]   bg-no-repeat
                  w-[335px] h-[280px]
                  md:w-[704px] md:h-[302px]
-                 xl:w-[592px] xl:h-[654px]"
-          style={{ backgroundImage: `url(${backgroundImageSrc})` }}
+                 xl:w-[592px] xl:h-[654px]`}
         >
           <div className={css.auth_image_comment}>
             <div className={css.auth_image_comment_pet}>

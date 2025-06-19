@@ -1,24 +1,13 @@
 import PageTemplate from "../../components/PageTemplate/PageTemplate";
-import usePageData from "../../hooks/usePageData";
 import css from "./NewsPage.module.css";
+import useGetNews from "../../hooks/useGetNews";
 
 const NewsPage = () => {
-  const {
-    title = "",
-    newsList = [],
-    currentPage = 1,
-  } = usePageData({
-    pageType: "newsList",
-  });
+  const newsList = useGetNews();
 
   return (
     <div className={css.news_page}>
-      <PageTemplate
-        title={title}
-        itemsList={newsList}
-        currentPage={currentPage}
-        listType={"newsList"}
-      />
+      <PageTemplate title={"News"} itemsList={newsList} listType={"newsList"} />
     </div>
   );
 };

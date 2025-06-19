@@ -2,6 +2,9 @@ export const navLinks = {
   news: { to: "/news", label: "News" },
   findPet: { to: "/find-pet", label: "Find Pet" },
   friends: { to: "/friends", label: "Our Friends" },
+};
+
+export const defaultLinks = {
   home: { to: "/" },
   restrictPath: { to: "*" },
 };
