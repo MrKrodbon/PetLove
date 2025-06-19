@@ -12,8 +12,8 @@ type NavigationItem = (typeof navLinks)[keyof typeof navLinks];
 
 export const Navigation = ({ isUserLoggedIn }: NavigationProps) => {
   return (
-    <div className="flex flex-row  items-center gap-2">
-      <div className="hidden xl:flex ">
+    <>
+      <div className="flex flex-row  items-center gap-2 justify-evenly">
         {Object.values(navLinks).map((navItem: NavigationItem) => (
           <NavItem key={navItem.to} to={navItem.to} label={navItem.label} />
         ))}
@@ -26,8 +26,13 @@ export const Navigation = ({ isUserLoggedIn }: NavigationProps) => {
           </div>
         </>
       ) : (
-        <AuthButtons />
+        <>
+          <div className="hidden  xl:flex gap-1.5">
+            <AuthButtons />
+          </div>
+          <BurgerMenuController />
+        </>
       )}
-    </div>
+    </>
   );
 };

@@ -11,9 +11,9 @@ import { StoreType } from "../store";
 //   error: newsState.error,
 // }));
 
-// export const selectNewsByCurrentPage = (state: StoreType) => state.news.news;
+export const selectNewsByCurrentPage = (state: StoreType) => state.news.page;
 
-export const selectCurrentNewsPage = (state: StoreType) => state.news.page;
+export const selectNews = (state: StoreType) => state.news;
 // export const selectCurrentPetsPage = (state: StoreType) => state.;
 export const selectTotalPages = (state: StoreType) => state.news.totalPages;
 export const selectSearchValue = (state: StoreType) => state.news.search;

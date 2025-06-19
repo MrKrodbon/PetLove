@@ -1,4 +1,3 @@
-import usePageData from "../../hooks/usePageData";
 import PageTemplate from "../../components/PageTemplate/PageTemplate";
 
 const FindPet = () => {
@@ -18,13 +17,14 @@ const FindPet = () => {
   //   </Container>
   // );
 
-  const {
-    title = "",
-    petList = [],
-    currentPage = 1,
-  } = usePageData({
-    pageType: "petList",
-  });
+  // const {
+  //   title = "",
+  //   petList = [],
+  //   currentPage = 1,
+  // } = usePageData({
+  //   pageType: "petList",
+  // });
+  return <></>;
   return (
     <PageTemplate
       title={title}

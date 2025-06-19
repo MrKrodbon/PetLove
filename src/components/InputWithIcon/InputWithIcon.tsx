@@ -11,27 +11,23 @@ export const InputWithIcon: React.FC<InputFieldProps> = ({
   const iconRight = iconPosition === "right";
 
   return (
-    <div className="relative md:w-fit">
+    <div className=" flex relative md:w-fit items-center">
       {iconSrc && (
         <img
-          className={`${
-            (clsx(css["input-icon"]),
-            {
-              [css["input-icon_left"]]: iconLeft,
-              [css["input-icon_right"]]: iconRight,
-            })
-          }`}
+          className={clsx(
+            css["input-icon"],
+            iconLeft && css["input-icon_left"],
+            iconRight && css["input-icon_right"]
+          )}
           src={iconSrc}
           alt="search icon"
         />
       )}
       <input
-        className={`
-            ${clsx(css["input-search"], {
-              ["pl-12"]: iconLeft && !!iconSrc,
-              ["pr-12"]: iconRight && !!iconSrc,
-            })}
-          `}
+        className={clsx(css["input-search"], {
+          ["pl-12"]: iconLeft && !!iconSrc,
+          ["pr-12"]: iconRight && !!iconSrc,
+        })}
       />
     </div>
   );

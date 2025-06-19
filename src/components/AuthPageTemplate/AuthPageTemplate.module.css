@@ -27,6 +27,14 @@
   display: none;
 }
 
+.auth_image_login {
+  background-image: url("images/LoginImage/LoginImageMobile.jpg");
+}
+
+.auth_image_register {
+  background-image: url("images/RegisterImage/RegisterImageMobile.jpg");
+}
+
 .auth_image_comment_pet {
   display: flex;
   align-items: center;
@@ -47,6 +55,14 @@
   .auth_form_container {
     padding: 71px 140px;
   }
+
+  .auth_image_login {
+    background-image: url("images/LoginImage/LoginImageTablet.jpg");
+  }
+
+  .auth_image_register {
+    background-image: url("images/RegisterImage/RegisterImageTablet.jpg");
+  }
 }
 
 @media (min-width: 1280px) {
@@ -56,6 +72,14 @@
 
   .auth_form_container {
     padding: 77px 84px;
+  }
+
+  .auth_image_login {
+    background-image: url("images/LoginImage/LoginImageDesktop.jpg");
+  }
+
+  .auth_image_register {
+    background-image: url("images/RegisterImage/RegisterImageDesktop.jpg");
   }
 
   .auth_image_comment {

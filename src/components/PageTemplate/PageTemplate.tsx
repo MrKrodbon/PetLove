@@ -1,41 +1,38 @@
-import React, { ReactNode, useMemo } from "react";
-import { Title } from "../../common/styles";
 import Header from "../Header/Header";
-import {
-  HeaderWrapper,
-  NewsContainer,
-} from "../../pages/NewsPage/NewsPage.styles";
 import ItemList from "../ItemList/ItemList";
 import Pagination from "../Pagination/Pagination";
-import { PaginationList } from "../../types/types";
+import { NewsState } from "../../types/types";
 import SearchField from "../SearchField/SearchField";
+import css from "./PageTemplate.module.scss";
 
 interface PageTemplateProps {
   title: string;
   listType: "newsList" | "ourFriendsList" | "petList";
-  itemsList: PaginationList;
-  currentPage: number;
+  itemsList: NewsState;
 }
 
-const PageTemplate = ({
-  title,
-  listType,
-  itemsList,
-  currentPage,
-}: PageTemplateProps) => {
+const PageTemplate = ({ title, listType, itemsList }: PageTemplateProps) => {
   return (
     <>
-      <div className="mb-[60px]">
-        <Header />
+      <Header />
+
+      <div className="flex flex-row justify-between mb-6 w-full">
+        <p className={css["page-template_title"]}>{title}</p>
+        <SearchField
+          iconSrc="icons/search.svg"
+          placeholder="Search"
+          iconPosition="left"
+        />
       </div>
-
-      <Title>{title}</Title>
-      <div className="flex justify-center mb-6">{/* <SearchField /> */}</div>
-      <ItemList listType={listType} />
-
-      {/* <div className="flex flex-row justify-center w-full">
-        <Pagination paginationList={itemsList} currentPage={currentPage} />
-      </div> */}
+      <ItemList listType={listType} itemsList={itemsList} />
+      {listType !== "ourFriendsList" && (
+        <div className="flex flex-row justify-center w-full">
+          <Pagination
+            totalPages={itemsList.totalPages}
+            currentPage={itemsList.page}
+          />
+        </div>
+      )}
     </>
   );
 };
