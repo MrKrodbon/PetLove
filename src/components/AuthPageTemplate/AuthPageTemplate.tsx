@@ -61,8 +61,10 @@ const AuthPageTemplate = ({
         </div>
         <div className={css.auth_form_container}>
           <div className="flex flex-col gap-4 mb-8 w-fit">
-            <p className="text-5xl text-left">{title}</p>
-            <p className="flex flex-wrap text-left xl:w-[424px]">{subtitle}</p>
+            <p className="text-5xl text-left text-black">{title}</p>
+            <p className="flex flex-wrap text-left xl:w-[424px] text-black">
+              {subtitle}
+            </p>
           </div>
           {form}
         </div>

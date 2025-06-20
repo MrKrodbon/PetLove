@@ -4,6 +4,8 @@ import { formSubmit, FormValues } from "../../utilities/formSubmit.ts";
 import { useSelector } from "react-redux";
 import { StoreType } from "../../redux/store.ts";
 import { useAppDispatch } from "../../hooks/useAppDispatch.ts";
+import { NavLink } from "react-router-dom";
+import { authLinks } from "../../constants/appLinks/appLinks.ts";
 
 const initialValues = {
   name: "",
@@ -40,8 +42,10 @@ const RegistrationForm = () => {
         initialValues={initialValues}
         footer={
           <>
-            <p>Already have an account?</p>
-            <a className="text-shadow-amber-500">Login</a>
+            <p className="text-black">Already have an account?</p>
+            <NavLink className="text-shadow-amber-500" to={authLinks.login.to}>
+              Login
+            </NavLink>
           </>
         }
       />
