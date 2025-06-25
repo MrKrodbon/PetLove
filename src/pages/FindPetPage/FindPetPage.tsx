@@ -1,4 +1,4 @@
-import PageTemplate from "../../components/PageTemplate/PageTemplate";
+import PageTemplate from "@/components/layouts/PageTemplate/PageTemplate";
 
 const FindPet = () => {
   // return (

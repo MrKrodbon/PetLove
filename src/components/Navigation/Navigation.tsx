@@ -1,8 +1,8 @@
 import UserDisplay from "../UserDisplay/UserDisplay";
-import BurgerMenuController from "../BurgerMenuController/BurgerMenuController";
+import BurgerMenuController from "./BurgerMenuController/BurgerMenuController";
 import { navLinks } from "../../constants/appLinks/appLinks";
+import AuthButtons from "../Auth/AuthButtons/AuthButtons";
 import NavItem from "./NavItem/NavItem";
-import AuthButtons from "./AuthButtons/AuthButtons";
 
 interface NavigationProps {
   isUserLoggedIn: boolean;

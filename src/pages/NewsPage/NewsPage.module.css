@@ -1,4 +1,4 @@
-.news_page {
+.newsPage {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -10,14 +10,14 @@
 }
 
 @media screen and (min-width: 768px) {
-  .news_page {
+  .newsPage {
     width: 704px;
     gap: 44px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .news_page {
+  .newsPage {
     width: 1153px;
     flex-direction: row;
     gap: 40px;

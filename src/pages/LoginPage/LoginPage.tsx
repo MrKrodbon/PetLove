@@ -1,12 +1,13 @@
-import LoginForm from "../../components/LoginForm/LoginForm";
-import AuthPageTemplate from "../../components/AuthPageTemplate/AuthPageTemplate";
+import dogIcon from "@/assets/icons/dogEmoji.png";
 
 import React from "react";
+import AuthPageTemplate from "@/components/Auth/AuthPageTemplate/AuthPageTemplate";
+import LoginForm from "@/components/Auth/LoginForm/LoginForm";
 
 const LoginPage = () => {
   return (
     <AuthPageTemplate
-      iconSrc="/icons/dogEmoji.png"
+      iconSrc={dogIcon}
       petInfo={{
         petName: "Rich",
         description: `Rich would be the perfect addition 

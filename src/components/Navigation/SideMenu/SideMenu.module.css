@@ -1,0 +1,27 @@
+@import "@/styles/variables.css";
+
+.sideMenu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0;
+  right: 0;
+  width: 218px;
+  height: 100%;
+  background-color: var(--white-color);
+  color: var(--white-color);
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1000;
+  padding: 2rem 1rem;
+}
+
+.home {
+  background-color: var(--main-color);
+}
+
+@media screen and (min-width: 768px) {
+  .sideMenu {
+    width: 374px;
+  }
+}

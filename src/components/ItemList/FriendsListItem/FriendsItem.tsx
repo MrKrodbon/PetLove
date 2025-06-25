@@ -2,7 +2,7 @@ import { FriendsItemProps } from "../../../types/types";
 import { getCurrentDay } from "../../../utilities/getCurrentDay";
 import css from "./FriendsItem.module.scss";
 
-const FriendsItem = ({
+const FriendsListItem = ({
   address,
   addressURL,
   email,
@@ -60,4 +60,4 @@ const FriendsItem = ({
   );
 };
 
-export default FriendsItem;
+export default FriendsListItem;

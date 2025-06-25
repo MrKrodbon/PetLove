@@ -1,0 +1,115 @@
+@import "@/styles/variables.css";
+
+.authContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.authImageContainer {
+  position: relative;
+  border-radius: 60px;
+  background-repeat: no-repeat;
+  width: 335px;
+  height: 280px;
+}
+
+.authFormContainer {
+  padding: 60px 20px;
+}
+
+.authPetNameComment {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.03em;
+
+  color: var(--main-color);
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  padding: 19px 16px 18px 0;
+}
+
+.authImageComment {
+  display: none;
+}
+
+.authImageLogin {
+  background-image: url("@/assets/images/LoginImage/LoginImageMobile.jpg");
+}
+
+.authImageRegister {
+  background-image: url("@/assets/images/RegisterImage/RegisterImageMobile.jpg");
+}
+
+.authImageCommentPet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 194px;
+  height: 60px;
+  margin: 16px 8px 45px 16px;
+  background: var(--button-hover-color);
+}
+
+@media (min-width: 768px) {
+  .authContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .authImageContainer {
+    width: 704px;
+    height: 280px;
+  }
+
+  .authFormContainer {
+    padding: 71px 140px;
+  }
+
+  .authImageLogin {
+    background-image: url("@/assets/images/LoginImage/LoginImageTablet.jpg");
+  }
+
+  .authImageRegister {
+    background-image: url("@/assets/images/RegisterImage/RegisterImageTablet.jpg");
+  }
+}
+
+@media (min-width: 1280px) {
+  .authContainer {
+    flex-direction: row;
+  }
+
+  .authImageContainer {
+    width: 592px;
+    height: 654px;
+  }
+
+  .authFormContainer {
+    padding: 77px 84px;
+  }
+
+  .authImageLogin {
+    background-image: url("@/assets/images/LoginImage/LoginImageDesktop.jpg");
+  }
+
+  .authImageRegister {
+    background-image: url("@/assets/images/RegisterImage/RegisterImageDesktop.jpg");
+  }
+
+  .authImageComment {
+    display: block;
+    position: absolute;
+    top: 436px;
+    left: 61px;
+    background-color: var(--white-color);
+    width: 294px;
+    height: 121px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+  }
+}

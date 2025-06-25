@@ -8,6 +8,24 @@
   margin-bottom: 80px;
 }
 
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  width: 44px;
+  height: 44px;
+
+  color: var(--text-color);
+  background-color: transparent;
+}
+
+.currentPage {
+  background-color: var(--main-color);
+}
+
+
 @media (width >= 768px) {
   .pagination {
     margin-bottom: 88px;

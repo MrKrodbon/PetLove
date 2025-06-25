@@ -1,8 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import css from "./NavItem.module.scss";
 import React from "react";
-import { useAppSelector } from "../../../hooks/useAppSelector";
-import { selectIsHomePage } from "../../../redux/ui/selectors";
 import clsx from "clsx";
 
 interface NavItemProps {
@@ -17,7 +15,9 @@ const buildLinkClass = ({ isActive }) => {
 };
 
 const NavItem = ({ to, label }: NavItemProps) => {
-  const isHomePage = useAppSelector(selectIsHomePage);
+  const { pathname } = useLocation();
+
+  const isHomePage = pathname === "/";
 
   return (
     <NavLink to={to} className={buildLinkClass}>

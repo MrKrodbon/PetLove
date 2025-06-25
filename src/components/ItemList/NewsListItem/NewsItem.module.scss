@@ -1,5 +1,5 @@
-@import "../../../styles/veriables.css";
-@import '../../../styles/mixins.scss';
+@use '@/styles/mixins.scss' as mixins;
+@import "@/styles/variables.css";
 
 .news-item {
   display: flex;
@@ -10,16 +10,16 @@
 }
 
 .news-item_title{
-  @include title-extra-bold;
+  @include mixins.title-extra-bold;
   color:var(--text-color);
 }
 
 .news-item_description{
-  @include subtitle-medium;
+  @include mixins.subtitle-medium;
     color: var(--text-color);
 }
 
 .news-item_date{
-  @include subtitle-medium;
+  @include mixins.subtitle-medium;
     color: var(--gray-color);
 }

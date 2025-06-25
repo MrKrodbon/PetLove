@@ -1,5 +1,5 @@
 import "./App.css";
-import AppRoutes from "./components/AppRoutes/AppRoutes";
+import AppRoutes from "./routes/AppRoutes";
 import { useAppSelector } from "./hooks/useAppSelector";
 import { setToken } from "./redux/auth/slice";
 import { useEffect } from "react";

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getFriends } from "./operations";
 
 const initialState = {
-  friends: {
+  results: {
     address: "",
     addressURL: "",
     email: "",
@@ -23,7 +23,7 @@ const friendsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getFriends.fulfilled, (state, action) => {
-        state.friends = action.payload;
+        state.results = action.payload;
       })
       .addCase(getFriends.pending, (state) => {
         state.isLoading = true;

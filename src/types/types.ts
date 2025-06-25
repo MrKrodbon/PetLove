@@ -3,20 +3,6 @@ export interface RouteProps {
   redirectTo?: string;
 }
 
-export interface HeaderProps {
-  isOpen?: boolean;
-  isHomePage?: boolean;
-}
-
-export interface InputFieldProps {
-  placeholder?: string;
-  iconPosition?: "left" | "right";
-  iconSrc: string;
-  onInput?: () => void;
-  value?: string;
-  className?: string;
-}
-
 export interface AuthNavigationProps {
   isMobileMenu?: boolean;
 }
@@ -28,16 +14,16 @@ export interface WorkDays {
   to?: string;
 }
 
-export interface FriendsItemProps {
+export interface FriendsItem {
   id?: string;
-  address: string;
-  addressURL: string;
-  email: string;
-  imageUrl: string;
-  phone: string;
   title: string;
   url: string;
+  addressURL: string;
+  imageUrl: string;
+  address: string;
   workDays: WorkDays[];
+  phone: string;
+  email: string;
 }
 
 export interface PetItemProps {
@@ -95,10 +81,17 @@ export type PageType = {
   pageType: "login" | "register";
 };
 
-export type ItemListProps = {
-  listType: "newsList" | "ourFriendsList" | "petList";
-  itemsList: NewsState;
-};
+export type ItemListProps =
+  | {
+      listType: "newsList";
+      itemsList: NewsItem[];
+      page?: number;
+      totalPages?: number;
+    }
+  | {
+      listType: "friendsList";
+      itemsList: FriendsItem[];
+    };
 
 export type DeviceType = "mobile" | "tablet" | "desktop";
 

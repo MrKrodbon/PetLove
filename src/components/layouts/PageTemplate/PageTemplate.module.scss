@@ -1,0 +1,15 @@
+@use "@/styles/mixins.scss" as mixins;
+@import "@/styles/variables.css";
+
+.title {
+  @include mixins.title-extra-bold;
+  color: var(--text-color);
+  text-align: left;
+}
+
+@media (width >= 1280px) {
+  .title {
+    font-size: 54px;
+    line-height: 54px;
+  }
+}

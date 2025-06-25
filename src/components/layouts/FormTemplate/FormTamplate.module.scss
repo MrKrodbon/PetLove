@@ -1,0 +1,8 @@
+@use "@/styles/mixins.scss" as mixins;
+
+.button {
+  @include mixins.primary-button;
+  text-transform: uppercase;
+}
+
+

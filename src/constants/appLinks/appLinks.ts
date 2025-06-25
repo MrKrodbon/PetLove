@@ -12,4 +12,7 @@ export const defaultLinks = {
 export const authLinks = {
   login: { to: "/login", label: "Log in" },
   register: { to: "/register", label: "Registration" },
+  logout: { to: "/", label: "Log out" },
 };
+
+export const filterLabels = ["Popular", "Unpopular", "Cheap", "Expensive"];

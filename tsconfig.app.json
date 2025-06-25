@@ -6,6 +6,18 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/pages/*": ["src/pages/*"],
+      "@/components/*": ["src/components/*"],
+      "@/components/layouts/*": ["src/components/layouts/*"],
+      "@/assets/*": ["src/assets/icons/*"],
+      "@/utilities/*": ["src/utilities/*"],
+      "@/hooks/*": ["src/hooks/*"],
+
+      "@/redux/*": ["src/redux/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

@@ -1,3 +1,3 @@
 import { StoreType } from "../store";
 
-export const selectFriendsList = (state: StoreType) => state.friends.friends;
+export const selectFriendsList = (state: StoreType) => state.friends;

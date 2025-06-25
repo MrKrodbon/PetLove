@@ -1,10 +1,10 @@
-@import '../../../styles/mixins.scss';
+@use '@/styles/mixins.scss' as mixins;
 
 .nav-item--press{
-    @include navigation-button;
+    @include mixins.navigation-button;
 }
 
 
 .nav-item_home--press{
-    @include navigation-button-home;
+    @include mixins.navigation-button-home;
 }

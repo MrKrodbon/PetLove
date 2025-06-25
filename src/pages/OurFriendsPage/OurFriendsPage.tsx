@@ -1,5 +1,5 @@
-import PageTemplate from "../../components/PageTemplate/PageTemplate";
-import useGetFriends from "../../hooks/useGetFriends";
+import PageTemplate from "@/components/layouts/PageTemplate/PageTemplate";
+import useGetFriends from "@/hooks/useGetFriends";
 
 const OurFriends = () => {
   const friendsList = useGetFriends();
@@ -7,9 +7,8 @@ const OurFriends = () => {
 
   return (
     <PageTemplate
-      title={friendsList.title}
-      itemsList={friendsList}
-      listType={"ourFriendsList"}
+      title={friendsList.results.title}
+      itemsList={friendsList.results}
     />
   );
 };

@@ -1,13 +1,13 @@
-import { FriendsItemProps, ItemListProps, NewsItem } from "../../types/types";
-import NewsItem from "./NewsListItem/NewsItem";
-import FriendsItem from "./FriendsListItem/FriendsItem";
+import { FriendsItem, ItemListProps, NewsItem } from "../../types/types";
+import FriendsListItem from "./FriendsListItem/FriendsItem";
 import NewsListItem from "./NewsListItem/NewsItem";
 
 const ItemList = ({ listType, itemsList }: ItemListProps) => {
+  console.log(itemsList);
   return (
     <div className="flex justify-between flex-wrap gap-5 list-none mb-11 md:mb-[60px]">
       {listType === "newsList" &&
-        itemsList?.results.map((n: NewsItem) => {
+        itemsList?.map((n: NewsItem) => {
           return (
             <NewsListItem
               imgUrl={n.imgUrl || ""}
@@ -19,10 +19,10 @@ const ItemList = ({ listType, itemsList }: ItemListProps) => {
             />
           );
         })}
-      {listType === "ourFriendsList" &&
-        itemsList.map((f: FriendsItemProps) => {
+      {listType === "friendsList" &&
+        itemsList?.map((f: FriendsItem) => {
           return (
-            <FriendsItem
+            <FriendsListItem
               address={f.address || ""}
               addressURL={f.addressURL || ""}
               title={f.title || ""}

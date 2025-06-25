@@ -1,5 +1,5 @@
-@import "../../../styles/veriables.css";
-@import "../../../styles/mixins.scss";
+@use "@/styles/mixins.scss" as mixins;
+@import "@/styles/variables.css";
 
 // Кнопку треба винести в комоненту типографії
 button {
@@ -17,7 +17,7 @@ button {
 }
 
 .pet-list_title {
-  @include title-extra-bold;
+  @include mixins.title-extra-bold;
 
   color: var(--white-color);
 }
@@ -29,7 +29,7 @@ button {
 }
 
 .pet-list_subtitle {
-  @include subtitle-medium;
+  @include mixins.subtitle-medium;
   display: flex;
   height: 18px;
   width: 100%;

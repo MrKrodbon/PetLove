@@ -1,0 +1,98 @@
+@use "@/styles/mixins.scss" as mixins;
+@import "@/styles/variables.css";
+
+.hero {
+  border-radius: 30px;
+  display: flex;
+  background-color: var(--main-color);
+  flex-direction: column;
+  width: 320px;
+  letter-spacing: -0.03em;
+}
+
+.heroBottomBlock {
+  display: flex;
+  width: 320px;
+  height: 496px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("@/assets/images/MainImage.jpg");
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+}
+
+.title {
+  @include mixins.title-extra-bold;
+  flex: none;
+  flex-grow: 0;
+  margin-top: 60px;
+  text-align: left;
+  height: 144px;
+  order: 0;
+  color: var(--white-color);
+}
+
+.subtitle {
+  @include mixins.subtitle-medium;
+  margin-top: 24px;
+  height: 54px;
+  order: 1;
+  flex-grow: 0;
+  color: var(--white-color);
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    width: 704px;
+  }
+
+  .heroBottomBlock {
+    background-image: url("@/assets/images/MainImageTablet.jpg");
+    flex-direction: row;
+    justify-content: end;
+    width: 704px;
+    height: 496px;
+  }
+
+  .content {
+    padding-bottom: 44px;
+  }
+
+  .title {
+    width: 640px;
+    margin-top: 112px;
+    font-size: 50px;
+  }
+
+  .subtitle {
+    width: 255px;
+    margin-top: 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .hero {
+    width: 1216px;
+  }
+
+  .heroBottomBlock {
+    background-image: url("@/assets/images/MainImageDesktop.jpg");
+    width: 1216px;
+    height: 384px;
+  }
+
+  .content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    padding-bottom: 32px;
+  }
+  .title {
+    width: 760px;
+    margin-top: 123px;
+    font-size: 80px;
+  }
+}
