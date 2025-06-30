@@ -1,3 +1,4 @@
+@use "@/styles/mixins.scss" as mixins;
 @import "@/styles/variables.css";
 
 .search {
@@ -6,6 +7,10 @@
   background-color: var(--white-color);
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
+}
+
+.search::placeholder{
+  color: var(--gray-color);
 }
 
 .icon {
@@ -23,4 +28,20 @@
 
 .iconRight {
   right: 16px;
+}
+
+.auth {
+  height: 42px;
+  width: 295px;
+  padding-left: 12px;
+  padding-top:12px;
+  padding-bottom: 12px;
+
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  color: var(--text-color);
+}
+
+@include mixins.breakpoint(medium) {
+  .auth {width: 424px;}
 }

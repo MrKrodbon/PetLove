@@ -2,41 +2,52 @@ import React from "react";
 import s from "./Input.module.scss";
 import clsx from "clsx";
 
+export type InputVariant = "default" | "auth";
+
 export interface BaseInputProps {
-  className?: string;
-  iconSrc?: string;
+  icon?: string;
   iconPosition?: "left" | "right";
   placeholder?: string;
   value?: string;
   type?: React.HTMLInputTypeAttribute;
+  children?: React.ReactNode;
+  name: string;
+  variant?: InputVariant;
+  className?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.FC<BaseInputProps> = ({
-  iconSrc,
+  icon,
   iconPosition,
   placeholder,
   type,
+  children,
+  variant,
+  className,
 }) => {
   const iconLeft = iconPosition === "left";
   const iconRight = iconPosition === "right";
 
   return (
     <div className="flex relative md:w-fit items-center">
-      {iconSrc && (
-        <img
+      {children && (
+        <div
           className={clsx(
             s.icon,
+
             iconLeft && s.iconLeft,
             iconRight && s.iconRight
           )}
-          src={iconSrc}
-        />
+        >
+          {children}
+        </div>
       )}
       <input
-        className={clsx(s.search, {
-          ["pl-12"]: iconLeft && !!iconSrc,
-          ["pr-12"]: iconRight && !!iconSrc,
+        className={clsx(s.search, className, {
+          ["pl-12"]: iconLeft && !!icon,
+          ["pr-12"]: iconRight && !!icon,
+          [s.auth]: variant === "auth",
         })}
         placeholder={placeholder}
         type={type}

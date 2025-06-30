@@ -1,7 +1,7 @@
 @use '@/styles/mixins.scss' as mixins;
 @import "@/styles/variables.css";
 
-.news-item {
+.newsItem {
   display: flex;
   flex-direction: column;
   width: 335px;
@@ -9,17 +9,27 @@
   text-align: left;
 }
 
-.news-item_title{
+.title{
   @include mixins.title-extra-bold;
   color:var(--text-color);
 }
 
-.news-item_description{
+.description{
   @include mixins.subtitle-medium;
     color: var(--text-color);
 }
 
-.news-item_date{
+.date{
   @include mixins.subtitle-medium;
     color: var(--gray-color);
+}
+
+.link{
+  color:var(--main-color);
+}
+
+.img{
+  object-fit: fill;
+  width: 100%;
+  height: 100%;
 }

@@ -1,13 +1,15 @@
 import React from "react";
-import s from "./Button.module.css";
+import s from "./Button.module.scss";
 import clsx from "clsx";
 
 type ButtonType = "submit" | "button" | "reset";
+type Variant = "base" | "primary" | "secondary";
 
 interface ButtonProps {
   type?: ButtonType;
   label?: string;
-  iconSrc?: string;
+  children?: React.ReactNode;
+  variant?: Variant;
   className?: string;
   disabled?: boolean;
   onClick?: () => void;
@@ -15,18 +17,22 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({
   label,
-  iconSrc,
+  children,
   className,
+  variant,
   disabled,
   onClick,
 }) => {
   return (
     <button
-      className={clsx(s.button, className)}
+      className={clsx(s.button, className, {
+        [s.primary]: variant === "primary",
+        [s.secondary]: variant === "secondary",
+      })}
       onClick={onClick}
       disabled={disabled}
     >
-      {iconSrc ? <img src={iconSrc} /> : label}
+      {label || children}
     </button>
   );
 };

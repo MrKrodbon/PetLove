@@ -1,10 +1,9 @@
-@use '@/styles/mixins.scss' as mixins;
+@use "@/styles/mixins.scss" as mixins;
 
-.nav-item--press{
-    @include mixins.navigation-button;
+.nav {
+  @include mixins.navigation-button;
 }
 
-
-.nav-item_home--press{
-    @include mixins.navigation-button-home;
+.navHome {
+  @include mixins.navigation-button-home;
 }

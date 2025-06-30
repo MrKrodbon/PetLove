@@ -1,6 +1,7 @@
-@import "../../styles/variables.css";
+@use "@/styles/mixins.scss";
+@import "@/styles/variables.css";
 
-.not_found_page {
+.page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,7 +13,7 @@
   border-radius: 60px;
 }
 
-.not_found_page_title {
+.title {
   width: 322px;
   height: 28px;
 
@@ -26,20 +27,7 @@
   color: var(--white-color);
 }
 
-@media screen and (min-width: 768px) {
-  .not_found_page {
-    width: 704px;
-    height: 878px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .not_found_page {
-    width: 1216px;
-    height: 654px;
-  }
-}
-
-.not_found_page-open-home {
+.openHome {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -56,4 +44,18 @@
   flex: none;
   order: 1;
   flex-grow: 0;
+}
+
+@include mixins.breakpoint(medium) {
+  .page {
+    width: 704px;
+    height: 878px;
+  }
+}
+
+@include mixins.breakpoint(large) {
+  .page {
+    width: 1216px;
+    height: 654px;
+  }
 }

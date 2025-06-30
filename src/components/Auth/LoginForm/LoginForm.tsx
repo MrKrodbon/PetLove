@@ -3,9 +3,10 @@ import { useSelector } from "react-redux";
 import { StoreType } from "@/redux/store.ts";
 import { formSubmit, FormValues } from "@/utilities/formSubmit.ts";
 import { useAppDispatch } from "@/hooks/useAppDispatch.ts";
-import { NavLink } from "react-router-dom";
-import { authLinks } from "@/constants/appLinks/appLinks.ts";
+import { authLinks } from "@/constants/appLinks/appLinks";
 import FormTemplate from "@/components/layouts/FormTemplate/FormTemplate";
+import { BaseInputProps } from "@/components/Input/Input";
+import FooterTemplate from "@/components/layouts/FormTemplate/FooterTemplate/FooterTemplate";
 
 const initialValues = {
   email: "",
@@ -16,10 +17,20 @@ const LoginForm = () => {
   const dispatch = useAppDispatch();
   const errorMessage = useSelector((state: StoreType) => state.auth.error);
 
-  // const formFields = [
-  //   { name: "email", placeholder: "email", type: "text" },
-  //   { name: "password", placeholder: "password", type: "text" },
-  // ];
+  const formFields: BaseInputProps[] = [
+    {
+      name: "email",
+      placeholder: "email",
+      type: "text",
+      variant: "auth",
+    },
+    {
+      name: "password",
+      placeholder: "password",
+      type: "password",
+      variant: "auth",
+    },
+  ];
 
   const onSubmitHandle = (
     values: FormValues,
@@ -28,27 +39,22 @@ const LoginForm = () => {
     formSubmit(values, actions, "login", dispatch, errorMessage);
   };
 
+  const registerLink = authLinks.find((item) => item.path === "/register");
+
   return (
-    <div className="flex flex-col gap-4">
-      <FormTemplate
-        fields={formFields}
-        buttonText="Log in"
-        type={{ pageType: "login" }}
-        onSubmit={onSubmitHandle}
-        initialValues={initialValues}
-        footer={
-          <>
-            <p className="text-black">Don't have an account?</p>
-            <NavLink
-              className="text-shadow-amber-500"
-              to={authLinks.register.to}
-            >
-              Register
-            </NavLink>
-          </>
-        }
-      />
-    </div>
+    <FormTemplate
+      fields={formFields}
+      buttonText="Log in"
+      onSubmit={onSubmitHandle}
+      initialValues={initialValues}
+      footer={
+        <FooterTemplate
+          title="Don't have an account?"
+          link={registerLink?.path}
+          linkLabel={"Register"}
+        />
+      }
+    />
   );
 };
 

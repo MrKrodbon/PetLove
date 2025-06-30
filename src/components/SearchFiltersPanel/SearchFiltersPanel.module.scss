@@ -6,7 +6,9 @@
   height: 378px;
   background-color: var(--button-hover-color);
   padding: 20px;
+  margin-top: 40px;
   border-radius: 30px;
+
 }
 
 .searchInput {
@@ -26,18 +28,23 @@
   border: 1px solid rgba(38, 38, 38, 0.1);
 }
 
-@media (width >= 768px) {
-  .search {
-    height: 280px;
-  }
-}
-
-@media (width >= 1280px) {
-  .search {
-    height: 216px;
-  }
-}
-
 .filterButton {
   @include mixins.base-button;
+  color: var(--text-color);
+  background: var(--white-color);
 }
+
+@include mixins.breakpoint(medium) {
+  .search {
+    height: 280px;
+    margin-top: 44px;
+  }
+}
+
+@include mixins.breakpoint(large) {
+  .search {
+    height: 216px;
+    margin-top: 40px;
+  }
+}
+

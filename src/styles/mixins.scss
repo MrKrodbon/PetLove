@@ -59,3 +59,21 @@
   background: var(--button-hover-color);
   order: 1;
 }
+
+@mixin breakpoint($point) {
+  @if $point == small {
+    @media (width <= 767px) {
+      @content;
+    }
+  }
+  @else if $point == medium {
+    @media (width >= 768px) {
+      @content;
+    }
+  }
+  @else if $point == large {
+    @media (width >= 1280px) {
+      @content;
+    }
+  }
+}

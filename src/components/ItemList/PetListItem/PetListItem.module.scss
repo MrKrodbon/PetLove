@@ -1,12 +1,7 @@
 @use "@/styles/mixins.scss" as mixins;
 @import "@/styles/variables.css";
 
-// Кнопку треба винести в комоненту типографії
-button {
-  @include base-button;
-}
-
-.pet-list {
+.list {
   flex-direction: column;
   width: 335px;
   height: 100%;
@@ -16,37 +11,58 @@ button {
   padding: 24px;
 }
 
-.pet-list_title {
-  @include mixins.title-extra-bold;
-
-  color: var(--white-color);
-}
-
-.pet-list_span {
+.listRowLabel {
   height: 18px;
   font-size: 12px;
   color: var(--gray-color);
 }
 
-.pet-list_subtitle {
+.title {
+  @include mixins.title-extra-bold;
+
+  color: var(--white-color);
+}
+
+.subtitle {
   @include mixins.subtitle-medium;
   display: flex;
   height: 18px;
   width: 100%;
   font-size: 12px;
   color: var(--text-color);
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.pet-list_learn--pressed {
+.learnButton {
+  @include mixins.primary-button;
   color: var(--white-color);
   background: var(--main-color);
+  width: 231px;
   order: 0;
 }
 
-.pet-list_like--pressed {
+.likeButton {
+  @include mixins.secondary-button;
   color: var(--white-color);
   background: var(--button-hover-color);
+  padding: 0 !important;
   order: 0;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+}
+
+@include mixins.breakpoint(medium) {
+  .learnButton {
+    width: 236px;
+  }
+  .likeButton {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@include mixins.breakpoint(large) {
+  .learnButton {
+    width: 257px;
+  }
 }

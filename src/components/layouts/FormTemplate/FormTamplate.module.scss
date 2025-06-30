@@ -5,4 +5,15 @@
   text-transform: uppercase;
 }
 
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: 295px;
+  gap: 16px; 
+}
 
+@include mixins.breakpoint(medium) {
+  .formContainer {
+    width: 424px;
+  }
+}

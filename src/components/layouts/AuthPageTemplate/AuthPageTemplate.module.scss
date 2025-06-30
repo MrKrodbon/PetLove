@@ -1,3 +1,4 @@
+@use "@/styles/mixins.scss" as mixins;
 @import "@/styles/variables.css";
 
 .authContainer {
@@ -15,20 +16,21 @@
 }
 
 .authFormContainer {
-  padding: 60px 20px;
+  width: 335px;
 }
 
-.authPetNameComment {
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: -0.03em;
+.title {
+  @include mixins.title-extra-bold;
+  color: var(--text-color);
+  font-size: 48px;
+  line-height: normal;
+}
 
-  color: var(--main-color);
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  padding: 19px 16px 18px 0;
+.subtitle {
+  @include mixins.subtitle-medium;
+  color: var(--text-color);
+  font-size: 18px;
+  line-height: normal;
 }
 
 .authImageComment {
@@ -43,18 +45,7 @@
   background-image: url("@/assets/images/RegisterImage/RegisterImageMobile.jpg");
 }
 
-.authImageCommentPet {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 194px;
-  height: 60px;
-  margin: 16px 8px 45px 16px;
-  background: var(--button-hover-color);
-}
-
-@media (min-width: 768px) {
+@include mixins.breakpoint(medium) {
   .authContainer {
     flex-direction: column;
     align-items: center;
@@ -66,7 +57,10 @@
   }
 
   .authFormContainer {
-    padding: 71px 140px;
+    display: flex;
+    flex-direction: column;
+    width: 418px;
+    height: 424px;
   }
 
   .authImageLogin {
@@ -78,9 +72,10 @@
   }
 }
 
-@media (min-width: 1280px) {
+@include mixins.breakpoint(large) {
   .authContainer {
     flex-direction: row;
+    gap: 32px;
   }
 
   .authImageContainer {
@@ -89,6 +84,13 @@
   }
 
   .authFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 32px;
+    width: 592px;
+    height: 654px;
     padding: 77px 84px;
   }
 

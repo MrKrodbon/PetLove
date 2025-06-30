@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { NewsState } from "../../types/types";
+import { NewsState } from "@/types/types";
 import { getNews } from "./operations";
 
 const initialState: NewsState = {
@@ -41,7 +41,8 @@ const newsSlice = createSlice({
       })
       .addCase(getNews.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.message || "Get news failed";
+        state.error =
+          action.error.message || "Unexpected error while getting news";
       });
   },
 });

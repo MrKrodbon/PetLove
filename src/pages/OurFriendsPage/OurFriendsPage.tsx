@@ -1,14 +1,23 @@
+import FriendsListItem from "@/components/ItemList/FriendsListItem/FriendsListItem";
 import PageTemplate from "@/components/layouts/PageTemplate/PageTemplate";
 import useGetFriends from "@/hooks/useGetFriends";
+import { FriendsItem } from "@/types/types";
+import React from "react";
 
 const OurFriends = () => {
-  const friendsList = useGetFriends();
-  console.log(friendsList, "friends");
+  const { results } = useGetFriends();
+  console.log(results);
+
+  const renderFriend = React.useCallback(
+    (f: FriendsItem) => <FriendsListItem key={f.id} {...f} />,
+    []
+  );
 
   return (
-    <PageTemplate
-      title={friendsList.results.title}
-      itemsList={friendsList.results}
+    <PageTemplate<FriendsItem>
+      title={"Our Friends"}
+      items={results}
+      renderItem={renderFriend}
     />
   );
 };

@@ -1,13 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-
-import NewsPage from "@/pages/NewsPage/NewsPage";
-import FindPet from "@/pages/FindPetPage/FindPetPage";
-
-import LoginPage from "@/pages/LoginPage/LoginPage";
-import NotFound from "@/pages/NotFoundPage/NotFoundPage";
-import OurFriends from "@/pages/OurFriendsPage/OurFriendsPage";
-import RegisterPage from "@/pages/RegisterPage/RegisterPage";
-import HomePage from "@/pages/HomePage/HomePage";
 import {
   authLinks,
   defaultLinks,
@@ -18,18 +9,31 @@ import RestrictedRoute from "./RestrictedRoute";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route
-        path={authLinks.register.to}
-        element={<RestrictedRoute component={<RegisterPage />} />}
-      />
-      <Route
-        path={authLinks.login.to}
-        element={<RestrictedRoute component={<LoginPage />} />}
-      />
-      <Route path={navLinks.news.to} element={<NewsPage />} />
-      <Route path={navLinks.friends.to} element={<OurFriends />} />
-      <Route path={navLinks.findPet.to} element={<FindPet />} />
-      <Route path={defaultLinks.home.to} element={<HomePage />} />
+      {navLinks.map(({ path, element, isPrivate }) => (
+        <Route
+          path={path}
+          element={
+            isPrivate ? <RestrictedRoute component={element} /> : element
+          }
+        />
+      ))}
+      {authLinks.map(({ path, element, isPrivate }) => (
+        <Route
+          path={path}
+          element={
+            isPrivate ? <RestrictedRoute component={element} /> : element
+          }
+        />
+      ))}
+      {defaultLinks.map(({ path, element, isPrivate }) => (
+        <Route
+          path={path}
+          element={
+            isPrivate ? <RestrictedRoute component={element} /> : element
+          }
+        />
+      ))}
+
       {/* <Route
         path="/profile"
         element={
@@ -38,7 +42,6 @@ const AppRoutes = () => {
             </PrivateRoute>
             }
             /> */}
-      <Route path={defaultLinks.restrictPath.to} element={<NotFound />} />
     </Routes>
   );
 };
