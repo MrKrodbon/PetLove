@@ -15,12 +15,17 @@ const useGetNews = () => {
   const page = useAppSelector(selectNewsByCurrentPage);
   const search = useAppSelector(selectSearchValue);
   const debouncedValue = useDebounce(search, 1000);
+  useEffect(() => {
+    if (!debouncedValue.trim()) {
+      dispatch(getNews({ page, keyword: "" }));
+    }
+  }, [debouncedValue, dispatch, page]);
 
   useEffect(() => {
-    if (debouncedValue) {
-      dispatch(getNews({ page, search }));
+    if (debouncedValue.trim()) {
+      dispatch(getNews({ page: 1, keyword: search }));
     }
-  }, [debouncedValue, dispatch, page, search]);
+  }, [debouncedValue, dispatch]);
 
   return newsList;
 };

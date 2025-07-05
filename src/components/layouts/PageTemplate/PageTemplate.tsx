@@ -6,8 +6,6 @@ import { Input } from "@/components/Input/Input";
 import ItemList from "@/components/ItemList/ItemList";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchFiltersPanel from "@/components/SearchFiltersPanel/SearchFiltersPanel";
-import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { setSearchValue } from "@/redux/news/slice";
 import React from "react";
 
 type PageTemplateProps<T> = {
@@ -16,6 +14,7 @@ type PageTemplateProps<T> = {
   hasSearchInput?: boolean;
   hasFilterPanel?: boolean;
   onPageChange?: (newPage: number) => void;
+  onSearchChange?: (search: string) => void;
   renderItem: (item: T) => React.ReactElement;
   pagination?: { totalPages: number; page: number };
 };
@@ -26,19 +25,16 @@ function PageTemplate<T>({
   renderItem,
   pagination,
   onPageChange,
+  onSearchChange,
   hasSearchInput = false,
   hasFilterPanel = false,
 }: PageTemplateProps<T>) {
-  const dispatch = useAppDispatch();
-
   const onPageChangeHandle = (newPage: number) => {
     onPageChange?.(newPage);
   };
 
   const onSearchChangeHandle = (value: string) => {
-    console.log(value);
-
-    dispatch(setSearchValue(value));
+    onSearchChange?.(value);
   };
   return (
     <div className={shared.container}>
