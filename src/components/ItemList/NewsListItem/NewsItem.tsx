@@ -19,7 +19,7 @@ const NewsListItem = ({
   const formattedDate = new Date(date).toLocaleDateString("en-GB");
   return (
     <div className={s.newsItem}>
-      <div className="w-full  h-[149px] gap-5">
+      <div className="gap-5">
         <div className="flex items-center w-full h-full overflow-hidden rounded-[15px]">
           <img src={imgUrl} alt={title} className={s.img} />
         </div>
