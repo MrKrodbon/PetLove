@@ -1,34 +1,33 @@
 import { NavLink, useLocation } from "react-router-dom";
-import css from "./NavItem.module.scss";
-import React from "react";
+import s from "./NavItem.module.scss";
+import React, { HTMLAttributeAnchorTarget } from "react";
 import clsx from "clsx";
+import { Button } from "@/components/Button/Button";
 
 interface NavItemProps {
   to: string;
-  label: string;
+  label?: string;
+  target?: HTMLAttributeAnchorTarget;
+  className?: string;
+  children?: React.ReactNode;
 }
 
-const buildLinkClass = ({ isActive }) => {
-  return isActive
-    ? "text-blue-500 underline font-semibold"
-    : "text-gray-700 hover:text-blue-500";
-};
-
-const NavItem = ({ to, label }: NavItemProps) => {
+const NavItem = ({ to, label, className, children }: NavItemProps) => {
   const { pathname } = useLocation();
 
   const isHomePage = pathname === "/";
 
   return (
-    <NavLink to={to} className={buildLinkClass}>
-      <button
-        className={`${clsx(
-          isHomePage && css["nav-item_home--press"],
-          !isHomePage && css["nav-item--press"]
-        )} w-32`}
-      >
-        {label}
-      </button>
+    <NavLink to={to} className={className}>
+      {label?.length && (
+        <Button
+          className={`${clsx(s.nav, {
+            [s.navHome]: isHomePage,
+          })}   w-32`}
+          label={label}
+        />
+      )}
+      {children}
     </NavLink>
   );
 };

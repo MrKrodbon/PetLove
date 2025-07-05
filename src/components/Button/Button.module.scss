@@ -1,0 +1,20 @@
+@use "@/styles/mixins.scss" as mixins;
+@import "@/styles/variables.css";
+
+.button {
+  border: none;
+  background-color: transparent;
+  color:var(--text-color);
+}
+
+.primary{
+  @include mixins.primary-button;
+}
+
+.secondary{
+  @include mixins.secondary-button;
+}
+
+.button:focus {
+  outline: none;
+}

@@ -1,3 +1,4 @@
+@use "@/styles/mixins.scss";
 @import "@/styles/variables.css";
 
 .sideMenu {
@@ -20,7 +21,7 @@
   background-color: var(--main-color);
 }
 
-@media screen and (min-width: 768px) {
+@include mixins.breakpoint(medium) {
   .sideMenu {
     width: 374px;
   }

@@ -1,44 +1,54 @@
-import { filterLabels } from "../../constants/appLinks/appLinks";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { setSearchValue } from "../../redux/news/slice";
+import { filterLabels } from "@/constants/appLinks/appLinks";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { setSearchValue } from "@/redux/news/slice";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
-import s from "./SearchFiltersPanel .module.css";
-import chevronDown from "/public/icons/chevron-down.svg";
-import searchIcon from "/public/icons/search.svg";
+import s from "./SearchFiltersPanel.module.scss";
+import ChevronDown from "@/assets/icons/chevron-down.svg?react";
+import SearchIcon from "@/assets/icons/search.svg?react";
 
 const SearchFiltersPanel = () => {
   const dispatch = useAppDispatch();
 
-  const onInputHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchValue(e.target.value));
   };
 
   return (
     <div className={s.search}>
       <div className="flex flex-row flex-wrap gap-3">
-        <Input placeholder="Search" iconPosition="right" iconSrc={searchIcon} />
+        <Input name="Search" placeholder="Search" iconPosition="right">
+          <SearchIcon />
+        </Input>
         <div className="flex gap-2">
           <Input
+            name="Category"
             placeholder="Category"
-            iconSrc={chevronDown}
             iconPosition="right"
             className="w-36"
-          />
+          >
+            <ChevronDown />
+          </Input>
           <Input
+            name="Gender"
             placeholder="By gender"
-            iconSrc={chevronDown}
             iconPosition="right"
             className="w-36"
-          />
+          >
+            <ChevronDown />
+          </Input>
         </div>
-        <Input placeholder="By type" iconSrc={chevronDown} />
+        <Input name="Type" placeholder="By type" iconPosition="right">
+          <ChevronDown />
+        </Input>
         <Input
+          name="Location"
           placeholder="Location"
           iconPosition="right"
-          iconSrc={searchIcon}
-          onInput={onInputHandle}
-        />
+          onChange={onChangeHandle}
+        >
+          <SearchIcon />
+        </Input>
       </div>
       <div className={s.vector} />
       <div className="flex flex-row flex-wrap my-3 gap-2.5">

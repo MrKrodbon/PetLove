@@ -3,6 +3,7 @@ import authReducer from "./auth/slice";
 import uiReducer from "./ui/slice";
 import newsReducer from "./news/slice";
 import friendsReducer from "./friends/slice";
+import petsReducer from "./pets/slice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     ui: uiReducer,
     news: newsReducer,
     friends: friendsReducer,
+    pets: petsReducer,
   },
 });
 

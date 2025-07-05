@@ -1,3 +1,4 @@
+@use "@/styles/mixins.scss";
 @import "@/styles/variables.css";
 
 .menu {
@@ -41,7 +42,7 @@
   pointer-events: auto;
 }
 
-@media screen and (min-width: 768px) {
+@include mixins.breakpoint(medium) {
   .menu {
     width: 374px;
   }

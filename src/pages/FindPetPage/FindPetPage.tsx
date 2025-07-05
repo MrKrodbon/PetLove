@@ -1,4 +1,9 @@
+import PetListItem from "@/components/ItemList/PetListItem/PetListItem";
 import PageTemplate from "@/components/layouts/PageTemplate/PageTemplate";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import useGetPets from "@/hooks/useGetPets";
+import { setNewPage } from "@/redux/pets/slice";
+import { PetItem } from "@/types/types";
 
 const FindPet = () => {
   // return (
@@ -24,13 +29,24 @@ const FindPet = () => {
   // } = usePageData({
   //   pageType: "petList",
   // });
-  return <></>;
+
+  const { petsList, page, totalPages } = useGetPets();
+  const dispatch = useAppDispatch();
+
+  const handleChangePage = (newPage: number) => {
+    console.log(newPage);
+
+    dispatch(setNewPage(newPage));
+  };
+
   return (
-    <PageTemplate
-      title={title}
-      itemsList={petList}
-      currentPage={currentPage}
-      listType={"petList"}
+    <PageTemplate<PetItem>
+      title={"Find your favorite pet"}
+      items={petsList.results}
+      hasFilterPanel
+      onPageChange={handleChangePage}
+      pagination={{ page, totalPages }}
+      renderItem={(p) => <PetListItem key={p._id} {...p} />}
     />
   );
 };

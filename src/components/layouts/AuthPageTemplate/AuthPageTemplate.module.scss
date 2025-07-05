@@ -1,3 +1,4 @@
+@use "@/styles/mixins.scss" as mixins;
 @import "@/styles/variables.css";
 
 .authContainer {
@@ -6,29 +7,28 @@
   gap: 8px;
 }
 
-.authImageContainer {
+.authImageContainer,
+.authFormContainer {
   position: relative;
   border-radius: 60px;
   background-repeat: no-repeat;
-  width: 335px;
+  width: 100%;
+  max-width: 335px;
   height: 280px;
 }
 
-.authFormContainer {
-  padding: 60px 20px;
+.title {
+  @include mixins.title-extra-bold;
+  color: var(--text-color);
+  font-size: 48px;
+  line-height: normal;
 }
 
-.authPetNameComment {
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: -0.03em;
-
-  color: var(--main-color);
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  padding: 19px 16px 18px 0;
+.subtitle {
+  @include mixins.subtitle-medium;
+  color: var(--text-color);
+  font-size: 18px;
+  line-height: normal;
 }
 
 .authImageComment {
@@ -43,30 +43,20 @@
   background-image: url("@/assets/images/RegisterImage/RegisterImageMobile.jpg");
 }
 
-.authImageCommentPet {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 194px;
-  height: 60px;
-  margin: 16px 8px 45px 16px;
-  background: var(--button-hover-color);
-}
-
-@media (min-width: 768px) {
+@include mixins.breakpoint(medium) {
   .authContainer {
-    flex-direction: column;
     align-items: center;
   }
 
-  .authImageContainer {
-    width: 704px;
-    height: 280px;
+  .authImageContainer,
+  .authFormContainer {
+    max-width: 704px;
   }
 
   .authFormContainer {
-    padding: 71px 140px;
+    display: flex;
+    flex-direction: column;
+    height: 424px;
   }
 
   .authImageLogin {
@@ -78,17 +68,28 @@
   }
 }
 
-@media (min-width: 1280px) {
+@include mixins.breakpoint(large) {
   .authContainer {
     flex-direction: row;
+    gap: 32px;
+  }
+
+  .authImageContainer,
+  .authFormContainer {
+    flex: 1 1 0;
+    max-width: none;
   }
 
   .authImageContainer {
-    width: 592px;
     height: 654px;
   }
 
   .authFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 32px;
     padding: 77px 84px;
   }
 

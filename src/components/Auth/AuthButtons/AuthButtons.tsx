@@ -1,12 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { useAppDispatch } from "../../../hooks/useAppDispatch";
-import { closeMenu } from "../../../redux/ui/slice";
-import { logout } from "../../../redux/auth/operations";
-import { useAppSelector } from "../../../hooks/useAppSelector";
-import { selectIsLoggedIn } from "../../../redux/auth/selectors";
-import css from "./AuthButtons.module.scss";
-import { authLinks } from "../../../constants/appLinks/appLinks";
-import { Button } from "../../Button/Button";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { closeMenu } from "@/redux/ui/slice";
+import { logout } from "@/redux/auth/operations";
+import { useAppSelector } from "@/hooks/useAppSelector";
+import { selectIsLoggedIn } from "@/redux/auth/selectors";
+import { authLinks } from "@/constants/appLinks/appLinks";
+import { Button } from "@/components/Button/Button";
 
 const AuthButtons = () => {
   const dispatch = useAppDispatch();
@@ -18,30 +17,27 @@ const AuthButtons = () => {
     dispatch(logout());
   };
 
-  return isUserLoggedIn ? (
-    <Button
-      type="button"
-      className={css.logout}
-      onClick={handleLogoutUser}
-      label={authLinks.logout.label}
-    />
-  ) : (
-    <>
-      <NavLink to={authLinks.login.to}>
+  const labelToShow = authLinks.filter(
+    (label) => label.isAuth === isUserLoggedIn
+  );
+
+  return labelToShow.map(({ path, label, isAuth }) =>
+    isAuth ? (
+      <Button
+        type="button"
+        variant="primary"
+        onClick={handleLogoutUser}
+        label={label}
+      />
+    ) : (
+      <NavLink to={path}>
         <Button
           type="button"
-          className={css.login}
-          label={authLinks.login.label}
+          variant={label === "Registration" ? "secondary" : "primary"}
+          label={label}
         />
       </NavLink>
-      <NavLink to={authLinks.register.to}>
-        <Button
-          type="button"
-          className={css.register}
-          label={authLinks.register.label}
-        />
-      </NavLink>
-    </>
+    )
   );
 };
 

@@ -1,0 +1,70 @@
+@use "@/styles/mixins.scss" as mixins;
+@import "@/styles/variables.css";
+
+.list {
+  flex-direction: column;
+  width: 100%;
+  max-width: 335px;
+  height: 100%;
+  text-align: left;
+  border-radius: 16px;
+  background-color: var(--white-color);
+  padding: 24px;
+}
+
+.listRowLabel {
+  height: 18px;
+  font-size: 12px;
+  color: var(--gray-color);
+}
+
+.title {
+  @include mixins.title-extra-bold;
+
+  color: var(--white-color);
+}
+
+.subtitle {
+  @include mixins.subtitle-medium;
+  display: flex;
+  height: 18px;
+  width: 100%;
+  font-size: 12px;
+  color: var(--text-color);
+}
+
+.learnButton {
+  @include mixins.primary-button;
+  color: var(--white-color);
+  background: var(--main-color);
+  width: 100%;
+  max-width: 231px;
+  order: 0;
+}
+
+.likeButton {
+  @include mixins.secondary-button;
+  color: var(--white-color);
+  background: var(--button-hover-color);
+  padding: 0 !important;
+  order: 0;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+}
+
+@include mixins.breakpoint(medium) {
+  .learnButton {
+    max-width: 236px;
+  }
+  .likeButton {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@include mixins.breakpoint(large) {
+  .learnButton {
+    max-width: 257px;
+  }
+}

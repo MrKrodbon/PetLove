@@ -1,10 +1,9 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { ReactNode } from "react";
-import { FormValues } from "../../../utilities/formSubmit.ts";
-import { PageType } from "@/types/types.ts";
+import { FormValues } from "@/utilities/formSubmit.ts";
 import s from "./FormTamplate.module.scss";
-import { Button } from "../../Button/Button.tsx";
-import { Input } from "../../Input/Input.tsx";
+import { Button } from "@/components/Button/Button.tsx";
+import { Input, InputVariant } from "@/components/Input/Input.tsx";
 
 // interface InitialValues {
 //   name: string;
@@ -15,11 +14,12 @@ import { Input } from "../../Input/Input.tsx";
 
 interface FormInputFields {
   name: string;
-  placeholder: string;
+  type?: React.HTMLInputTypeAttribute;
+  placeholder?: string;
+  variant?: InputVariant;
 }
 
 interface FormTemplateProps {
-  type: PageType;
   initialValues: FormValues;
   fields: FormInputFields[];
   buttonText: string;
@@ -40,11 +40,11 @@ const FormTemplate = ({
       onSubmit={onSubmit}
       className="flex flex-col gap-8"
     >
-      <Form className="w-fit">
-        <div className="flex flex-col gap-4 w-fit">
+      <Form className="flex flex-col items-center w-full">
+        <div className={s.formContainer}>
           {fields.map((field) => (
             <>
-              <Field as={Input} {...field} />
+              <Field as={Input} {...field} name={field.name} />
               <ErrorMessage
                 name={field.name}
                 component="span"

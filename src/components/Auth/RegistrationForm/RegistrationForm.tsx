@@ -4,8 +4,9 @@ import { formSubmit, FormValues } from "@/utilities/formSubmit.ts";
 import { useSelector } from "react-redux";
 import { StoreType } from "@/redux/store.ts";
 import { useAppDispatch } from "@/hooks/useAppDispatch.ts";
-import { NavLink } from "react-router-dom";
-import { authLinks } from "@/constants/appLinks/appLinks.ts";
+import { BaseInputProps } from "@/components/Input/Input";
+import FooterTemplate from "@/components/layouts/FormTemplate/FooterTemplate/FooterTemplate";
+import { authLinks } from "@/constants/appLinks/appLinks";
 
 const initialValues = {
   name: "",
@@ -18,11 +19,21 @@ const RegistrationForm = () => {
   const dispatch = useAppDispatch();
   const errorMessage = useSelector((state: StoreType) => state.auth.error);
 
-  const formFields = [
-    { name: "name", placeholder: "Name" },
-    { name: "email", placeholder: "email" },
-    { name: "password", placeholder: "password" },
-    { name: "confirmPassword", placeholder: "confirmPassword" },
+  const formFields: BaseInputProps[] = [
+    { name: "name", placeholder: "name", type: "text", variant: "auth" },
+    { name: "email", placeholder: "email", type: "email", variant: "auth" },
+    {
+      name: "password",
+      placeholder: "password",
+      type: "password",
+      variant: "auth",
+    },
+    {
+      name: "confirmPassword",
+      placeholder: "confirmPassword",
+      type: "password",
+      variant: "auth",
+    },
   ];
 
   const onSubmitHandle = (
@@ -32,24 +43,22 @@ const RegistrationForm = () => {
     formSubmit(values, actions, "register", dispatch, errorMessage);
   };
 
+  const loginLink = authLinks.find((item) => item.path === "/login");
+
   return (
-    <div className="flex flex-col gap-4">
-      <FormTemplate
-        fields={formFields}
-        buttonText="Register"
-        type={{ pageType: "register" }}
-        onSubmit={onSubmitHandle}
-        initialValues={initialValues}
-        footer={
-          <>
-            <p className="text-black">Already have an account?</p>
-            <NavLink className="text-shadow-amber-500" to={authLinks.login.to}>
-              Login
-            </NavLink>
-          </>
-        }
-      />
-    </div>
+    <FormTemplate
+      fields={formFields}
+      buttonText="Register"
+      onSubmit={onSubmitHandle}
+      initialValues={initialValues}
+      footer={
+        <FooterTemplate
+          title="Already have an account?"
+          link={loginLink?.path}
+          linkLabel={"Login"}
+        />
+      }
+    />
   );
 };
 

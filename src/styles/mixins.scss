@@ -50,6 +50,7 @@
   @include base-button;
   color: var(--white-color);
   background: var(--main-color);
+  border: 1px var(--border-opacity) solid;
   order: 0;
 }
 
@@ -58,4 +59,22 @@
   color: var(--main-color);
   background: var(--button-hover-color);
   order: 1;
+}
+
+@mixin breakpoint($point) {
+  @if $point == small {
+    @media (width <= 767px) {
+      @content;
+    }
+  }
+  @else if $point == medium {
+    @media (width >= 768px) {
+      @content;
+    }
+  }
+  @else if $point == large {
+    @media (width >= 1280px) {
+      @content;
+    }
+  }
 }

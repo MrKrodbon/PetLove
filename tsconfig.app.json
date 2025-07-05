@@ -12,11 +12,12 @@
       "@/pages/*": ["src/pages/*"],
       "@/components/*": ["src/components/*"],
       "@/components/layouts/*": ["src/components/layouts/*"],
-      "@/assets/*": ["src/assets/icons/*"],
+      "@/assets/*": ["src/assets/*"],
       "@/utilities/*": ["src/utilities/*"],
+      "@/constants/*": ["src/constants/*"],
       "@/hooks/*": ["src/hooks/*"],
-
-      "@/redux/*": ["src/redux/*"]
+      "@/redux/*": ["src/redux/*"],
+      "@/styles/*": ["src/styles/*"]
     },
 
     /* Bundler mode */

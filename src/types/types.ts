@@ -7,6 +7,29 @@ export interface AuthNavigationProps {
   isMobileMenu?: boolean;
 }
 
+interface User {
+  name: string | null;
+  email: string | null;
+}
+
+export interface AuthState {
+  user: User | null;
+  token: string | null;
+  isLoggedIn: boolean;
+  isRefreshing: boolean;
+  error: string | null;
+}
+
+export interface NewsItem {
+  date: string;
+  id?: string;
+  imgUrl: string;
+  text: string;
+  title: string;
+  url: string;
+  _id?: string;
+}
+
 export interface WorkDays {
   id?: string;
   isOpen: boolean;
@@ -26,7 +49,23 @@ export interface FriendsItem {
   email: string;
 }
 
-export interface PetItemProps {
+export interface NewsState {
+  results: NewsItem[];
+  page: number;
+  perPage: number;
+  totalPages: number;
+  search: string;
+  isLoading: boolean;
+  error: string | null;
+}
+
+export interface FriendsState {
+  results: FriendsItem[];
+  isLoading: boolean;
+  error: string | null;
+}
+
+export interface PetItem {
   _id: string;
   species: string;
   category: "lost" | "found" | "for-adoption";
@@ -44,35 +83,11 @@ export interface PetItemProps {
   popularity: number;
 }
 
-interface User {
-  name: string | null;
-  email: string | null;
-}
-
-export interface AuthState {
-  user: User | null;
-  token: string | null;
-  isLoggedIn: boolean;
-  isRefreshing: boolean;
-  error: string | null;
-}
-
-export interface NewsItem {
-  date: string | null;
-  id?: string | null;
-  imgUrl: string | null;
-  text: string | null;
-  title: string | null;
-  url: string | null;
-  _id?: string | null;
-}
-
-export interface NewsState {
-  results: NewsItem[];
+export interface PetState {
+  results: PetItem[];
   page: number;
   perPage: number;
   totalPages: number;
-  search: string;
   isLoading: boolean;
   error: string | null;
 }
@@ -81,28 +96,13 @@ export type PageType = {
   pageType: "login" | "register";
 };
 
-export type ItemListProps =
-  | {
-      listType: "newsList";
-      itemsList: NewsItem[];
-      page?: number;
-      totalPages?: number;
-    }
-  | {
-      listType: "friendsList";
-      itemsList: FriendsItem[];
-    };
-
 export type DeviceType = "mobile" | "tablet" | "desktop";
 
-// export interface PaginationList {
-//   paginationList: {
-//     page: number;
-//     perPage: number;
-//     results: [];
-//     totalPages: number;
-//   };
-// }
+export interface ItemListProps<T> {
+  items: T[];
+  renderItem: (item: T) => React.ReactElement;
+  className?: string;
+}
 
 export interface PagionationButtonProps {
   isCurrentPage?: boolean | false;

@@ -1,47 +1,13 @@
-import { FriendsItem, ItemListProps, NewsItem } from "../../types/types";
-import FriendsListItem from "./FriendsListItem/FriendsItem";
-import NewsListItem from "./NewsListItem/NewsItem";
+import { ItemListProps } from "@/types/types";
 
-const ItemList = ({ listType, itemsList }: ItemListProps) => {
-  console.log(itemsList);
+function ItemList<T>({ items, renderItem, className }: ItemListProps<T>) {
   return (
-    <div className="flex justify-between flex-wrap gap-5 list-none mb-11 md:mb-[60px]">
-      {listType === "newsList" &&
-        itemsList?.map((n: NewsItem) => {
-          return (
-            <NewsListItem
-              imgUrl={n.imgUrl || ""}
-              title={n.title || ""}
-              text={n.text || ""}
-              date={n.date || ""}
-              key={n.id || ""}
-              url={n.url || ""}
-            />
-          );
-        })}
-      {listType === "friendsList" &&
-        itemsList?.map((f: FriendsItem) => {
-          return (
-            <FriendsListItem
-              address={f.address || ""}
-              addressURL={f.addressURL || ""}
-              title={f.title || ""}
-              email={f.email || ""}
-              imageUrl={f.imageUrl || ""}
-              phone={f.phone || ""}
-              url={f.url || ""}
-              workDays={f.workDays || []}
-              key={f.id || ""}
-            />
-          );
-        })}
-      {/*
-      {listType === "petList" &&
-        petsList?.results.map((p: PetItemProps) => {
-          return <PetItem key={p._id} {...p} />;
-        })} */}
+    <div
+      className={`flex justify-between flex-wrap gap-5 list-none mb-11 md:mb-[60px] ${className}`}
+    >
+      {items.map(renderItem)}
     </div>
   );
-};
+}
 
 export default ItemList;

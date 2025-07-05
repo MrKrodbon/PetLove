@@ -7,7 +7,6 @@ import { selectFriendsList } from "../redux/friends/selectors";
 const useGetFriends = () => {
   const dispatch = useAppDispatch();
   const friendsList = useAppSelector(selectFriendsList);
-
   useEffect(() => {
     dispatch(getFriends());
   }, []);

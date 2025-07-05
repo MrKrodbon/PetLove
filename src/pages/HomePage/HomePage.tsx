@@ -5,8 +5,8 @@ import shared from "../../styles/shared.module.css";
 const HomePage = () => {
   return (
     <>
-      <div className={s.hero}>
-        <div className={shared.container}>
+      <div className={shared.container}>
+        <div className={s.hero}>
           <Header />
           <div className={s.content}>
             <p className={s.title}>
@@ -21,8 +21,8 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        <div className={s.heroBottomBlock} />
       </div>
-      <div className={s.heroBottomBlock} />
     </>
   );
 };

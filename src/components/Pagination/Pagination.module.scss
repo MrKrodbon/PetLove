@@ -1,11 +1,19 @@
+@use "@/styles/mixins.scss";
+@import "@/styles/variables.css";
+
 .pagination {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 334px;
+  width: 100%;
+  max-width: 334px;
   height: 40px;
   margin-bottom: 80px;
+}
+
+.icon {
+  fill: currentColor;
 }
 
 .button {
@@ -13,26 +21,25 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-
-  width: 44px;
-  height: 44px;
-
-  color: var(--text-color);
+  color: black;
   background-color: transparent;
+}
+
+.button:disabled {
+  color: var(--gray-color);
 }
 
 .currentPage {
   background-color: var(--main-color);
 }
 
-
-@media (width >= 768px) {
+@include mixins.breakpoint(medium) {
   .pagination {
     margin-bottom: 88px;
   }
 }
 
-@media (width >= 1280px) {
+@include mixins.breakpoint(large) {
   .pagination {
     margin-bottom: 80px;
   }

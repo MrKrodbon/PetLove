@@ -8,14 +8,12 @@ interface NavigationProps {
   isUserLoggedIn: boolean;
 }
 
-type NavigationItem = (typeof navLinks)[keyof typeof navLinks];
-
 export const Navigation = ({ isUserLoggedIn }: NavigationProps) => {
   return (
     <>
       <div className="hidden md:hidden xl:flex xl:flex-row  xl:items-center xl:gap-2 xl:justify-evenly">
-        {Object.values(navLinks).map((navItem: NavigationItem) => (
-          <NavItem key={navItem.to} to={navItem.to} label={navItem.label} />
+        {navLinks.map(({ path, label }) => (
+          <NavItem key={label} to={path} label={label || ""} />
         ))}
       </div>
       {isUserLoggedIn ? (

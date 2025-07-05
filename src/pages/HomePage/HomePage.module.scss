@@ -6,13 +6,15 @@
   display: flex;
   background-color: var(--main-color);
   flex-direction: column;
-  width: 320px;
+  max-width: 320px;
+  padding-left: 20px;
+  padding-right: 20px;
   letter-spacing: -0.03em;
 }
 
 .heroBottomBlock {
   display: flex;
-  width: 320px;
+  max-width: 320px;
   height: 496px;
   background-repeat: no-repeat;
   background-size: contain;
@@ -30,9 +32,10 @@
   flex: none;
   flex-grow: 0;
   margin-top: 60px;
-  text-align: left;
-  height: 144px;
   order: 0;
+  text-align: left;
+  font-size: 50px;
+  line-height: normal;
   color: var(--white-color);
 }
 
@@ -45,16 +48,18 @@
   color: var(--white-color);
 }
 
-@media screen and (min-width: 768px) {
+@include mixins.breakpoint(medium) {
   .hero {
-    width: 704px;
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: 704px;
   }
 
   .heroBottomBlock {
     background-image: url("@/assets/images/MainImageTablet.jpg");
     flex-direction: row;
     justify-content: end;
-    width: 704px;
+    max-width: 704px;
     height: 496px;
   }
 
@@ -63,8 +68,7 @@
   }
 
   .title {
-    width: 640px;
-    margin-top: 112px;
+    max-width: 640px;
     font-size: 50px;
   }
 
@@ -73,14 +77,15 @@
     margin-top: 32px;
   }
 }
-@media screen and (min-width: 1280px) {
+
+@include mixins.breakpoint(large) {
   .hero {
-    width: 1216px;
+    max-width: 1280px;
   }
 
   .heroBottomBlock {
     background-image: url("@/assets/images/MainImageDesktop.jpg");
-    width: 1216px;
+    max-width: 1280px;
     height: 384px;
   }
 
@@ -88,11 +93,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: end;
-    padding-bottom: 32px;
   }
   .title {
-    width: 760px;
-    margin-top: 123px;
+    max-width: 760px;
     font-size: 80px;
+    margin-bottom: 32px;
   }
 }
