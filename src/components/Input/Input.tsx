@@ -24,18 +24,20 @@ export const Input: React.FC<BaseInputProps> = ({
   type,
   children,
   variant,
+  onChange,
+  value,
+  name,
   className,
 }) => {
   const iconLeft = iconPosition === "left";
   const iconRight = iconPosition === "right";
 
   return (
-    <div className="flex relative md:w-fit items-center">
+    <div className="flex relative  items-center">
       {children && (
         <div
           className={clsx(
             s.icon,
-
             iconLeft && s.iconLeft,
             iconRight && s.iconRight
           )}
@@ -51,6 +53,9 @@ export const Input: React.FC<BaseInputProps> = ({
         })}
         placeholder={placeholder}
         type={type}
+        name={name}
+        onChange={onChange}
+        value={value}
       />
     </div>
   );

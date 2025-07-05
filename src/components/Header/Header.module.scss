@@ -1,0 +1,24 @@
+@use "@/styles/mixins.scss" as mixins;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 320px;
+  padding: 26px 0 20px 0;
+}
+
+@include mixins.breakpoint(medium) {
+  .header {
+    max-width: 768px;
+    padding: 32px 0 32px 0;
+  }
+}
+
+@include mixins.breakpoint(large) {
+  .header {
+    max-width: 1280px;
+    padding: 43px 0 112px 0;
+  }
+}

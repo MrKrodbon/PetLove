@@ -22,7 +22,9 @@ const AuthPageTemplate = ({
 }: AuthPageTemplateProps) => {
   return (
     <div className={shared.container}>
-      <Header />
+      <div className="pr-5 pl-5 md:pr-8 md:pl-8">
+        <Header />
+      </div>
       <div className={s.authContainer}>
         <div
           className={clsx(

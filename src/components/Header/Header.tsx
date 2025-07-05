@@ -8,6 +8,7 @@ import HomePageLogoMobile from "@/assets/icons/HomePageLogoMobile.svg?react";
 import Logo from "@/assets/icons/logo.svg?react";
 import LogoMobile from "@/assets/icons/logoMobile.svg?react";
 import { defaultLinks } from "@/constants/appLinks/appLinks";
+import s from "./Header.module.scss";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -18,7 +19,7 @@ const Header = () => {
   const mobile = useMediaQuery("only screen and (max-width : 767px)");
 
   return (
-    <div className="flex flex-row justify-between  w-full pt-5 mb-7  md:pt-7 md:mb-8 xl:pt-11">
+    <div className={s.header}>
       {isHomePage ? (
         <NavLink to={homePagePath} className="flex items-center">
           {mobile ? <HomePageLogoMobile /> : <HomePageLogo />}

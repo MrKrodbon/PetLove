@@ -3,7 +3,8 @@
 
 .list {
   flex-direction: column;
-  width: 335px;
+  width: 100%;
+  max-width: 335px;
   height: 100%;
   text-align: left;
   border-radius: 16px;
@@ -36,7 +37,8 @@
   @include mixins.primary-button;
   color: var(--white-color);
   background: var(--main-color);
-  width: 231px;
+  width: 100%;
+  max-width: 231px;
   order: 0;
 }
 
@@ -53,7 +55,7 @@
 
 @include mixins.breakpoint(medium) {
   .learnButton {
-    width: 236px;
+    max-width: 236px;
   }
   .likeButton {
     width: 48px;
@@ -63,6 +65,6 @@
 
 @include mixins.breakpoint(large) {
   .learnButton {
-    width: 257px;
+    max-width: 257px;
   }
 }

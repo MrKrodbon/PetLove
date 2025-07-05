@@ -7,6 +7,7 @@
   background-color: var(--white-color);
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
+  color: var(--text-color);
 }
 
 .search::placeholder{
@@ -32,16 +33,19 @@
 
 .auth {
   height: 42px;
-  width: 295px;
+  width:100%;
+  max-width: 295px;
   padding-left: 12px;
   padding-top:12px;
   padding-bottom: 12px;
-
+  box-sizing: border-box;
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
   color: var(--text-color);
 }
 
 @include mixins.breakpoint(medium) {
-  .auth {width: 424px;}
+  .auth {
+    max-width: 424px;
+  }
 }

@@ -7,16 +7,14 @@
   gap: 8px;
 }
 
-.authImageContainer {
+.authImageContainer,
+.authFormContainer {
   position: relative;
   border-radius: 60px;
   background-repeat: no-repeat;
-  width: 335px;
+  width: 100%;
+  max-width: 335px;
   height: 280px;
-}
-
-.authFormContainer {
-  width: 335px;
 }
 
 .title {
@@ -47,19 +45,17 @@
 
 @include mixins.breakpoint(medium) {
   .authContainer {
-    flex-direction: column;
     align-items: center;
   }
 
-  .authImageContainer {
-    width: 704px;
-    height: 280px;
+  .authImageContainer,
+  .authFormContainer {
+    max-width: 704px;
   }
 
   .authFormContainer {
     display: flex;
     flex-direction: column;
-    width: 418px;
     height: 424px;
   }
 
@@ -78,8 +74,13 @@
     gap: 32px;
   }
 
+  .authImageContainer,
+  .authFormContainer {
+    flex: 1 1 0;
+    max-width: none;
+  }
+
   .authImageContainer {
-    width: 592px;
     height: 654px;
   }
 
@@ -89,8 +90,6 @@
     align-items: start;
     justify-content: center;
     gap: 32px;
-    width: 592px;
-    height: 654px;
     padding: 77px 84px;
   }
 

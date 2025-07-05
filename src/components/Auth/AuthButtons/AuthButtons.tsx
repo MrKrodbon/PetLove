@@ -4,10 +4,8 @@ import { closeMenu } from "@/redux/ui/slice";
 import { logout } from "@/redux/auth/operations";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { selectIsLoggedIn } from "@/redux/auth/selectors";
-import s from "./AuthButtons.module.scss";
 import { authLinks } from "@/constants/appLinks/appLinks";
 import { Button } from "@/components/Button/Button";
-import clsx from "clsx";
 
 const AuthButtons = () => {
   const dispatch = useAppDispatch();
@@ -19,31 +17,27 @@ const AuthButtons = () => {
     dispatch(logout());
   };
 
-  const logoutLabel = authLinks.find((item) => item.label === "Log out");
+  const labelToShow = authLinks.filter(
+    (label) => label.isAuth === isUserLoggedIn
+  );
 
-  return isUserLoggedIn ? (
-    <Button
-      type="button"
-      className={s.logout}
-      onClick={handleLogoutUser}
-      label={logoutLabel?.label}
-    />
-  ) : (
-    <>
-      {authLinks
-        .filter((nav) => nav.isAuth === isUserLoggedIn)
-        .map(({ path, label }) => (
-          <NavLink to={path}>
-            <Button
-              type="button"
-              className={clsx(s.login, {
-                [s.register]: label === "Registration",
-              })}
-              label={label}
-            />
-          </NavLink>
-        ))}
-    </>
+  return labelToShow.map(({ path, label, isAuth }) =>
+    isAuth ? (
+      <Button
+        type="button"
+        variant="primary"
+        onClick={handleLogoutUser}
+        label={label}
+      />
+    ) : (
+      <NavLink to={path}>
+        <Button
+          type="button"
+          variant={label === "Registration" ? "secondary" : "primary"}
+          label={label}
+        />
+      </NavLink>
+    )
   );
 };
 
