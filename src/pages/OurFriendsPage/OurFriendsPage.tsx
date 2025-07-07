@@ -6,7 +6,6 @@ import React from "react";
 
 const OurFriends = () => {
   const { results } = useGetFriends();
-  console.log(results);
 
   const renderFriend = React.useCallback(
     (f: FriendsItem) => <FriendsListItem key={f.id} {...f} />,

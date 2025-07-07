@@ -1,6 +1,4 @@
 import { filterLabels } from "@/constants/appLinks/appLinks";
-import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { setSearchValue } from "@/redux/news/slice";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import s from "./SearchFiltersPanel.module.scss";
@@ -8,11 +6,12 @@ import ChevronDown from "@/assets/icons/chevron-down.svg?react";
 import SearchIcon from "@/assets/icons/search.svg?react";
 
 const SearchFiltersPanel = () => {
-  const dispatch = useAppDispatch();
+  //implement later
+  // const dispatch = useAppDispatch();
 
-  const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearchValue(e.target.value));
-  };
+  // const onChangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   dispatch(han(e.target.value));
+  // };
 
   return (
     <div className={s.search}>
@@ -45,7 +44,7 @@ const SearchFiltersPanel = () => {
           name="Location"
           placeholder="Location"
           iconPosition="right"
-          onChange={onChangeHandle}
+          // onChange={onChangeHandle}
         >
           <SearchIcon />
         </Input>
