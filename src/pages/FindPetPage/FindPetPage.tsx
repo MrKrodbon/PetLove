@@ -34,8 +34,6 @@ const FindPet = () => {
   const dispatch = useAppDispatch();
 
   const handleChangePage = (newPage: number) => {
-    console.log(newPage);
-
     dispatch(setNewPage(newPage));
   };
 

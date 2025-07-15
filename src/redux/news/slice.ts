@@ -19,12 +19,15 @@ const newsSlice = createSlice({
   reducers: {
     setNewPage: (state, action) => {
       state.page = action.payload;
+      state.results = [];
     },
     setTotalPages: (state, action) => {
       state.totalPages = action.payload;
     },
-    setSearchValue: (state, action) => {
+    handleSearch: (state, action) => {
+      state.page = 1;
       state.search = action.payload;
+      state.results = [];
     },
   },
   extraReducers: (builder) => {
@@ -47,6 +50,6 @@ const newsSlice = createSlice({
   },
 });
 
-export const { setNewPage, setTotalPages, setSearchValue } = newsSlice.actions;
+export const { setNewPage, setTotalPages, handleSearch } = newsSlice.actions;
 
 export default newsSlice.reducer;

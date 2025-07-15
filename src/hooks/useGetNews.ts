@@ -7,20 +7,17 @@ import {
 import { useAppDispatch } from "./useAppDispatch";
 import { getNews } from "../redux/news/operations";
 import { useAppSelector } from "./useAppSelector";
-import { useDebounce } from "@uidotdev/usehooks";
 
 const useGetNews = () => {
   const dispatch = useAppDispatch();
   const newsList = useAppSelector(selectNewsList);
   const page = useAppSelector(selectNewsByCurrentPage);
-  const search = useAppSelector(selectSearchValue);
-  const debouncedValue = useDebounce(search, 1000);
+
+  const searchValue = useAppSelector(selectSearchValue);
 
   useEffect(() => {
-    if (debouncedValue) {
-      dispatch(getNews({ page, search }));
-    }
-  }, [debouncedValue, dispatch, page, search]);
+    dispatch(getNews({ page, keyword: searchValue.trim() }));
+  }, [searchValue, dispatch, page]);
 
   return newsList;
 };
