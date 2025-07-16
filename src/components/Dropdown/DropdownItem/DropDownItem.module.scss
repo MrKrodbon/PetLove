@@ -1,0 +1,7 @@
+@use "@/styles/mixins.scss" as mixins;
+@import "@/styles/variables.css";
+
+.item {
+  @include mixins.subtitle-medium;
+  color: var(--gray-color);
+}
