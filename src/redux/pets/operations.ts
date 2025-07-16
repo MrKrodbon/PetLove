@@ -27,7 +27,6 @@ export const getPets = createAsyncThunk(
       const { data } = await axiosInstance.get("/notices", {
         params: { defaultParams, ...params },
       });
-      console.log(data, "!!!!");
 
       return data;
     } catch (error) {

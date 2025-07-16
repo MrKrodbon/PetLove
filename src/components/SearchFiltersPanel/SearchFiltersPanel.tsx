@@ -43,7 +43,6 @@ const SearchFiltersPanel = ({
   const onHandleSearchCity = (city: string) => {
     setSearchCity(city);
   };
-  console.log(debouncedCity);
 
   const filteredList = debouncedCity
     ? cities.filter(({ cityEn }) =>
