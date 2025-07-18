@@ -82,9 +82,6 @@ export interface PetItem {
   user: string;
   popularity: number;
 }
-
-<<<<<<< Updated upstream
-=======
 export interface City {
   _id: string;
   useCounty: number;
@@ -111,7 +108,6 @@ export interface Filters {
   byPopularity?: boolean | false;
   limit?: number | "";
 }
->>>>>>> Stashed changes
 export interface PetState {
   results: PetItem[];
   page: number;
