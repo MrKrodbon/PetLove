@@ -2,37 +2,32 @@
 @import "@/styles/variables.css";
 
 .showDropDown {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  top: 120%;
-  left: 0;
-  width: 100%;
-  padding: 12px 79px 12px 12px;
-  max-width: 160px;
-  max-height: 190px;
-  overflow-y: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    padding: 12px 79px 12px 12px;
+    max-width: 160px;
+    max-height: 190px;
+    overflow-y: auto;
 
-  border-radius: 16px;
-  background-color: var(--white-color);
+    border-radius: 16px;
+    background-color: var(--white-color);
 }
 
 .showAll{
-  @include mixins.subtitle-medium;
+    @include mixins.subtitle-medium;
     color: var(--main-color);
 }
 
 .showDropDown::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .showDropDown::-webkit-scrollbar-thumb {
-  background-color: var(--main-color);
-  border-radius: 4px;
+    background-color: var(--main-color);
+    border-radius: 4px;
 }
-// @include mixins.breakpoint(large) {
-//   .wrapper {
-
-//   }
-// }

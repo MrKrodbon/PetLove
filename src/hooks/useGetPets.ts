@@ -22,7 +22,7 @@ import {} from "@/redux/friends/selectors";
 
 const useGetPets = () => {
   const dispatch = useAppDispatch();
-  const { search, category, species, sex, locationId, byPopularity, byPrice } =
+  const { keyword, category, species, sex, locationId, byPopularity, byPrice } =
     useAppSelector(selectFilterParams);
   const page = useAppSelector(selectPetsPage);
   const totalPages = useAppSelector(seelctPetsTotalPages);
@@ -36,7 +36,7 @@ const useGetPets = () => {
     dispatch(
       getPets({
         page,
-        keyword: search,
+        keyword,
         category,
         species,
         sex,
@@ -51,7 +51,7 @@ const useGetPets = () => {
     dispatch(getUkrainianCities({}));
   }, [
     page,
-    search,
+    keyword,
     category,
     species,
     sex,

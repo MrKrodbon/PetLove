@@ -99,7 +99,7 @@ export interface FilterOptions {
 }
 
 export interface Filters {
-  search?: string | "";
+  keyword?: string | "";
   category?: string | "";
   sex?: string | "";
   species?: string | "";

@@ -5,14 +5,14 @@ import s from "./SearchFiltersPanel.module.scss";
 import SearchIcon from "@/assets/icons/search.svg?react";
 import ChevronDown from "@/assets/icons/chevron-down.svg?react";
 import DropDownItem from "../Dropdown/DropdownItem/DropDownItem";
-import Dropdown from "../Dropdown/Dropdown";
-import { City, FilterOptions } from "@/types/types";
+import { City, FilterOptions, Filters } from "@/types/types";
 import { useFilterParams } from "@/hooks/useFilterParams";
 import { useDebounce } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { handleSearch } from "@/redux/pets/slice";
-import { useSyncFilterWithRedux } from "@/hooks/useSyncFilterWithRedux";
+import SearchableSelect from "../Select/SearchableSelect/SearchableSelect";
+import Select from "../Select/Select";
 
 interface SearchFiltersPanelProps {
   categoryOptions?: [];
@@ -31,28 +31,55 @@ const SearchFiltersPanel = ({
   const [searchValue, setSearchValue] = useState("");
   const [searchCity, setSearchCity] = useState("");
   const debouncedSearch = useDebounce(searchValue, 1000);
-  const debouncedCity = useDebounce(searchCity, 1000);
-  useSyncFilterWithRedux();
 
-  const { setFilters } = useFilterParams();
+  const {
+    byPopularity,
+    byPrice,
+    category,
+    locationId,
+    sex,
+    species,
+    setFilters,
+  } = useFilterParams();
 
-  const onHandleSearch = (search: string) => {
-    setSearchValue(search);
+  const onHandleSearch = (key: keyof Filters, value: string) => {
+    setFilters({ [key]: value });
   };
 
   const onHandleSearchCity = (city: string) => {
     setSearchCity(city);
   };
 
-  const filteredList = debouncedCity
-    ? cities.filter(({ cityEn }) =>
-        cityEn.toLowerCase().includes(searchCity.toLowerCase())
-      )
-    : cities;
+  const filteredList = cities.filter(({ cityEn, countyEn }) =>
+    `${cityEn} ${countyEn}`.toLowerCase().includes(searchCity.toLowerCase())
+  );
 
   useEffect(() => {
-    dispatch(handleSearch(debouncedSearch));
-  }, [debouncedSearch, dispatch]);
+    setFilters({ keyword: debouncedSearch });
+  }, [debouncedSearch, setFilters]);
+
+  useEffect(() => {
+    const fullFilters = {
+      keyword: debouncedSearch,
+      byPopularity,
+      byPrice,
+      category,
+      locationId,
+      sex,
+      species,
+    };
+
+    dispatch(handleSearch(fullFilters));
+  }, [
+    debouncedSearch,
+    byPopularity,
+    byPrice,
+    category,
+    locationId,
+    sex,
+    species,
+    dispatch,
+  ]);
 
   return (
     <div className={s.search}>
@@ -61,74 +88,65 @@ const SearchFiltersPanel = ({
           name="Search"
           placeholder="Search"
           iconPosition="right"
-          onChange={(e) => onHandleSearch(e.target.value)}
+          onChange={(e) => setSearchValue(e.target.value)}
         >
           <SearchIcon />
         </Input>
         <div className="flex  gap-2">
           <div className="relative z-20">
-            <Dropdown
+            <Select
               name="Category"
               placeholder="Category"
               filterOptions={categoryOptions}
               icon={<ChevronDown />}
+              value={category ?? ""}
               renderItem={(o) => <DropDownItem<FilterOptions> value={o} />}
               className="w-36"
-              onChange={(o) =>
-                setFilters({
-                  category: o,
-                })
-              }
+              onSelect={(o) => onHandleSearch("category", o)}
               onResetValue={() => setFilters({ category: "" })}
             />
           </div>
           <div className="relative z-20">
-            <Dropdown
+            <Select
               name="Gender"
               placeholder="By gender"
               filterOptions={sexOptions}
               icon={<ChevronDown />}
+              value={sex ?? ""}
               renderItem={(o) => <DropDownItem<FilterOptions> value={o} />}
               className="w-36"
-              onChange={(o) =>
-                setFilters({
-                  sex: o,
-                })
-              }
+              onSelect={(o) => onHandleSearch("sex", o)}
               onResetValue={() => setFilters({ sex: "" })}
             />
           </div>
         </div>
         <div className="relative z-10">
-          <Dropdown
+          <Select
             name="Type"
             placeholder="By Type"
             filterOptions={speciesOptions}
             icon={<ChevronDown />}
+            value={species ?? ""}
             renderItem={(o) => <DropDownItem<FilterOptions> value={o} />}
-            onChange={(o) =>
-              setFilters({
-                species: o,
-              })
-            }
+            onSelect={(o) => onHandleSearch("species", o)}
             onResetValue={() => setFilters({ species: "" })}
           />
         </div>
         <div className="relative z-9">
-          <Dropdown
+          <SearchableSelect<City>
             name="Location"
             placeholder="Location"
             filterOptions={filteredList}
             icon={<SearchIcon />}
-            onChange={(city) =>
-              setFilters({
-                locationId: city._id,
-              })
-            }
-            onInput={(e) => onHandleSearchCity(e.currentTarget.value)}
-            renderItem={(o) => (
-              <DropDownItem value={`${o.cityEn} ${o.countyEn}`} />
+            onSelect={({ cityEn, _id }) => {
+              onHandleSearchCity(cityEn);
+              onHandleSearch("locationId", _id);
+            }}
+            onChange={(e) => setSearchCity(e.currentTarget.value)}
+            renderItem={({ cityEn, countyEn, _id }) => (
+              <DropDownItem value={`${cityEn} ${countyEn}`} key={_id} />
             )}
+            value={searchCity ?? locationId ?? ""}
             valueExtractor={(o) => `${o.cityEn} ${o.countyEn}`}
             onResetValue={() => setFilters({ locationId: "" })}
           />
@@ -141,14 +159,7 @@ const SearchFiltersPanel = ({
             <Button
               className={s.filterButton}
               label={label}
-              onClick={() => {
-                if (filters.byPopularity !== undefined) {
-                  setFilters({ byPopularity: filters.byPopularity });
-                }
-                if (filters.byPrice !== undefined) {
-                  setFilters({ byPrice: filters.byPrice });
-                }
-              }}
+              onClick={() => setFilters(filters)}
             />
           );
         })}

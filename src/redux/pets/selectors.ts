@@ -16,7 +16,4 @@ export const selectPetsSpecies = (state: StoreType) =>
 export const selectCities = (state: StoreType) =>
   state.pets.filterOptions.cities;
 
-export const selectSearchValue = (state: StoreType) =>
-  state.pets.filters.search;
-
 export const selectFilterParams = (state: StoreType) => state.pets.filters;

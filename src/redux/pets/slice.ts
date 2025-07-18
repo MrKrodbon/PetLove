@@ -36,10 +36,7 @@ const petSlice = createSlice({
       state.totalPages = action.payload;
     },
     handleSearch: (state, action) => {
-      state.filters.search = action.payload;
-    },
-    setSearchParams: (state, action) => {
-      state.filters = { ...action.payload };
+      state.filters = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -92,6 +89,5 @@ const petSlice = createSlice({
   },
 });
 
-export const { setNewPage, setTotalPages, handleSearch, setSearchParams } =
-  petSlice.actions;
+export const { setNewPage, setTotalPages, handleSearch } = petSlice.actions;
 export default petSlice.reducer;

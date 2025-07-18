@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 export function useFilterParams() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get("search") as Filters["search"] | null;
+  const keyword = searchParams.get("keyword") as Filters["keyword"] | null;
   const category = searchParams.get("category") as Filters["category"] | null;
   const species = searchParams.get("species") as Filters["species"] | null;
   const sex = searchParams.get("sex") as Filters["sex"] | null;
@@ -21,7 +21,7 @@ export function useFilterParams() {
       Object.entries(filters).forEach(([filterKey, filterValue]) => {
         if (filterValue === "") {
           params.delete(filterKey);
-        } else if (filterValue) {
+        } else {
           params.set(filterKey, String(filterValue));
         }
       });
@@ -31,7 +31,7 @@ export function useFilterParams() {
   }, []);
 
   return {
-    search,
+    keyword,
     category,
     species,
     sex,
