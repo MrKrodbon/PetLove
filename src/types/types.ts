@@ -83,6 +83,35 @@ export interface PetItem {
   popularity: number;
 }
 
+<<<<<<< Updated upstream
+=======
+export interface City {
+  _id: string;
+  useCounty: number;
+  stateEn: string;
+  cityEn: string;
+  countyEn: string;
+}
+
+export interface FilterOptions {
+  categoryOptions?: [];
+  sexOptions?: [];
+  speciesOptions?: [];
+  cities?: City[];
+}
+
+export interface Filters {
+  keyword?: string | "";
+  category?: string | "";
+  sex?: string | "";
+  species?: string | "";
+  locationId?: string | "";
+  byDate?: boolean | false;
+  byPrice?: boolean | false;
+  byPopularity?: boolean | false;
+  limit?: number | "";
+}
+>>>>>>> Stashed changes
 export interface PetState {
   results: PetItem[];
   page: number;

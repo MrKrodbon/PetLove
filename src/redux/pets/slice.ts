@@ -22,6 +22,12 @@ const petSlice = createSlice({
     setTotalPages: (state, action) => {
       state.totalPages = action.payload;
     },
+<<<<<<< Updated upstream
+=======
+    handleSearch: (state, action) => {
+      state.filters = action.payload;
+    },
+>>>>>>> Stashed changes
   },
   extraReducers: (builder) => {
     builder
@@ -43,5 +49,9 @@ const petSlice = createSlice({
   },
 });
 
+<<<<<<< Updated upstream
 export const { setNewPage, setTotalPages } = petSlice.actions;
+=======
+export const { setNewPage, setTotalPages, handleSearch } = petSlice.actions;
+>>>>>>> Stashed changes
 export default petSlice.reducer;
