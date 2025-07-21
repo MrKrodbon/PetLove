@@ -44,8 +44,8 @@ export const authLinks: RouteConf[] = [
 ];
 
 export const filterButtons = [
-  { label: "Popular", filters: { byPopularity: false } },
-  { label: "Unpopular", filters: { byPopularity: true } },
-  { label: "Expensive", filters: { byPrice: false } },
-  { label: "Cheap", filters: { byPrice: true } },
+  { label: "Popular", filters: { byPopularity: false }, isActive: true },
+  { label: "Unpopular", filters: { byPopularity: true }, isActive: false },
+  { label: "Expensive", filters: { byPrice: false }, isActive: false },
+  { label: "Cheap", filters: { byPrice: true }, isActive: false },
 ];

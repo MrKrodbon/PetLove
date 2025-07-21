@@ -1,0 +1,16 @@
+.icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+.iconLeft {
+    left: 16px;
+}
+
+.iconRight {
+    right: 16px;
+}

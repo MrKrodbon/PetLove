@@ -13,6 +13,8 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { handleSearch } from "@/redux/pets/slice";
 import SearchableSelect from "../Select/SearchableSelect/SearchableSelect";
 import Select from "../Select/Select";
+import Close from "@/assets/icons/close.svg?react";
+import clsx from "clsx";
 
 interface SearchFiltersPanelProps {
   categoryOptions?: [];
@@ -104,6 +106,7 @@ const SearchFiltersPanel = ({
               className="w-36"
               onSelect={(o) => onHandleSearch("category", o)}
               onResetValue={() => setFilters({ category: "" })}
+              readOnly
             />
           </div>
           <div className="relative z-20">
@@ -117,6 +120,7 @@ const SearchFiltersPanel = ({
               className="w-36"
               onSelect={(o) => onHandleSearch("sex", o)}
               onResetValue={() => setFilters({ sex: "" })}
+              readOnly
             />
           </div>
         </div>
@@ -130,6 +134,7 @@ const SearchFiltersPanel = ({
             renderItem={(o) => <DropDownItem<FilterOptions> value={o} />}
             onSelect={(o) => onHandleSearch("species", o)}
             onResetValue={() => setFilters({ species: "" })}
+            readOnly
           />
         </div>
         <div className="relative z-9">
@@ -148,17 +153,55 @@ const SearchFiltersPanel = ({
             )}
             value={searchCity ?? locationId ?? ""}
             valueExtractor={(o) => `${o.cityEn} ${o.countyEn}`}
-            onResetValue={() => setFilters({ locationId: "" })}
+            onResetValue={() => {
+              setFilters({ locationId: "" });
+              setSearchCity("");
+            }}
           />
         </div>
       </div>
       <div className={s.vector} />
       <div className="flex flex-row flex-wrap my-3 gap-2.5">
         {filterButtons.map(({ label, filters }) => {
+          const isActiveBtn =
+            String(filters.byPopularity) === byPopularity ||
+            String(filters.byPrice) === byPrice;
+
           return (
             <Button
-              className={s.filterButton}
+              className={clsx(s.filterButton, {
+                [s.activeButton]: isActiveBtn,
+              })}
               label={label}
+              icon={
+                (isActiveBtn && (
+                  <Close
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (
+                        filters.byPopularity === true ||
+                        filters.byPopularity === false
+                      ) {
+                        setFilters({
+                          byPopularity: "",
+                        });
+                      } else if (
+                        filters.byPrice === true ||
+                        filters.byPrice === false
+                      ) {
+                        setFilters({
+                          byPrice: "",
+                        });
+                      }
+                    }}
+                    width={18}
+                    height={18}
+                    className={s.icon}
+                  />
+                )) ||
+                null
+              }
+              iconPosition={"right"}
               onClick={() => setFilters(filters)}
             />
           );

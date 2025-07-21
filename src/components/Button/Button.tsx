@@ -10,6 +10,8 @@ interface ButtonProps {
   label?: string;
   children?: React.ReactNode;
   variant?: Variant;
+  icon?: React.ReactElement | null;
+  iconPosition?: "left" | "right";
   className?: string;
   disabled?: boolean;
   onClick?: () => void;
@@ -20,9 +22,13 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   className,
   variant,
+  icon,
+  iconPosition,
   disabled,
   onClick,
 }) => {
+  const hasContent = !!label || !!children;
+  const renderLabel = label ?? children;
   return (
     <button
       className={clsx(s.button, className, {
@@ -32,7 +38,13 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
     >
-      {label || children}
+      {icon && iconPosition === "left" && (
+        <div className={s.iconLeft}>{icon}</div>
+      )}
+      {hasContent && renderLabel}
+      {icon && iconPosition === "right" && (
+        <div className={s.iconRight}>{icon}</div>
+      )}
     </button>
   );
 };

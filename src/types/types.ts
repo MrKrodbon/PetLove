@@ -104,9 +104,9 @@ export interface Filters {
   sex?: string | "";
   species?: string | "";
   locationId?: string | "";
-  byDate?: boolean | false;
-  byPrice?: boolean | false;
-  byPopularity?: boolean | false;
+  byDate?: boolean | "";
+  byPrice?: boolean | "";
+  byPopularity?: boolean | "";
   limit?: number | "";
 }
 export interface PetState {
