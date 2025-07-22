@@ -23,7 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   variant,
   icon,
-  iconPosition,
+  iconPosition = "left",
   disabled,
   onClick,
 }) => {
