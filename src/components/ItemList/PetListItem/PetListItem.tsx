@@ -54,7 +54,7 @@ const PetListItem = ({
 
             <p className={s.subtitle}>
               {price === undefined ? (
-                <span className="text-amber-500">sold</span>
+                <span className="text-amber-500">{category}</span>
               ) : (
                 `$${price}`
               )}

@@ -83,8 +83,36 @@ export interface PetItem {
   popularity: number;
 }
 
+export interface City {
+  _id: string;
+  useCounty: number;
+  stateEn: string;
+  cityEn: string;
+  countyEn: string;
+}
+
+export interface FilterOptions {
+  categoryOptions?: [];
+  sexOptions?: [];
+  speciesOptions?: [];
+  cities?: City[];
+}
+
+export interface Filters {
+  keyword?: string | "";
+  category?: string | "";
+  sex?: string | "";
+  species?: string | "";
+  locationId?: string | "";
+  byDate?: boolean | "";
+  byPrice?: boolean | "";
+  byPopularity?: boolean | "";
+  limit?: number | "";
+}
 export interface PetState {
   results: PetItem[];
+  filterOptions: FilterOptions;
+  filters: Filters;
   page: number;
   perPage: number;
   totalPages: number;

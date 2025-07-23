@@ -43,4 +43,9 @@ export const authLinks: RouteConf[] = [
   { path: "/", label: "Log out", element: <HomePage />, isAuth: true },
 ];
 
-export const filterLabels = ["Popular", "Unpopular", "Cheap", "Expensive"];
+export const filterButtons = [
+  { label: "Popular", filters: { byPopularity: false }, isActive: true },
+  { label: "Unpopular", filters: { byPopularity: true }, isActive: false },
+  { label: "Expensive", filters: { byPrice: false }, isActive: false },
+  { label: "Cheap", filters: { byPrice: true }, isActive: false },
+];

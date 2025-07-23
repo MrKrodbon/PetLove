@@ -7,10 +7,12 @@ import ItemList from "@/components/ItemList/ItemList";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchFiltersPanel from "@/components/SearchFiltersPanel/SearchFiltersPanel";
 import React from "react";
+import { FilterOptions } from "@/types/types";
 
 type PageTemplateProps<T> = {
   title: string;
   items: T[];
+  filterOptions?: FilterOptions;
   hasSearchInput?: boolean;
   hasFilterPanel?: boolean;
   onPageChange?: (newPage: number) => void;
@@ -22,6 +24,7 @@ type PageTemplateProps<T> = {
 function PageTemplate<T>({
   title,
   items,
+  filterOptions,
   renderItem,
   pagination,
   onPageChange,
@@ -56,7 +59,7 @@ function PageTemplate<T>({
               <SearchIcon />
             </Input>
           )}
-          {hasFilterPanel && <SearchFiltersPanel />}
+          {hasFilterPanel && <SearchFiltersPanel {...filterOptions} />}
         </div>
         <ItemList items={items} renderItem={renderItem} />
         {pagination && (

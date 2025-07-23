@@ -15,6 +15,7 @@ export interface BaseInputProps {
   variant?: InputVariant;
   className?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  readOnly?: boolean;
 }
 
 export const Input: React.FC<BaseInputProps> = ({
@@ -25,6 +26,7 @@ export const Input: React.FC<BaseInputProps> = ({
   children,
   variant,
   onChange,
+  readOnly = false,
   value,
   name,
   className,
@@ -56,6 +58,7 @@ export const Input: React.FC<BaseInputProps> = ({
         name={name}
         onChange={onChange}
         value={value}
+        readOnly={readOnly}
       />
     </div>
   );
