@@ -1,11 +1,11 @@
 import { labels } from "@/constants/petInfo/petInfo";
 
 interface PetInfo {
-  name: string;
-  birthday: string;
-  sex: string;
-  species: string;
-  category: string;
+  name?: string;
+  birthday?: string;
+  sex?: string;
+  species?: string;
+  category?: string;
 }
 
 export const buildPetInfo = (pet: PetInfo) => {

@@ -1,0 +1,90 @@
+@use "@/styles/mixins.scss" as mixins;
+@import "@/styles/variables.css";
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 28px;
+}
+
+.title {
+  @include mixins.title-extra-bold;
+
+  color: var(--white-color);
+}
+
+.common-subtitle {
+  @include mixins.subtitle-medium;
+  display: flex;
+  justify-content: center;
+  height: 18px;
+  width: 100%;
+  font-size: 12px;
+  color: var(--text-color);
+}
+
+.subtitle {
+  @extend .common-subtitle;
+
+  font-size: 12px;
+}
+
+.comment {
+  @extend .common-subtitle;
+  display: flex;
+  justify-content: center;
+  height: 18px;
+  width: 100%;
+  font-size: 12px;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 27px;
+}
+
+.price {
+  @extend .common-subtitle;
+  @include mixins.title-extra-bold;
+  margin-bottom: 20px;
+}
+
+.category {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 8px 14px;
+  border-radius: 30px;
+  color: var(--main-color);
+  background: var(--button-hover-color);
+}
+
+.listRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.listRowLabel {
+  height: 18px;
+  font-size: 12px;
+  color: var(--gray-color);
+}
+
+.imageContainer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.imageContainer > img {
+  border-radius: 50%;
+  object-fit: contain;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+@include mixins.breakpoint(large) {
+  .modal {
+    padding: 40px 71px;
+  }
+}

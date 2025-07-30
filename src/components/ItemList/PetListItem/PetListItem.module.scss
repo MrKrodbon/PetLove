@@ -20,7 +20,7 @@
 
 .title {
   @include mixins.title-extra-bold;
-
+  
   color: var(--white-color);
 }
 
